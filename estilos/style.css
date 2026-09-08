@@ -67,6 +67,7 @@ section#ficha{
   padding: 20px;
   border-radius: 5px;
   grid-column: 2;
+
 }
 
 section#ficha img.foto{
@@ -261,6 +262,45 @@ footer > a:hover{
 }
 
 @media screen and (min-width:768px) {
+  
+  main{
+    grid-template-columns: auto 300px 1fr auto;
+    align-items: start;
+  }
+
+  section#ficha{
+    grid-column: 2 / 3;
+    height: fit-content;
+    position: sticky;
+    top: 65px;
+    padding: 15px;
+    text-align: left;
+  }
+
+  section#ficha img.foto {
+    width: 120px;
+    margin-bottom: 10px;
+  }
+
+   section#ficha h1 {
+    font-size: 1.6em;
+    margin: 10px 0;
+  }
+
+   section#ficha p {
+    font-size: 0.9em;
+    line-height: 1.4em;
+  }
+
+  div#social {
+    margin-top: 10px;
+    font-size: 1.5em;
+  }
+
+  section#detalhes{
+    grid-column: 3 / 4;
+  }
+
   #skill-container{
     grid-template-columns: 1fr 1fr;
   }
