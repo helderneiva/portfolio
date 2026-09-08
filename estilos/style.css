@@ -29,6 +29,9 @@ header{
   display: flex;
   justify-content: flex-end;
   align-content: center;
+  position: sticky;
+  top: 0;
+  z-index: 1;
 }
 
 nav#menu ul{
@@ -227,10 +230,17 @@ article h2{
 
 #projeto-container .foto{
   width: 100%;
+  height: 100%;
+  display: block;
   aspect-ratio: 16/9;
   object-fit: cover;
   overflow: hidden;
   border-radius: 5px;
+}
+
+#projeto-container .link-projeto{
+  width: 100%;
+  display: block;
 }
 
 footer{
@@ -264,9 +274,13 @@ footer > a:hover{
     max-width: 80%;
   }
 
+  #projeto-container .link-projeto {
+    max-width: 20%;
+    width: 100%;
+  }
+
   #projeto-container .foto{
    aspect-ratio: 1/1;
-   max-width: 20%;
    max-height: 200px;
   }
 }
