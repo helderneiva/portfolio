@@ -261,10 +261,15 @@ article h2{
   display: block;
 }
 
+#projeto-container .link-projeto-titulo{
+  text-decoration: none;
+  color: var(--texto);
+}
+
 footer{
   background-color: var(--destaque);
   color: var(--texto-inverso);
-  padding: 15px;
+  padding: 5px;
   text-align: center;
 }
 
