@@ -5,7 +5,19 @@
 
     --fonte: "Manrope", sans-serif;
     --mono: "IBM Plex Mono", monospace;
+
     --altura-menu: 88px;
+    --largura-conteudo: 1280px;
+    --recuo-lateral: 32px;
+    --raio-card: 16px;
+
+    --barra-inicio: #4338CA;
+    --barra-meio: #2563EB;
+    --barra-fim: #0E7490;
+
+    --lab-js-capa: linear-gradient(125deg, #182019 0%, #5B6322 55%, #AA8A26 100%);
+    --lab-php-capa: linear-gradient(125deg, #191A31 0%, #535092 55%, #9668CA 100%);
+    --lab-python-capa: linear-gradient(125deg, #10253C 0%, #1A668D 55%, #299AAB 100%);
 
     --tech-js: #F1E05A;
     --tech-ts: #3178C6;
@@ -39,6 +51,7 @@
     --destaque-inverso: #FFFFFF;
     --destaque-hover: #3730A3;
     --destaque-titulo: #1E1B4B;
+
     --link: #4338CA;
     --link-hover: #312E81;
     --foco: #4338CA;
@@ -107,6 +120,7 @@
         --destaque-inverso: #0D1117;
         --destaque-hover: #79C0FF;
         --destaque-titulo: #F0F6FC;
+
         --link: #58A6FF;
         --link-hover: #A5D6FF;
         --foco: #58A6FF;
@@ -122,6 +136,9 @@
         --botao-secundario-borda: #6E7681;
 
         --trilho-barra: #30363D;
+        --barra-inicio: #58A6FF;
+        --barra-meio: #7B9FFF;
+        --barra-fim: #3DD6D0;
         --gradiente-inicio: #257DF2;
         --gradiente-meio: #58A6FF;
         --gradiente-fim: #79C0FF;
@@ -169,6 +186,7 @@ html[data-theme="dark"] {
     --destaque-inverso: #0D1117;
     --destaque-hover: #79C0FF;
     --destaque-titulo: #F0F6FC;
+
     --link: #58A6FF;
     --link-hover: #A5D6FF;
     --foco: #58A6FF;
@@ -184,6 +202,9 @@ html[data-theme="dark"] {
     --botao-secundario-borda: #6E7681;
 
     --trilho-barra: #30363D;
+    --barra-inicio: #58A6FF;
+    --barra-meio: #7B9FFF;
+    --barra-fim: #3DD6D0;
     --gradiente-inicio: #257DF2;
     --gradiente-meio: #58A6FF;
     --gradiente-fim: #79C0FF;

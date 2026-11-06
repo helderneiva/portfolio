@@ -1,0 +1,176 @@
+@charset "UTF-8";
+
+.pagina-competencias {
+    margin-top: 36px;
+    margin-bottom: 60px;
+}
+
+.pagina-competencias > .marcador {
+    margin-top: 28px;
+}
+
+.pagina-competencias h1 {
+    margin-top: 12px;
+    font-size: 2.5em;
+    letter-spacing: -1.2px;
+}
+
+.pagina-competencias .introducao {
+    max-width: 850px;
+    margin-top: 18px;
+    color: var(--texto-secundario);
+}
+
+.filtros {
+    display: grid;
+    grid-template-columns: minmax(0, 360px) minmax(0, 1fr);
+    align-items: end;
+    gap: 10px 24px;
+    margin: 28px 0;
+    padding: 22px;
+    border: 1px solid var(--borda);
+    border-radius: var(--raio-card);
+    background: var(--fundo-card);
+}
+
+.filtros label {
+    grid-column: 1 / -1;
+    font-size: 0.875em;
+    font-weight: 700;
+}
+
+.filtro-select {
+    width: 100%;
+    min-width: 0;
+    min-height: 46px;
+    padding: 10px 12px;
+    border: 1px solid var(--borda-forte);
+    border-radius: 8px;
+    background: var(--fundo-campo);
+    color: var(--texto);
+    font-size: 0.9375em;
+}
+
+.contagem {
+    align-self: center;
+    color: var(--texto-secundario);
+    font-size: 0.875em;
+}
+
+.filtros noscript {
+    grid-column: 1 / -1;
+}
+
+.grade-evidencias {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+}
+
+.projeto-evidencia {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    padding: 26px;
+    border: 1px solid var(--borda);
+    border-radius: var(--raio-card);
+    background: var(--fundo-card);
+}
+
+.projeto-evidencia > .icone {
+    width: 32px;
+    height: 32px;
+    margin-bottom: 18px;
+    color: var(--link);
+}
+
+.projeto-evidencia h2 {
+    font-size: 1.35em;
+    letter-spacing: -0.4px;
+}
+
+.projeto-evidencia > p {
+    margin-top: 14px;
+    color: var(--texto-secundario);
+    font-size: 0.9375em;
+}
+
+.projeto-evidencia .etiqueta {
+    align-self: start;
+    margin-top: 12px;
+    padding: 4px 10px;
+    border: 1px solid var(--borda);
+    border-radius: 20px;
+    background: var(--fundo-elevado);
+    color: var(--texto);
+}
+
+.projeto-evidencia[data-tecnologias^="php"] .etiqueta {
+    border-color: var(--aviso);
+    background: var(--aviso-fundo);
+    color: var(--aviso);
+}
+
+.evidencias {
+    margin: 22px 0;
+}
+
+.evidencias > div {
+    padding: 14px 0;
+    border-top: 1px solid var(--borda);
+}
+
+.evidencias dt {
+    font-size: 0.875em;
+    font-weight: 750;
+}
+
+.evidencias dd {
+    margin: 7px 0 0;
+    color: var(--texto-secundario);
+    font-size: 0.875em;
+    line-height: 1.65;
+}
+
+.projeto-evidencia .acoes {
+    margin-top: auto;
+    padding-top: 12px;
+}
+
+.projeto-evidencia .botao {
+    width: fit-content;
+}
+
+@media (max-width: 720px) {
+    .pagina-competencias {
+        margin-top: 24px;
+        margin-bottom: 40px;
+    }
+
+    .pagina-competencias h1 {
+        font-size: 2em;
+    }
+
+    .grade-evidencias {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .filtros {
+        grid-template-columns: minmax(0, 1fr);
+        padding: 18px;
+    }
+
+    .projeto-evidencia {
+        padding: 22px;
+    }
+}
+
+@media print {
+    .filtros {
+        display: none;
+    }
+
+    .grade-evidencias {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}

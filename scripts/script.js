@@ -218,17 +218,53 @@
         baseMenu.classList.add('menu-pronto');
     }
 
+    document.querySelectorAll('.item-menu, .rede-icone').forEach((elemento) => {
+        elemento.addEventListener('keydown', (evento) => {
+            if (evento.key === 'Escape') {
+                elemento.classList.add('dica-fechada');
+            }
+        });
+
+        elemento.addEventListener('pointerleave', () => {
+            elemento.classList.remove('dica-fechada');
+        });
+
+        elemento.addEventListener('blur', () => {
+            elemento.classList.remove('dica-fechada');
+        });
+    });
+
     const secoes = links
         .map((link) => document.getElementById(link.hash.slice(1)))
         .filter(Boolean);
 
     let quadro = null;
+    let secaoEmTransicao = null;
+    let fimRolagem = null;
+
+    function marcarSecao(atual) {
+        links.forEach((link) => {
+            if (link.hash === `#${atual.id}`) {
+                link.setAttribute('aria-current', 'location');
+            } else {
+                link.removeAttribute('aria-current');
+            }
+        });
+
+        moverIndicador();
+    }
 
     function atualizarNavegacao() {
         quadro = null;
 
+        if (secaoEmTransicao) {
+            marcarSecao(secaoEmTransicao);
+            return;
+        }
+
         if (secoes.length) {
-            const limite = cabecalho.getBoundingClientRect().height + 100;
+            const alturaMenu = cabecalho.getBoundingClientRect().height;
+            const limite = alturaMenu + (window.innerHeight - alturaMenu) / 2;
             let atual = secoes[0];
 
             secoes.forEach((secao) => {
@@ -241,13 +277,7 @@
                 atual = secoes[secoes.length - 1];
             }
 
-            links.forEach((link) => {
-                if (link.hash === `#${atual.id}`) {
-                    link.setAttribute('aria-current', 'location');
-                } else {
-                    link.removeAttribute('aria-current');
-                }
-            });
+            marcarSecao(atual);
         }
 
         moverIndicador();
@@ -259,7 +289,133 @@
         }
     }
 
-    window.addEventListener('scroll', agendarNavegacao, { passive: true });
+    function concluirRolagem() {
+        clearTimeout(fimRolagem);
+        secaoEmTransicao = null;
+        agendarNavegacao();
+    }
+
+    function posicionarSecao(alvo, suave = true) {
+        const caixa = alvo.getBoundingClientRect();
+        const estilo = getComputedStyle(alvo);
+        const inicio = (parseFloat(estilo.paddingTop) || 0) + (parseFloat(estilo.borderTopWidth) || 0);
+        const final = (parseFloat(estilo.paddingBottom) || 0) + (parseFloat(estilo.borderBottomWidth) || 0);
+        const alturaConteudo = Math.max(0, caixa.height - inicio - final);
+        const alturaMenu = cabecalho.getBoundingClientRect().height;
+        const alturaLivre = Math.max(0, window.innerHeight - alturaMenu);
+
+        const respiro = alturaConteudo <= alturaLivre - 40
+            ? (alturaLivre - alturaConteudo) / 2
+            : 20;
+
+        const destino = window.scrollY + caixa.top + inicio - alturaMenu - respiro;
+        const maximo = Math.max(0, raiz.scrollHeight - window.innerHeight);
+
+        clearTimeout(fimRolagem);
+        secaoEmTransicao = secoes.includes(alvo) ? alvo : null;
+
+        if (secaoEmTransicao) {
+            marcarSecao(secaoEmTransicao);
+        }
+
+        window.scrollTo({
+            top: Math.max(0, Math.min(destino, maximo)),
+            behavior: suave && !reduzirMovimento.matches ? 'smooth' : 'instant'
+        });
+
+        fimRolagem = setTimeout(concluirRolagem, 1200);
+    }
+
+    function alvoDoHash(hash) {
+        try {
+            return hash.length > 1
+                ? document.getElementById(decodeURIComponent(hash.slice(1)))
+                : null;
+        } catch {
+            return null;
+        }
+    }
+
+    document.addEventListener('click', (evento) => {
+        if (
+            evento.defaultPrevented ||
+            evento.button !== 0 ||
+            evento.ctrlKey ||
+            evento.metaKey ||
+            evento.shiftKey ||
+            evento.altKey
+        ) {
+            return;
+        }
+
+        const link = evento.target.closest('a[href]');
+
+        if (!link || link.hasAttribute('download') || (link.target && link.target !== '_self')) {
+            return;
+        }
+
+        const url = new URL(link.href, location.href);
+
+        if (
+            url.origin !== location.origin ||
+            url.pathname !== location.pathname ||
+            url.search !== location.search
+        ) {
+            return;
+        }
+
+        const alvo = alvoDoHash(url.hash);
+
+        if (!alvo) {
+            return;
+        }
+
+        evento.preventDefault();
+
+        if (location.hash !== url.hash) {
+            history.pushState(null, '', url.hash);
+        }
+
+        if (!alvo.hasAttribute('tabindex')) {
+            alvo.setAttribute('tabindex', '-1');
+        }
+
+        alvo.focus({ preventScroll: true });
+        posicionarSecao(alvo);
+    });
+
+    window.addEventListener('scroll', () => {
+        agendarNavegacao();
+
+        if (secaoEmTransicao) {
+            clearTimeout(fimRolagem);
+            fimRolagem = setTimeout(concluirRolagem, 180);
+        }
+    }, { passive: true });
+
+    window.addEventListener('wheel', concluirRolagem, { passive: true });
+    window.addEventListener('touchstart', concluirRolagem, { passive: true });
+
+    window.addEventListener('keydown', (evento) => {
+        const teclas = ['ArrowDown', 'ArrowUp', 'PageDown', 'PageUp', 'Home', 'End', ' '];
+
+        if (teclas.includes(evento.key)) {
+            concluirRolagem();
+        }
+    });
+
+    function alinharHash() {
+        const alvo = alvoDoHash(location.hash);
+
+        if (alvo) {
+            posicionarSecao(alvo, false);
+        }
+    }
+
+    window.addEventListener('hashchange', () => {
+        requestAnimationFrame(alinharHash);
+    });
+
     window.addEventListener('resize', agendarNavegacao);
 
     if ('ResizeObserver' in window && baseMenu) {
@@ -272,53 +428,145 @@
         });
     }
 
-    document.fonts?.ready.then(moverIndicador);
+    Promise.resolve(document.fonts?.ready).then(() => {
+        moverIndicador();
+        requestAnimationFrame(alinharHash);
+    });
 
     atualizarNavegacao();
 
     const competencias = document.getElementById('competencias');
-    const pausar = document.getElementById('pausar-barras');
+    const pausar = document.getElementById('pausar-animacoes');
+    const gradeLaboratorios = document.querySelector('#laboratorios .grade-laboratorios');
+    const gradeCompetencias = competencias?.querySelector('.grade-competencias');
+    const cartoes = [...(gradeCompetencias?.querySelectorAll('.competencia') || [])];
 
-    if (competencias && pausar) {
+    const desenhosTecnologias = {
+        html: '<path d="M9 3h15l9 9v23a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Z"/><path d="M24 3v9h9M16 22l-4 4 4 4m10-8 4 4-4 4m-4-10-3 12"/>',
+        css: '<path d="M5 3h30l-3 31-12 4-12-4Z"/><path d="M12 11h17l-1 6-10 5h9l-1 7-6 2-6-2-.5-4"/>',
+        javascript: '<rect x="4" y="4" width="32" height="32" rx="4"/><text class="marca-texto" x="20" y="26" text-anchor="middle">JS</text>',
+        php: '<ellipse cx="20" cy="20" rx="18" ry="11"/><text class="marca-texto marca-php" x="20" y="24" text-anchor="middle">php</text>',
+        'node-sql': '<path d="m20 2 16 9v18L20 38 4 29V11Z"/><text class="marca-texto" x="20" y="26" text-anchor="middle">JS</text>',
+        git: '<path d="m20 2 18 18-18 18L2 20Z"/><path d="M14 11v14m0-9 12 8"/><circle cx="14" cy="10" r="2.5"/><circle cx="14" cy="27" r="2.5"/><circle cx="27" cy="25" r="2.5"/>'
+    };
+
+    function criarIcone(conteudo, tamanho = '0 0 40 40') {
+        const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+
+        svg.setAttribute('viewBox', tamanho);
+        svg.setAttribute('class', 'icone');
+        svg.setAttribute('aria-hidden', 'true');
+        svg.setAttribute('focusable', 'false');
+
+        // Conteúdo fixo e local, definido neste arquivo.
+        svg.innerHTML = conteudo;
+
+        return svg;
+    }
+
+    cartoes.forEach((cartao) => {
+        const desenho = desenhosTecnologias[cartao.dataset.tecnologia];
+        const icone = cartao.querySelector('.competencia-titulo > .icone');
+
+        if (desenho && icone) {
+            icone.replaceWith(criarIcone(desenho));
+        }
+
+        const seta = cartao.querySelector('.ver-projetos > span');
+
+        if (seta) {
+            seta.replaceWith(
+                criarIcone(
+                    '<path d="M15 3h6v6m0-6-10 10"/><path d="M10 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-5"/>',
+                    '0 0 24 24'
+                )
+            );
+        }
+    });
+
+    if (pausar && gradeLaboratorios) {
+        gradeLaboratorios.insertAdjacentElement('afterend', pausar);
+        pausar.setAttribute('aria-label', 'Pausar animações das capas e das barras de competências');
+    }
+
+    let controleCompetencias = document.getElementById('pausar-competencias');
+
+    if (gradeCompetencias && !controleCompetencias) {
+        controleCompetencias = document.createElement('button');
+        controleCompetencias.id = 'pausar-competencias';
+        controleCompetencias.className = 'pausar';
+        controleCompetencias.type = 'button';
+
+        gradeCompetencias.insertAdjacentElement('afterend', controleCompetencias);
+    }
+
+    const botoesMovimento = [pausar, controleCompetencias].filter(Boolean);
+
+    if (competencias && botoesMovimento.length) {
         let efeitosPausados = false;
 
         function atualizarMovimento() {
             const pausado = efeitosPausados || reduzirMovimento.matches;
 
-            competencias.classList.toggle('barras-pausadas', pausado);
+            competencias.classList.remove('aguardando');
+
+            if (reduzirMovimento.matches) {
+                cartoes.forEach((cartao) => {
+                    cartao.classList.remove('entrada-pendente');
+                });
+            }
+
             raiz.classList.toggle('animacoes-pausadas', pausado);
 
-            pausar.hidden = reduzirMovimento.matches;
-            pausar.setAttribute('aria-pressed', String(efeitosPausados));
-            pausar.textContent = efeitosPausados ? 'Retomar animações' : 'Pausar animações';
+            botoesMovimento.forEach((botao) => {
+                botao.hidden = reduzirMovimento.matches;
+                botao.setAttribute('aria-pressed', String(efeitosPausados));
+                botao.textContent = efeitosPausados ? 'Retomar animações' : 'Pausar animações';
+                botao.setAttribute('aria-label', `${efeitosPausados ? 'Retomar' : 'Pausar'} animações das capas e das barras de competências`);
+            });
         }
 
-        pausar.addEventListener('click', () => {
-            efeitosPausados = !efeitosPausados;
+        botoesMovimento.forEach((botao) => {
+            botao.addEventListener('click', () => {
+                efeitosPausados = !efeitosPausados;
 
-            atualizarMovimento();
+                atualizarMovimento();
+            });
         });
 
         reduzirMovimento.addEventListener('change', atualizarMovimento);
 
         atualizarMovimento();
 
-        if ('IntersectionObserver' in window && !reduzirMovimento.matches) {
-            competencias.classList.add('aguardando');
+        if ('IntersectionObserver' in window) {
+            cartoes.forEach((cartao, indice) => {
+                cartao.style.setProperty('--atraso', `${(indice % 3) * 90}ms`);
+                cartao.classList.add('efeitos-fora');
 
-            const observador = new IntersectionObserver((entradas) => {
-                if (!entradas.some((entrada) => entrada.isIntersecting)) {
-                    return;
+                if (!reduzirMovimento.matches) {
+                    cartao.classList.add('entrada-pendente');
                 }
-
-                competencias.classList.remove('aguardando');
-
-                observador.disconnect();
-            }, {
-                threshold: 0.1
             });
 
-            observador.observe(competencias);
+            const observador = new IntersectionObserver((entradas) => {
+                entradas.forEach((entrada) => {
+                    entrada.target.classList.toggle('efeitos-fora', !entrada.isIntersecting);
+
+                    if (entrada.isIntersecting) {
+                        entrada.target.classList.remove('entrada-pendente');
+                    }
+                });
+            }, {
+                threshold: 0.08
+            });
+
+            requestAnimationFrame(() => {
+                requestAnimationFrame(() => {
+                    cartoes.forEach((cartao) => {
+                        observador.observe(cartao);
+                    });
+                });
+            });
         }
     }
 
@@ -369,7 +617,6 @@
             estado.textContent = 'Não foi possível carregar a visualização. Utilize a opção de abrir em nova aba.';
         }
 
-        iframe.addEventListener('error', falhaCarregamento);
         imagem.addEventListener('error', falhaCarregamento);
 
         document.querySelectorAll('[data-previa]').forEach((botao) => {
@@ -401,16 +648,18 @@
                     : (laboratorio ? 'Laboratório JavaScript' : botao.dataset.titulo);
 
                 externo.href = url;
-                externo.textContent = foto ? 'Abrir imagem em nova aba ↗' : 'Abrir em nova aba ↗';
 
-                estado.textContent = 'Carregando…';
+                document.getElementById('rotulo-externo').textContent =
+                    foto ? 'Abrir imagem em nova aba' : 'Abrir em nova aba';
+
+                estado.textContent =
+                    foto ? 'Carregando imagem…' : 'Abrindo prévia. Se ela não aparecer, use Abrir em nova aba.';
+
                 estado.hidden = false;
-
                 iframe.hidden = foto;
                 imagem.hidden = !foto;
 
                 janela.showModal();
-
                 raiz.classList.add('janela-aberta');
 
                 if (foto) {
