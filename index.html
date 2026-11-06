@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -5,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Portfólio de Helder Neiva, estudante de Sistemas de Informação. Desenvolvimento web, laboratórios de programação e competências aplicadas.">
     <meta name="color-scheme" content="light dark">
-
     <meta property="og:type" content="website">
     <meta property="og:locale" content="pt_BR">
     <meta property="og:title" content="Helder Neiva | Desenvolvimento web">
@@ -17,6 +17,8 @@
 
     <link rel="stylesheet" href="estilos/paleta.css">
     <link rel="stylesheet" href="estilos/style.css">
+    <link rel="stylesheet" href="estilos/contato.css">
+    <link rel="stylesheet" href="estilos/melhorias.css">
 
     <script src="scripts/lucide.js" defer></script>
     <script src="scripts/configuracao.js" defer></script>
@@ -80,109 +82,139 @@
 
             <button class="controle-tema" id="botao-tema" type="button" aria-label="Ativar tema escuro" aria-pressed="false">
                 <span id="icone-tema" aria-hidden="true">
-                    <span class="icone" data-lucide="moon"></span>
+                    <span class="icone" data-lucide="moon" aria-hidden="true"></span>
                 </span>
             </button>
         </div>
     </header>
 
     <div class="estrutura">
-        <aside class="perfil" id="perfil" aria-labelledby="nome-perfil">
-            <div class="perfil-capa" aria-hidden="true"></div>
-
-            <button class="retrato" type="button" data-previa="foto" aria-label="Ampliar foto de Helder Neiva" aria-haspopup="dialog" aria-controls="visualizador">
-                <img id="foto-perfil" src="imagens/foto-perfil.jpeg" alt="Helder Neiva" width="720" height="1280" fetchpriority="high">
-                <span class="ampliar" aria-hidden="true">
-                    <span class="icone" data-lucide="expand"></span>
-                </span>
-            </button>
-
-            <div class="perfil-conteudo">
-                <p class="marcador">CÓDIGO E CURIOSIDADE</p>
-                <h1 id="nome-perfil">Helder Neiva</h1>
-                <p class="cargo">Desenvolvimento web</p>
-
-                <p class="perfil-resumo">Estudante de Sistemas de Informação na UniDoctum. Desenvolvo interfaces e aplicações enquanto aprofundo meus conhecimentos em programação.</p>
-
-                <a class="link-texto" href="#sobre">
-                    Conheça minha trajetória
-                    <span class="icone" data-lucide="arrow-down-right" aria-hidden="true"></span>
-                </a>
-
-                <p class="disponibilidade">
-                    <span aria-hidden="true"></span>
-                    Em busca de estágio em desenvolvimento
-                </p>
-
-                <div class="redes" aria-label="Redes profissionais">
-                    <a class="rede" href="https://github.com/helderneiva" target="_blank" rel="noopener noreferrer" aria-label="Meu GitHub, abre em nova aba">
-                        <svg class="icone" viewBox="0 0 24 24" aria-hidden="true">
-                            <path d="M9 19c-4 1-4-2-6-2m12 5v-4a3.5 3.5 0 0 0-1-2.7c3.3-.4 6.8-1.6 6.8-7.3a5.7 5.7 0 0 0-1.5-4 5.3 5.3 0 0 0-.1-4s-1.2-.4-4.2 1.5a14.3 14.3 0 0 0-8 0C4-1.4 2.8-1 2.8-1a5.3 5.3 0 0 0-.1 4A5.7 5.7 0 0 0 1.2 7c0 5.7 3.5 6.9 6.8 7.3A3.5 3.5 0 0 0 7 17v5" transform="translate(2 2) scale(.83)"></path>
-                        </svg>
-                        <span>GitHub</span>
-                        <span class="icone" data-lucide="arrow-up-right" aria-hidden="true"></span>
-                    </a>
-
-                    <a class="rede" data-link="linkedin" hidden>
-                        <svg class="icone" viewBox="0 0 24 24" aria-hidden="true">
-                            <rect x="3" y="3" width="18" height="18" rx="3"></rect>
-                            <path d="M7 10v7m0-10v.1M11 17v-7m0 3a3 3 0 0 1 6 0v4"></path>
-                        </svg>
-                        <span>LinkedIn</span>
-                        <span class="icone" data-lucide="arrow-up-right" aria-hidden="true"></span>
-                    </a>
-                </div>
-
-                <a class="botao botao-perfil" href="#contato">
-                    Vamos conversar
-                    <span class="icone" data-lucide="arrow-up-right" aria-hidden="true"></span>
-                </a>
-
-                <a class="link-texto curriculo" data-link="curriculo" hidden>
-                    <span class="icone" data-lucide="file-user" aria-hidden="true"></span>
-                    Abrir currículo
-                </a>
-            </div>
-        </aside>
-
         <main id="conteudo" tabindex="-1">
-            <section class="apresentacao" id="apresentacao" aria-labelledby="titulo-apresentacao">
-                <p class="marcador">PORTFÓLIO · DESENVOLVIMENTO WEB</p>
-                <h2 id="titulo-apresentacao">Atenção à interface.<br><span>Dedicação à lógica.</span></h2>
+            <div class="inicio">
+                <aside class="perfil" id="perfil" aria-labelledby="nome-perfil">
+                    <div class="perfil-capa" aria-hidden="true"></div>
 
-                <p class="introducao">Desenvolvo aplicações com HTML, CSS, JavaScript e PHP, explorando interfaces, integração com APIs e persistência de dados.</p>
-                <p class="apoio">Meu aprendizado ganha forma em projetos que você pode conhecer nos laboratórios.</p>
+                    <button class="retrato" type="button" data-previa="foto" aria-label="Ampliar foto de Helder Neiva" aria-haspopup="dialog" aria-controls="visualizador">
+                        <img id="foto-perfil" src="imagens/foto-perfil.jpeg" alt="Helder Neiva" width="720" height="1280" fetchpriority="high">
+                        <span class="ampliar" aria-hidden="true">
+                            <span class="icone" data-lucide="expand" aria-hidden="true"></span>
+                        </span>
+                    </button>
 
-                <div class="acoes">
-                    <a class="botao" href="#laboratorios">
-                        Explorar laboratórios
-                        <span class="icone" data-lucide="arrow-down-right" aria-hidden="true"></span>
-                    </a>
-                    <a class="link-texto" href="#competencias">
-                        Conhecer competências
-                        <span class="icone" data-lucide="arrow-right" aria-hidden="true"></span>
-                    </a>
-                </div>
+                    <div class="perfil-conteudo">
+                        <p class="marcador">CÓDIGO E CURIOSIDADE</p>
+                        <h1 id="nome-perfil">Helder Neiva</h1>
+                        <p class="cargo">Desenvolvimento web</p>
 
-                <div class="pilares" aria-label="Áreas de estudo">
-                    <span>
-                        <span class="icone" data-lucide="panels-top-left" aria-hidden="true"></span>
-                        Interfaces
-                    </span>
-                    <span>
-                        <span class="icone" data-lucide="mouse-pointer-2" aria-hidden="true"></span>
-                        Interatividade
-                    </span>
-                    <span>
-                        <span class="icone" data-lucide="database" aria-hidden="true"></span>
-                        Dados e servidor
-                    </span>
-                </div>
-            </section>
+                        <p class="perfil-resumo">Estudante de Sistemas de Informação na UniDoctum. Desenvolvo interfaces e aplicações enquanto aprofundo meus conhecimentos em programação.</p>
+
+                        <a class="link-texto" href="#sobre">
+                            Conheça minha trajetória
+                            <span class="icone" data-lucide="arrow-down-right" aria-hidden="true"></span>
+                        </a>
+
+                        <p class="disponibilidade">
+                            <span aria-hidden="true"></span>
+                            Em busca de estágio em desenvolvimento
+                        </p>
+
+                        <div class="redes-icones" role="group" aria-label="Redes profissionais">
+                            <a class="rede-icone" href="https://www.linkedin.com/in/helder-neiva-3184852a5/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn de Helder Neiva, abre em nova aba" title="LinkedIn — nova aba">
+                                <svg class="icone" viewBox="0 0 24 24" aria-hidden="true">
+                                    <rect x="3" y="3" width="18" height="18" rx="3"></rect>
+                                    <path d="M7 10v7m0-10v.1M11 17v-7m0 3a3 3 0 0 1 6 0v4"></path>
+                                </svg>
+                                <span class="rede-legenda" aria-hidden="true">LinkedIn</span>
+                            </a>
+
+                            <a class="rede-icone" href="https://github.com/helderneiva" target="_blank" rel="noopener noreferrer" aria-label="GitHub de Helder Neiva, abre em nova aba" title="GitHub — nova aba">
+                                <svg class="icone" viewBox="0 0 24 24" aria-hidden="true">
+                                    <path d="M9 19c-4 1-4-2-6-2m12 5v-4a3.5 3.5 0 0 0-1-2.7c3.3-.4 6.8-1.6 6.8-7.3a5.7 5.7 0 0 0-8 0C4-1.4 2.8-1 2.8-1a5.3 5.3 0 0 0-.1 4A5.7 5.7 0 0 0 1.2 7c0 5.7 3.5 6.9 6.8 7.3A3.5 3.5 0 0 0 7 17v5" transform="translate(2 2) scale(.83)"></path>
+                                </svg>
+                                <span class="rede-legenda" aria-hidden="true">GitHub</span>
+                            </a>
+                        </div>
+
+                        <a class="botao botao-perfil" href="#contato">
+                            Vamos conversar
+                            <span class="icone" data-lucide="arrow-up-right" aria-hidden="true"></span>
+                        </a>
+
+                        <a class="link-texto curriculo" data-link="curriculo" hidden>
+                            <span class="icone" data-lucide="file-user" aria-hidden="true"></span>
+                            Abrir currículo
+                        </a>
+                    </div>
+                </aside>
+
+                <section class="apresentacao" id="apresentacao" aria-labelledby="titulo-apresentacao">
+                    <p class="marcador">PORTFÓLIO · DESENVOLVIMENTO WEB</p>
+
+                    <h2 id="titulo-apresentacao">
+                        Atenção à interface.<br>
+                        <span>Dedicação à lógica.</span>
+                    </h2>
+
+                    <p class="introducao">Desenvolvo aplicações com HTML, CSS, JavaScript e PHP, explorando interfaces, integração com APIs e persistência de dados.</p>
+                    <p class="apoio">Meu aprendizado ganha forma em projetos que você pode conhecer nos laboratórios.</p>
+
+                    <div class="acoes">
+                        <a class="botao" href="#laboratorios">
+                            Explorar laboratórios
+                            <span class="icone" data-lucide="arrow-down-right" aria-hidden="true"></span>
+                        </a>
+                        <a class="link-texto" href="#competencias">
+                            Conhecer competências
+                            <span class="icone" data-lucide="arrow-right" aria-hidden="true"></span>
+                        </a>
+                    </div>
+
+                    <div class="pilares" aria-label="Áreas de estudo">
+                        <span>
+                            <span class="icone" data-lucide="panels-top-left" aria-hidden="true"></span>
+                            Interfaces
+                        </span>
+                        <span>
+                            <span class="icone" data-lucide="mouse-pointer-2" aria-hidden="true"></span>
+                            Interatividade
+                        </span>
+                        <span>
+                            <span class="icone" data-lucide="database" aria-hidden="true"></span>
+                            Dados e servidor
+                        </span>
+                    </div>
+
+                    <div class="foco-profissional" aria-labelledby="titulo-foco-profissional">
+                        <div class="foco-profissional-topo">
+                            <span class="icone" data-lucide="target" aria-hidden="true"></span>
+                            <h3 id="titulo-foco-profissional">Como posso contribuir</h3>
+                        </div>
+
+                        <div class="foco-profissional-grade">
+                            <div class="foco-profissional-item">
+                                <span class="icone" data-lucide="briefcase-business" aria-hidden="true"></span>
+                                <div>
+                                    <h4>Estágio em desenvolvimento</h4>
+                                    <p>Colaborar com equipes e participar de projetos reais enquanto aprofundo minha formação.</p>
+                                </div>
+                            </div>
+
+                            <div class="foco-profissional-item">
+                                <span class="icone" data-lucide="panels-top-left" aria-hidden="true"></span>
+                                <div>
+                                    <h4>Serviços web pontuais</h4>
+                                    <p>Criação e melhoria de interfaces responsivas, formulários e interações de sites.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <p class="foco-profissional-estudos"><strong>Em aprofundamento:</strong> JavaScript · PHP · Node.js · SQL</p>
+                    </div>
+                </section>
+            </div>
 
             <section class="secao" id="laboratorios" aria-labelledby="titulo-laboratorios">
                 <div class="titulo-secao">
-                    <span class="numero">01</span>
                     <div>
                         <p class="marcador">EXPLORAR E CONSTRUIR</p>
                         <h2 id="titulo-laboratorios">Meus laboratórios</h2>
@@ -193,19 +225,33 @@
 
                 <div class="grade-laboratorios">
                     <article class="laboratorio lab-js">
-                        <button class="capa-laboratorio" type="button" data-previa="laboratorio" aria-label="Abrir prévia do Laboratório JavaScript" aria-haspopup="dialog" aria-controls="visualizador">
-                            <span class="mini-janela" aria-hidden="true"><span></span><span></span><span></span></span>
-                            <span class="mini-legenda">IDEIA → CÓDIGO → EXPERIÊNCIA</span>
-                            <strong aria-hidden="true">JS<span>.</span></strong>
-                            <span class="mini-rotulo">Laboratório JavaScript</span>
-                            <span class="mini-seta" aria-hidden="true">
-                                <span class="icone" data-lucide="arrow-up-right"></span>
+                        <button class="capa-laboratorio" type="button" data-previa="laboratorio" aria-label="Visualizar o Laboratório JavaScript nesta página" aria-haspopup="dialog" aria-controls="visualizador">
+                            <span class="lab-capa-topo">
+                                <span class="lab-capa-categoria">
+                                    <span class="icone" data-lucide="braces" aria-hidden="true"></span>
+                                    LABORATÓRIO / WEB
+                                </span>
+                                <span class="lab-capa-acao" aria-hidden="true">
+                                    <span class="icone" data-lucide="scan-eye"></span>
+                                    PRÉVIA
+                                </span>
+                            </span>
+
+                            <span class="lab-capa-centro">
+                                <span class="lab-marca" aria-hidden="true">JS</span>
+                                <span class="lab-capa-titulos">
+                                    <span class="lab-capa-nome">JavaScript</span>
+                                    <span class="lab-capa-subtitulo">Interfaces interativas</span>
+                                </span>
                             </span>
                         </button>
 
                         <div class="laboratorio-conteudo">
-                            <span class="status-lab publicado">DISPONÍVEL PARA EXPLORAR</span>
-                            <h3>JavaScript</h3>
+                            <span class="status-lab lab-status lab-status-ativo">
+                                <span class="lab-status-ponto" aria-hidden="true"></span>
+                                DISPONÍVEL PARA EXPLORAR
+                            </span>
+                            <h3>Laboratório JavaScript</h3>
                             <p>Interfaces interativas, consumo de APIs e aplicações com dados.</p>
 
                             <div class="lab-acoes">
@@ -215,28 +261,64 @@
                                 </button>
 
                                 <a class="lab-externo" data-link="laboratorioJavaScript" href="https://helderneiva.github.io/laboratorio-javascript/" target="_blank" rel="noopener noreferrer">
-                                    Abrir em nova aba <span class="sr-only">Laboratório JavaScript</span> ↗
+                                    <span class="icone" data-lucide="panels-top-left" aria-hidden="true"></span>
+                                    Abrir em nova aba
+                                    <span class="sr-only">Laboratório JavaScript</span>
                                 </a>
                             </div>
                         </div>
                     </article>
 
                     <article class="laboratorio laboratorio-menor lab-php">
-                        <div class="lab-sigla" aria-hidden="true">php</div>
+                        <div class="capa-laboratorio capa-estatica" aria-hidden="true">
+                            <span class="lab-capa-topo">
+                                <span class="lab-capa-categoria">
+                                    <span class="icone" data-lucide="server"></span>
+                                    LABORATÓRIO / SERVIDOR
+                                </span>
+                                <span class="lab-capa-indice">EM CONSTRUÇÃO</span>
+                            </span>
+
+                            <span class="lab-capa-centro">
+                                <span class="lab-marca">php</span>
+                                <span class="lab-capa-titulos">
+                                    <span class="lab-capa-nome">PHP</span>
+                                    <span class="lab-capa-subtitulo">Desenvolvimento no servidor</span>
+                                </span>
+                            </span>
+                        </div>
+
                         <div class="laboratorio-conteudo">
-                            <h3>PHP</h3>
+                            <span class="status-lab lab-status lab-status-futuro" data-pendente="laboratorioPHP">EM PREPARAÇÃO</span>
+                            <h3>Laboratório PHP</h3>
                             <p>Formulários, validação e programação no servidor.</p>
-                            <span class="status-lab" data-pendente="laboratorioPHP">Em preparação</span>
                             <a class="link-texto" data-link="laboratorioPHP" hidden>Explorar laboratório ↗</a>
                         </div>
                     </article>
 
                     <article class="laboratorio laboratorio-menor lab-python">
-                        <div class="lab-sigla" aria-hidden="true">Py</div>
+                        <div class="capa-laboratorio capa-estatica" aria-hidden="true">
+                            <span class="lab-capa-topo">
+                                <span class="lab-capa-categoria">
+                                    <span class="icone" data-lucide="terminal"></span>
+                                    LABORATÓRIO / AUTOMAÇÃO
+                                </span>
+                                <span class="lab-capa-indice">PLANEJADO</span>
+                            </span>
+
+                            <span class="lab-capa-centro">
+                                <span class="lab-marca">Py</span>
+                                <span class="lab-capa-titulos">
+                                    <span class="lab-capa-nome">Python</span>
+                                    <span class="lab-capa-subtitulo">Lógica, dados e automação</span>
+                                </span>
+                            </span>
+                        </div>
+
                         <div class="laboratorio-conteudo">
-                            <h3>Python</h3>
+                            <span class="status-lab lab-status lab-status-futuro" data-pendente="laboratorioPython">PLANEJADO</span>
+                            <h3>Laboratório Python</h3>
                             <p>Lógica, automação e experiências com dados.</p>
-                            <span class="status-lab" data-pendente="laboratorioPython">Planejado</span>
                             <a class="link-texto" data-link="laboratorioPython" hidden>Explorar laboratório ↗</a>
                         </div>
                     </article>
@@ -245,7 +327,6 @@
 
             <section class="secao" id="competencias" aria-labelledby="titulo-competencias">
                 <div class="titulo-secao">
-                    <span class="numero">02</span>
                     <div>
                         <p class="marcador">TECNOLOGIA APLICADA</p>
                         <h2 id="titulo-competencias">Conhecimento em prática</h2>
@@ -262,10 +343,13 @@
                                 <h3>HTML5</h3>
                                 <span>03 / 04</span>
                             </div>
+
                             <p>Semântica, formulários e organização de conteúdo.</p>
+
                             <div class="barra" role="meter" aria-label="Prática em HTML5" aria-valuemin="0" aria-valuemax="4" aria-valuenow="3" aria-valuetext="Projetos próprios" aria-describedby="escala">
                                 <span class="nivel-3"></span>
                             </div>
+
                             <small>Projetos próprios</small>
                             <p class="evidencia">Estrutura das páginas dos meus projetos.</p>
                             <span class="ver-projetos">Ver projetos <span aria-hidden="true">↗</span></span>
@@ -279,10 +363,13 @@
                                 <h3>CSS3</h3>
                                 <span>03 / 04</span>
                             </div>
+
                             <p>Grid, Flexbox, temas e layouts responsivos.</p>
+
                             <div class="barra" role="meter" aria-label="Prática em CSS3" aria-valuemin="0" aria-valuemax="4" aria-valuenow="3" aria-valuetext="Projetos próprios" aria-describedby="escala">
                                 <span class="nivel-3"></span>
                             </div>
+
                             <small>Projetos próprios</small>
                             <p class="evidencia">Interfaces adaptadas a diferentes telas.</p>
                             <span class="ver-projetos">Ver projetos <span aria-hidden="true">↗</span></span>
@@ -296,10 +383,13 @@
                                 <h3>JavaScript</h3>
                                 <span>03 / 04</span>
                             </div>
+
                             <p>DOM, eventos, Fetch API e armazenamento local.</p>
+
                             <div class="barra" role="meter" aria-label="Prática em JavaScript" aria-valuemin="0" aria-valuemax="4" aria-valuenow="3" aria-valuetext="Projetos próprios" aria-describedby="escala">
                                 <span class="nivel-3"></span>
                             </div>
+
                             <small>Projetos próprios</small>
                             <p class="evidencia">Interações e consumo de APIs no laboratório.</p>
                             <span class="ver-projetos">Ver projetos <span aria-hidden="true">↗</span></span>
@@ -313,10 +403,13 @@
                                 <h3>PHP</h3>
                                 <span>02 / 04</span>
                             </div>
+
                             <p>Funções, validação e processamento no servidor.</p>
+
                             <div class="barra" role="meter" aria-label="Prática em PHP" aria-valuemin="0" aria-valuemax="4" aria-valuenow="2" aria-valuetext="Aplicação guiada" aria-describedby="escala">
                                 <span class="nivel-2"></span>
                             </div>
+
                             <small>Aplicação guiada</small>
                             <p class="evidencia">Estudos de formulários e respostas JSON.</p>
                             <span class="ver-projetos">Ver projetos <span aria-hidden="true">↗</span></span>
@@ -330,10 +423,13 @@
                                 <h3>Node.js e SQL</h3>
                                 <span>02 / 04</span>
                             </div>
+
                             <p>Rotas, sessões e persistência de dados.</p>
+
                             <div class="barra" role="meter" aria-label="Prática em Node.js e SQL" aria-valuemin="0" aria-valuemax="4" aria-valuenow="2" aria-valuetext="Aplicação guiada" aria-describedby="escala">
                                 <span class="nivel-2"></span>
                             </div>
+
                             <small>Aplicação guiada</small>
                             <p class="evidencia">Integração no Simulador de Conta Bancária.</p>
                             <span class="ver-projetos">Ver projetos <span aria-hidden="true">↗</span></span>
@@ -347,10 +443,13 @@
                                 <h3>Git e GitHub</h3>
                                 <span>02 / 04</span>
                             </div>
+
                             <p>Organização de repositórios e publicação.</p>
+
                             <div class="barra" role="meter" aria-label="Prática em Git e GitHub" aria-valuemin="0" aria-valuemax="4" aria-valuenow="2" aria-valuetext="Aplicação guiada" aria-describedby="escala">
                                 <span class="nivel-2"></span>
                             </div>
+
                             <small>Aplicação guiada</small>
                             <p class="evidencia">Versionamento dos projetos de estudo.</p>
                             <span class="ver-projetos">Ver projetos <span aria-hidden="true">↗</span></span>
@@ -358,12 +457,11 @@
                     </article>
                 </div>
 
-                <button class="pausar" id="pausar-barras" type="button" aria-pressed="false" hidden>Pausar efeitos das barras</button>
+                <button class="pausar" id="pausar-barras" type="button" aria-pressed="false" hidden>Pausar animações</button>
             </section>
 
             <section class="secao sobre" id="sobre" aria-labelledby="titulo-sobre">
                 <div class="titulo-secao">
-                    <span class="numero">03</span>
                     <div>
                         <p class="marcador">MINHA TRAJETÓRIA</p>
                         <h2 id="titulo-sobre">Entre aprender e construir</h2>
@@ -380,7 +478,6 @@
 
             <section class="secao" id="formacao" aria-labelledby="titulo-formacao">
                 <div class="titulo-secao">
-                    <span class="numero">04</span>
                     <div>
                         <p class="marcador">FORMAÇÃO E CONTINUIDADE</p>
                         <h2 id="titulo-formacao">Minha formação</h2>
@@ -396,6 +493,7 @@
                             <span class="etiqueta">Graduação em andamento · 1º semestre</span>
                         </div>
                     </article>
+
                     <article class="curso">
                         <span class="periodo">ESTUDOS COMPLEMENTARES</span>
                         <div>
@@ -403,6 +501,7 @@
                             <p>Curso em Vídeo · Desenvolvimento de interfaces.</p>
                         </div>
                     </article>
+
                     <article class="curso">
                         <span class="periodo">ESTUDOS COMPLEMENTARES</span>
                         <div>
@@ -414,65 +513,84 @@
             </section>
 
             <section class="secao contato" id="contato" aria-labelledby="titulo-contato">
-                <div class="contato-apresentacao">
-                    <p class="marcador">VAMOS CONVERSAR</p>
-                    <h2 id="titulo-contato">Uma conversa pode ser<br><span>o próximo passo.</span></h2>
-                    <p>Tenho interesse em oportunidades de estágio em desenvolvimento. Envie uma mensagem ou fale comigo pelo LinkedIn.</p>
+                <div class="contato-grade">
+                    <div class="contato-apresentacao">
+                        <p class="marcador">VAMOS CONVERSAR</p>
+                        <h2 id="titulo-contato">Vamos <span>conversar?</span></h2>
+                        <p>Busco uma oportunidade de estágio em desenvolvimento. Entre em contato.</p>
 
-                    <div class="acoes">
-                        <a class="link-texto" href="https://www.linkedin.com/in/helder-neiva-3184852a5/" target="_blank" rel="noopener noreferrer">LinkedIn <span aria-hidden="true">↗</span></a>
-                        <a class="link-texto" href="https://github.com/helderneiva" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a>
-                        <a class="link-texto" data-link="email" hidden>Enviar e-mail</a>
-                        <a class="link-texto" data-link="curriculo" hidden>Abrir currículo</a>
+                        <div class="redes-icones" role="group" aria-label="Redes profissionais">
+                            <a class="rede-icone" href="https://www.linkedin.com/in/helder-neiva-3184852a5/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn de Helder Neiva, abre em nova aba" title="LinkedIn — nova aba">
+                                <svg class="icone" viewBox="0 0 24 24" aria-hidden="true">
+                                    <rect x="3" y="3" width="18" height="18" rx="3"></rect>
+                                    <path d="M7 10v7m0-10v.1M11 17v-7m0 3a3 3 0 0 1 6 0v4"></path>
+                                </svg>
+                                <span class="rede-legenda" aria-hidden="true">LinkedIn</span>
+                            </a>
+
+                            <a class="rede-icone" href="https://github.com/helderneiva" target="_blank" rel="noopener noreferrer" aria-label="GitHub de Helder Neiva, abre em nova aba" title="GitHub — nova aba">
+                                <svg class="icone" viewBox="0 0 24 24" aria-hidden="true">
+                                    <path d="M9 19c-4 1-4-2-6-2m12 5v-4a3.5 3.5 0 0 0-1-2.7c3.3-.4 6.8-1.6 6.8-7.3A5.7 5.7 0 0 0 19.3 4a5.3 5.3 0 0 0-.1-4s-1.2-.4-4.2 1.5a14.3 14.3 0 0 0-8 0C4-1.4 2.8-1 2.8-1a5.3 5.3 0 0 0-.1 4A5.7 5.7 0 0 0 1.2 7c0 5.7 3.5 6.9 6.8 7.3A3.5 3.5 0 0 0 7 17v5" transform="translate(2 2) scale(.83)"></path>
+                                </svg>
+                                <span class="rede-legenda" aria-hidden="true">GitHub</span>
+                            </a>
+                        </div>
+
+                        <div class="contato-links-opcionais">
+                            <a class="link-texto" data-link="email" hidden>Enviar e-mail</a>
+                            <a class="link-texto" data-link="curriculo" hidden>Abrir currículo</a>
+                        </div>
                     </div>
+
+                    <form class="formulario" id="form-contato" aria-labelledby="titulo-formulario" aria-describedby="aviso-envio" novalidate>
+                        <h3 id="titulo-formulario">Envie sua mensagem</h3>
+
+                        <div class="campos-duplos">
+                            <div class="campo">
+                                <label for="nome">Nome <span aria-hidden="true">*</span></label>
+                                <input id="nome" name="name" type="text" autocomplete="name" minlength="2" maxlength="100" required aria-describedby="erro-nome">
+                                <span class="erro-campo" id="erro-nome"></span>
+                            </div>
+
+                            <div class="campo">
+                                <label for="email">E-mail <span aria-hidden="true">*</span></label>
+                                <input id="email" name="email" type="email" autocomplete="email" maxlength="254" required aria-describedby="erro-email">
+                                <span class="erro-campo" id="erro-email"></span>
+                            </div>
+                        </div>
+
+                        <div class="campo">
+                            <label for="assunto">Assunto <span class="opcional">(opcional)</span></label>
+                            <input id="assunto" name="subject" type="text" maxlength="150">
+                        </div>
+
+                        <div class="campo">
+                            <label for="mensagem">Mensagem <span aria-hidden="true">*</span></label>
+                            <textarea id="mensagem" name="message" rows="4" minlength="10" maxlength="5000" required aria-describedby="erro-mensagem"></textarea>
+                            <span class="erro-campo" id="erro-mensagem"></span>
+                        </div>
+
+                        <div hidden>
+                            <label>
+                                Não preencha este campo
+                                <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off">
+                            </label>
+                        </div>
+
+                        <p class="aviso-envio" id="aviso-envio">Os campos com * são obrigatórios. Nome, e-mail e mensagem serão encaminhados ao responsável pelo portfólio pelo Web3Forms.</p>
+
+                        <button class="botao" id="enviar-mensagem" type="submit" disabled>
+                            Enviar mensagem
+                            <span class="icone" data-lucide="send" aria-hidden="true"></span>
+                        </button>
+
+                        <p class="resultado-envio" id="resultado-envio" role="status" aria-live="polite" aria-atomic="true"></p>
+
+                        <noscript>
+                            <p>Ative o JavaScript para usar o formulário ou entre em contato pelo LinkedIn.</p>
+                        </noscript>
+                    </form>
                 </div>
-
-                <form class="formulario" id="form-contato" aria-labelledby="titulo-formulario" aria-describedby="aviso-envio" novalidate>
-                    <h3 id="titulo-formulario">Envie sua mensagem</h3>
-
-                    <div class="campos-duplos">
-                        <div class="campo">
-                            <label for="nome">Nome <span aria-hidden="true">*</span></label>
-                            <input id="nome" name="name" type="text" autocomplete="name" minlength="2" maxlength="100" required aria-describedby="erro-nome">
-                            <span class="erro-campo" id="erro-nome"></span>
-                        </div>
-                        <div class="campo">
-                            <label for="email">E-mail <span aria-hidden="true">*</span></label>
-                            <input id="email" name="email" type="email" autocomplete="email" maxlength="254" required aria-describedby="erro-email">
-                            <span class="erro-campo" id="erro-email"></span>
-                        </div>
-                    </div>
-
-                    <div class="campo">
-                        <label for="assunto">Assunto <span class="opcional">(opcional)</span></label>
-                        <input id="assunto" name="subject" type="text" maxlength="150">
-                    </div>
-
-                    <div class="campo">
-                        <label for="mensagem">Mensagem <span aria-hidden="true">*</span></label>
-                        <textarea id="mensagem" name="message" rows="5" minlength="10" maxlength="5000" required aria-describedby="erro-mensagem"></textarea>
-                        <span class="erro-campo" id="erro-mensagem"></span>
-                    </div>
-
-                    <div hidden>
-                        <label>Não preencha este campo
-                            <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off">
-                        </label>
-                    </div>
-
-                    <p class="aviso-envio" id="aviso-envio">Os campos com * são obrigatórios. Nome, e-mail e mensagem serão encaminhados ao responsável pelo portfólio pelo Web3Forms.</p>
-
-                    <button class="botao" id="enviar-mensagem" type="submit" disabled>
-                        Enviar mensagem
-                        <span class="icone" data-lucide="send" aria-hidden="true"></span>
-                    </button>
-
-                    <p class="resultado-envio" id="resultado-envio" role="status" aria-live="polite" aria-atomic="true"></p>
-
-                    <noscript>
-                        <p>Ative o JavaScript para usar o formulário ou entre em contato pelo LinkedIn.</p>
-                    </noscript>
-                </form>
             </section>
         </main>
     </div>
@@ -488,6 +606,7 @@
                 <span class="marcador">VISUALIZAÇÃO</span>
                 <h2 id="titulo-visualizador">Prévia</h2>
             </div>
+
             <button id="fechar-visualizador" class="fechar" type="button" aria-label="Fechar visualização" autofocus>
                 <span class="icone" data-lucide="x" aria-hidden="true"></span>
             </button>

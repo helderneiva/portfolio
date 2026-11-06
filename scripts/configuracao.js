@@ -8,7 +8,7 @@ window.portfolioConfiguracao = Object.freeze({
     email: '',
 
     // Cole aqui a chave pública do Web3Forms vinculada ao seu e-mail.
-    web3formsChave: '',
+    web3formsChave: '22610a15-ff81-416c-9350-c2f58ecd2a6c',
 
     curriculo: '',
 

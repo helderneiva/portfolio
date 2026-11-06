@@ -1,0 +1,589 @@
+
+@charset "UTF-8";
+
+/* Carregar após paleta.css, style.css e contato.css. */
+
+.estrutura {
+    display: block;
+    width: calc(100% - 64px);
+    max-width: 1280px;
+    margin: 40px auto 60px;
+}
+
+.estrutura > main {
+    width: 100%;
+    min-width: 0;
+}
+
+.inicio {
+    display: grid;
+    grid-template-columns: 320px minmax(0, 1fr);
+    align-items: stretch;
+    gap: 48px;
+    margin-bottom: 48px;
+}
+
+.inicio .perfil {
+    position: relative;
+    top: auto;
+    width: 100%;
+    max-width: none;
+    margin: 0;
+}
+
+.inicio .apresentacao {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    padding: 24px 0 0;
+}
+
+/* A âncora deve começar abaixo do cabeçalho, sem somar dois offsets. */
+html {
+    scroll-padding-top: 0;
+}
+
+#conteudo,
+#perfil,
+#apresentacao,
+#laboratorios,
+#competencias,
+#sobre,
+#formacao,
+#contato {
+    scroll-margin-top: calc(var(--altura-menu) + 8px);
+}
+
+/* Evita um vão excessivo após a âncora e elimina números do layout. */
+.secao {
+    padding-top: 30px;
+}
+
+.titulo-secao {
+    gap: 0;
+}
+
+/* Foco profissional: encerra a coluna à altura do cartão à esquerda. */
+.foco-profissional {
+    margin-top: auto;
+    padding: 24px 22px 20px;
+    border: 1px solid var(--borda);
+    border-radius: 16px;
+    background: linear-gradient(145deg, var(--fundo-card), var(--fundo-elevado));
+    box-shadow: 0 8px 26px var(--sombra);
+}
+
+.foco-profissional-topo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.foco-profissional-topo > .icone {
+    width: 19px;
+    height: 19px;
+    color: var(--link);
+}
+
+.foco-profissional-topo h3 {
+    font-size: 1.04em;
+    letter-spacing: -0.3px;
+}
+
+.foco-profissional-grade {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+    margin-top: 18px;
+}
+
+.foco-profissional-item {
+    display: flex;
+    align-items: start;
+    gap: 10px;
+    min-width: 0;
+}
+
+.foco-profissional-item > .icone {
+    width: 18px;
+    height: 18px;
+    margin-top: 2px;
+    flex-shrink: 0;
+    color: var(--link);
+}
+
+.foco-profissional-item h4 {
+    margin: 0;
+    color: var(--titulo);
+    font-size: 0.82em;
+    line-height: 1.4;
+}
+
+.foco-profissional-item p {
+    margin: 7px 0 0;
+    color: var(--texto-secundario);
+    font-size: 0.77em;
+    line-height: 1.6;
+}
+
+.foco-profissional-estudos {
+    margin: 17px 0 0;
+    padding-top: 13px;
+    border-top: 1px solid var(--borda);
+    color: var(--texto-secundario);
+    font-size: 0.78em;
+    line-height: 1.6;
+}
+
+.foco-profissional-estudos strong {
+    color: var(--texto);
+}
+
+/* Cards com identidade específica, altura contida e detalhes técnicos discretos. */
+.estrutura .grade-laboratorios,
+.estrutura .grade-competencias {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 22px;
+}
+
+.grade-laboratorios .laboratorio {
+    display: flex;
+    flex-direction: column;
+    grid-row: auto;
+    min-width: 0;
+    gap: 0;
+    padding: 0;
+    border: 1px solid var(--borda);
+    border-radius: 17px;
+    background: var(--fundo-card);
+    box-shadow: 0 8px 24px var(--sombra);
+    transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+}
+
+.grade-laboratorios .laboratorio:hover {
+    transform: translateY(-3px);
+    border-color: var(--borda-hover);
+    box-shadow: 0 15px 34px var(--sombra);
+}
+
+.lab-js {
+    --lab-acento: #f0db4f;
+    --lab-capa: linear-gradient(120deg, #292714, #514619 62%, #6e5a23);
+    --lab-cor-marca: #f4e27d;
+}
+
+.lab-php {
+    --lab-acento: #c6ccff;
+    --lab-capa: linear-gradient(120deg, #23253e, #414775 62%, #59628b);
+    --lab-cor-marca: #e3e5ff;
+}
+
+.lab-python {
+    --lab-acento: #ffdb6b;
+    --lab-capa: linear-gradient(120deg, #142d43, #205778 62%, #307596);
+    --lab-cor-marca: #ffdf79;
+}
+
+.grade-laboratorios .capa-laboratorio {
+    position: relative;
+    isolation: isolate;
+    display: flex;
+    flex: 0 0 auto;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: space-between;
+    width: 100%;
+    min-height: 160px;
+    padding: 19px 21px;
+    overflow: hidden;
+    background: var(--lab-capa);
+    background-size: 180% 180%;
+    color: #ffffff;
+    text-align: left;
+}
+
+.grade-laboratorios .capa-laboratorio::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    background: repeating-linear-gradient(100deg, transparent 0 34px, #ffffff0e 35px 36px);
+    opacity: 0.38;
+}
+
+.grade-laboratorios .capa-laboratorio::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    width: 210px;
+    height: 210px;
+    top: 18px;
+    right: -90px;
+    border: 1px solid #ffffff24;
+    border-radius: 50%;
+    box-shadow: 0 0 0 28px #ffffff08, 0 0 0 58px #ffffff07;
+    pointer-events: none;
+}
+
+.grade-laboratorios .lab-js button.capa-laboratorio {
+    animation: capa-fluida 17s ease-in-out infinite alternate;
+}
+
+.grade-laboratorios .capa-estatica {
+    cursor: default;
+}
+
+.lab-capa-topo,
+.lab-capa-centro,
+.lab-capa-categoria,
+.lab-capa-acao {
+    display: flex;
+    align-items: center;
+}
+
+.lab-capa-topo {
+    justify-content: space-between;
+    gap: 8px;
+}
+
+.lab-capa-categoria {
+    gap: 7px;
+    font: 500 0.66em/1.5 var(--mono);
+    letter-spacing: 0.45px;
+    color: #ffffffed;
+}
+
+.lab-capa-categoria > .icone {
+    width: 15px;
+    height: 15px;
+    color: var(--lab-acento);
+}
+
+.lab-capa-acao,
+.lab-capa-indice {
+    gap: 6px;
+    font: 500 0.61em/1.3 var(--mono);
+    letter-spacing: 0.4px;
+    color: #ffffffd9;
+    white-space: nowrap;
+}
+
+.lab-capa-acao > .icone {
+    width: 15px;
+    height: 15px;
+}
+
+.lab-capa-centro {
+    gap: 17px;
+    margin-top: 22px;
+}
+
+.lab-marca {
+    display: grid;
+    flex-shrink: 0;
+    place-items: center;
+    width: 65px;
+    height: 65px;
+    border: 1px solid #ffffff4a;
+    border-radius: 16px;
+    background: #080d1980;
+    color: var(--lab-cor-marca);
+    font-family: var(--mono);
+    font-size: 2.05em;
+    font-weight: 500;
+    letter-spacing: -2px;
+    line-height: 1;
+    box-shadow: inset 0 1px 0 #ffffff1a;
+}
+
+.lab-php .lab-marca {
+    font-size: 1.68em;
+    letter-spacing: -1.5px;
+}
+
+.lab-capa-titulos {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 0;
+}
+
+.lab-capa-nome {
+    font-size: 1.22em;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    line-height: 1.2;
+}
+
+.lab-capa-subtitulo {
+    font-size: 0.74em;
+    color: #ffffffd9;
+    line-height: 1.4;
+}
+
+.grade-laboratorios button.capa-laboratorio:hover .lab-marca {
+    border-color: var(--lab-acento);
+}
+
+.grade-laboratorios button.capa-laboratorio:focus-visible {
+    outline: 3px solid var(--foco);
+    outline-offset: -5px;
+}
+
+.grade-laboratorios .laboratorio-conteudo,
+.grade-laboratorios .laboratorio-menor .laboratorio-conteudo {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: 0;
+    padding: 21px;
+}
+
+.grade-laboratorios .laboratorio-conteudo > h3 {
+    margin-top: 11px;
+    font-size: 1.06em;
+}
+
+.grade-laboratorios .laboratorio-conteudo > p {
+    margin-top: 10px;
+    margin-bottom: 0;
+    font-size: 0.86em;
+    line-height: 1.65;
+}
+
+.grade-laboratorios .lab-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    margin-top: 0;
+    color: var(--texto-secundario);
+    font: 500 0.67em/1.4 var(--mono);
+    letter-spacing: 0.25px;
+}
+
+.grade-laboratorios .lab-status-ativo {
+    color: var(--link);
+}
+
+.lab-status-ponto {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--sucesso);
+}
+
+.grade-laboratorios .lab-acoes {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px 15px;
+    margin-top: auto;
+    padding-top: 19px;
+}
+
+.grade-laboratorios .laboratorio-conteudo > a[data-link] {
+    margin-top: auto;
+    padding-top: 19px;
+}
+
+.lab-acoes .lab-externo {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    min-height: 44px;
+    font-size: 0.78em;
+}
+
+.lab-acoes .lab-externo .icone {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    transition: transform 180ms ease;
+}
+
+.lab-acoes .lab-externo:hover .icone {
+    transform: translate(2px, -2px);
+}
+
+.estrutura .competencia-titulo > .icone {
+    color: var(--link);
+}
+
+.estrutura .barra {
+    height: 13px;
+    background: var(--trilho-barra);
+}
+
+.estrutura .barra > span {
+    background: linear-gradient(105deg, #4338ca 0%, #2563eb 25%, #38bdf8 50%, #0e7490 75%, #4338ca 100%);
+    background-size: 250% 100%;
+    animation: barra-fluida 8s linear infinite;
+    transition: transform 1400ms cubic-bezier(0.2, 0.7, 0.2, 1);
+    transition-delay: var(--atraso, 0ms);
+}
+
+.estrutura .barra > span::after {
+    background: linear-gradient(110deg, transparent 25%, var(--reflexo-barra) 50%, transparent 75%);
+    animation: reflexo-suave 7s ease-in-out infinite;
+}
+
+.animacoes-pausadas .capa-laboratorio,
+.animacoes-pausadas .barra > span,
+.animacoes-pausadas .barra > span::after {
+    animation-play-state: paused;
+}
+
+.estrutura .sobre-conteudo,
+.estrutura .texto-secao {
+    max-width: 900px;
+}
+
+.rodape {
+    max-width: 1280px;
+}
+
+@keyframes capa-fluida {
+    from {
+        background-position: 0% 50%;
+    }
+
+    to {
+        background-position: 100% 50%;
+    }
+}
+
+@keyframes barra-fluida {
+    from {
+        background-position: 0% 50%;
+    }
+
+    to {
+        background-position: 100% 50%;
+    }
+}
+
+@keyframes reflexo-suave {
+    0%, 20% {
+        transform: translateX(-130%);
+    }
+
+    80%, 100% {
+        transform: translateX(130%);
+    }
+}
+
+@media (max-width: 1050px) {
+    .inicio {
+        grid-template-columns: 290px minmax(0, 1fr);
+        gap: 32px;
+    }
+
+    .foco-profissional-grade {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .estrutura .grade-competencias {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .estrutura .grade-laboratorios {
+        gap: 16px;
+    }
+
+    .grade-laboratorios .laboratorio-conteudo {
+        padding: 18px;
+    }
+}
+
+@media (max-width: 800px) {
+    .estrutura {
+        width: calc(100% - 40px);
+        margin-top: 28px;
+    }
+
+    .inicio {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 24px;
+        margin-bottom: 30px;
+    }
+
+    .inicio .perfil {
+        max-width: 460px;
+        margin: 0 auto;
+    }
+
+    .inicio .apresentacao {
+        padding: 20px 0;
+    }
+
+    .foco-profissional {
+        margin-top: 30px;
+    }
+
+    .foco-profissional-grade {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .estrutura .grade-laboratorios {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 600px) {
+    .estrutura .grade-laboratorios,
+    .estrutura .grade-competencias {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .grade-laboratorios .capa-laboratorio {
+        min-height: 155px;
+    }
+
+    .foco-profissional-grade {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .foco-profissional {
+        padding: 20px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .estrutura .capa-laboratorio,
+    .estrutura .barra > span,
+    .estrutura .barra > span::after {
+        animation: none;
+        transition: none;
+    }
+
+    .estrutura .barra > span {
+        transform: none;
+    }
+
+    .estrutura .barra > span::after {
+        display: none;
+    }
+
+    .grade-laboratorios .laboratorio {
+        transition: none;
+    }
+
+    .grade-laboratorios .laboratorio:hover {
+        transform: none;
+    }
+
+    .lab-acoes .lab-externo:hover .icone {
+        transform: none;
+    }
+}
+
+@media print {
+    .inicio {
+        display: block;
+    }
+
+    .estrutura .capa-laboratorio,
+    .estrutura .barra > span {
+        animation: none;
+    }
+}

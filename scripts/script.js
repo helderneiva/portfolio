@@ -15,21 +15,16 @@
     }
 
     try {
-        temaManual = ['light', 'dark'].includes(
-            localStorage.getItem('portfolio-tema')
-        );
+        temaManual = ['light', 'dark'].includes(localStorage.getItem('portfolio-tema'));
     } catch {
-        // O tema funciona sem armazenamento disponível.
+        // O tema também funciona sem armazenamento disponível.
     }
 
     function atualizarTema() {
         const escuro = raiz.dataset.theme === 'dark';
 
         botaoTema.setAttribute('aria-pressed', String(escuro));
-        botaoTema.setAttribute(
-            'aria-label',
-            escuro ? 'Ativar tema claro' : 'Ativar tema escuro'
-        );
+        botaoTema.setAttribute('aria-label', escuro ? 'Ativar tema claro' : 'Ativar tema escuro');
 
         const desenho = window.lucide?.icons[escuro ? 'Sun' : 'Moon'];
 
@@ -48,30 +43,28 @@
 
     botaoTema.addEventListener('click', () => {
         temaManual = true;
-
-        raiz.dataset.theme = raiz.dataset.theme === 'dark'
-            ? 'light'
-            : 'dark';
+        raiz.dataset.theme = raiz.dataset.theme === 'dark' ? 'light' : 'dark';
 
         atualizarTema();
 
         try {
             localStorage.setItem('portfolio-tema', raiz.dataset.theme);
         } catch {
-            // A preferência permanece válida durante esta visita.
+            // Preferência aplicada apenas nesta página.
         }
     });
 
-    sistema.addEventListener('change', evento => {
+    sistema.addEventListener('change', (evento) => {
         if (temaManual) {
             return;
         }
 
         raiz.dataset.theme = evento.matches ? 'dark' : 'light';
+
         atualizarTema();
     });
 
-    window.addEventListener('storage', evento => {
+    window.addEventListener('storage', (evento) => {
         if (evento.key !== 'portfolio-tema' && evento.key !== null) {
             return;
         }
@@ -82,10 +75,7 @@
         })[evento.newValue] || evento.newValue;
 
         temaManual = ['light', 'dark'].includes(valor);
-
-        raiz.dataset.theme = temaManual
-            ? valor
-            : (sistema.matches ? 'dark' : 'light');
+        raiz.dataset.theme = temaManual ? valor : (sistema.matches ? 'dark' : 'light');
 
         atualizarTema();
     });
@@ -121,7 +111,7 @@
         return null;
     }
 
-    document.querySelectorAll('[data-link]').forEach(link => {
+    document.querySelectorAll('[data-link]').forEach((link) => {
         const chave = link.dataset.link;
         let url;
 
@@ -132,10 +122,7 @@
                 ? `mailto:${email}`
                 : null;
         } else {
-            url = enderecoSeguro(
-                configuracao[chave],
-                chave === 'curriculo'
-            );
+            url = enderecoSeguro(configuracao[chave], chave === 'curriculo');
 
             if (url && chave === 'linkedin') {
                 const host = new URL(url).hostname;
@@ -156,13 +143,10 @@
         if (chave !== 'email') {
             link.target = '_blank';
             link.rel = 'noopener noreferrer';
-            link.setAttribute(
-                'aria-label',
-                `${link.textContent.trim()}: abre em nova aba`
-            );
+            link.setAttribute('aria-label', `${link.textContent.trim()}: abre em nova aba`);
         }
 
-        document.querySelectorAll(`[data-pendente="${chave}"]`).forEach(elemento => {
+        document.querySelectorAll(`[data-pendente="${chave}"]`).forEach((elemento) => {
             elemento.hidden = true;
         });
     });
@@ -176,8 +160,10 @@
             : basePublica;
 
         const canonical = document.createElement('link');
+
         canonical.rel = 'canonical';
         canonical.href = base;
+
         document.head.append(canonical);
 
         const metadados = [
@@ -187,8 +173,10 @@
 
         for (const [propriedade, conteudo] of metadados) {
             const meta = document.createElement('meta');
+
             meta.setAttribute('property', propriedade);
             meta.content = conteudo;
+
             document.head.append(meta);
         }
     }
@@ -197,6 +185,7 @@
 
     function medirCabecalho() {
         const altura = Math.ceil(cabecalho.getBoundingClientRect().height);
+
         raiz.style.setProperty('--altura-menu', `${altura}px`);
     }
 
@@ -213,7 +202,7 @@
     const indicador = document.getElementById('indicador-menu');
 
     function moverIndicador() {
-        const ativo = links.find(link => link.hasAttribute('aria-current'));
+        const ativo = links.find((link) => link.hasAttribute('aria-current'));
 
         if (!ativo || !baseMenu || !indicador) {
             return;
@@ -225,11 +214,12 @@
 
         indicador.style.width = `${item.width}px`;
         indicador.style.transform = `translateX(${item.left - base.left - recuo}px)`;
+
         baseMenu.classList.add('menu-pronto');
     }
 
     const secoes = links
-        .map(link => document.getElementById(link.hash.slice(1)))
+        .map((link) => document.getElementById(link.hash.slice(1)))
         .filter(Boolean);
 
     let quadro = null;
@@ -241,20 +231,17 @@
             const limite = cabecalho.getBoundingClientRect().height + 100;
             let atual = secoes[0];
 
-            secoes.forEach(secao => {
+            secoes.forEach((secao) => {
                 if (secao.getBoundingClientRect().top <= limite) {
                     atual = secao;
                 }
             });
 
-            if (
-                window.innerHeight + window.scrollY >=
-                document.documentElement.scrollHeight - 4
-            ) {
+            if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4) {
                 atual = secoes[secoes.length - 1];
             }
 
-            links.forEach(link => {
+            links.forEach((link) => {
                 if (link.hash === `#${atual.id}`) {
                     link.setAttribute('aria-current', 'location');
                 } else {
@@ -277,11 +264,16 @@
 
     if ('ResizeObserver' in window && baseMenu) {
         const observadorMenu = new ResizeObserver(moverIndicador);
+
         observadorMenu.observe(baseMenu);
-        links.forEach(link => observadorMenu.observe(link));
+
+        links.forEach((link) => {
+            observadorMenu.observe(link);
+        });
     }
 
     document.fonts?.ready.then(moverIndicador);
+
     atualizarNavegacao();
 
     const competencias = document.getElementById('competencias');
@@ -291,35 +283,36 @@
         let efeitosPausados = false;
 
         function atualizarMovimento() {
-            competencias.classList.toggle(
-                'barras-pausadas',
-                efeitosPausados || reduzirMovimento.matches
-            );
+            const pausado = efeitosPausados || reduzirMovimento.matches;
+
+            competencias.classList.toggle('barras-pausadas', pausado);
+            raiz.classList.toggle('animacoes-pausadas', pausado);
 
             pausar.hidden = reduzirMovimento.matches;
             pausar.setAttribute('aria-pressed', String(efeitosPausados));
-            pausar.textContent = efeitosPausados
-                ? 'Retomar efeitos das barras'
-                : 'Pausar efeitos das barras';
+            pausar.textContent = efeitosPausados ? 'Retomar animações' : 'Pausar animações';
         }
 
         pausar.addEventListener('click', () => {
             efeitosPausados = !efeitosPausados;
+
             atualizarMovimento();
         });
 
         reduzirMovimento.addEventListener('change', atualizarMovimento);
+
         atualizarMovimento();
 
         if ('IntersectionObserver' in window && !reduzirMovimento.matches) {
             competencias.classList.add('aguardando');
 
-            const observador = new IntersectionObserver(entradas => {
-                if (!entradas.some(entrada => entrada.isIntersecting)) {
+            const observador = new IntersectionObserver((entradas) => {
+                if (!entradas.some((entrada) => entrada.isIntersecting)) {
                     return;
                 }
 
                 competencias.classList.remove('aguardando');
+
                 observador.disconnect();
             }, {
                 threshold: 0.1
@@ -353,6 +346,7 @@
             }
 
             limparTemporizador();
+
             estado.hidden = true;
         }
 
@@ -370,6 +364,7 @@
             }
 
             limparTemporizador();
+
             estado.hidden = false;
             estado.textContent = 'Não foi possível carregar a visualização. Utilize a opção de abrir em nova aba.';
         }
@@ -377,18 +372,14 @@
         iframe.addEventListener('error', falhaCarregamento);
         imagem.addEventListener('error', falhaCarregamento);
 
-        document.querySelectorAll('[data-previa]').forEach(botao => {
+        document.querySelectorAll('[data-previa]').forEach((botao) => {
             botao.addEventListener('click', () => {
                 const foto = botao.dataset.previa === 'foto';
                 const laboratorio = botao.dataset.previa === 'laboratorio';
 
                 const url = foto
                     ? document.getElementById('foto-perfil').src
-                    : enderecoSeguro(
-                        laboratorio
-                            ? configuracao.laboratorioJavaScript
-                            : botao.dataset.url
-                    );
+                    : enderecoSeguro(laboratorio ? configuracao.laboratorioJavaScript : botao.dataset.url);
 
                 if (!url) {
                     return;
@@ -410,9 +401,7 @@
                     : (laboratorio ? 'Laboratório JavaScript' : botao.dataset.titulo);
 
                 externo.href = url;
-                externo.textContent = foto
-                    ? 'Abrir imagem em nova aba ↗'
-                    : 'Abrir em nova aba ↗';
+                externo.textContent = foto ? 'Abrir imagem em nova aba ↗' : 'Abrir em nova aba ↗';
 
                 estado.textContent = 'Carregando…';
                 estado.hidden = false;
@@ -421,6 +410,7 @@
                 imagem.hidden = !foto;
 
                 janela.showModal();
+
                 raiz.classList.add('janela-aberta');
 
                 if (foto) {
@@ -431,6 +421,7 @@
                 }
 
                 fechar.focus({ preventScroll: true });
+
                 limparTemporizador();
 
                 temporizador = setTimeout(() => {
@@ -447,6 +438,7 @@
 
         janela.addEventListener('close', () => {
             limparTemporizador();
+
             raiz.classList.remove('janela-aberta');
 
             iframe.removeAttribute('src');
@@ -465,21 +457,21 @@
         });
 
         function foraDaJanela(evento) {
-            const limites = janela.getBoundingClientRect();
+            const r = janela.getBoundingClientRect();
 
             return (
-                evento.clientX < limites.left ||
-                evento.clientX > limites.right ||
-                evento.clientY < limites.top ||
-                evento.clientY > limites.bottom
+                evento.clientX < r.left ||
+                evento.clientX > r.right ||
+                evento.clientY < r.top ||
+                evento.clientY > r.bottom
             );
         }
 
-        janela.addEventListener('pointerdown', evento => {
+        janela.addEventListener('pointerdown', (evento) => {
             cliqueNoFundo = evento.target === janela && foraDaJanela(evento);
         });
 
-        janela.addEventListener('click', evento => {
+        janela.addEventListener('click', (evento) => {
             if (cliqueNoFundo && evento.target === janela && foraDaJanela(evento)) {
                 janela.close();
             }
