@@ -1,0 +1,206 @@
+@charset "UTF-8";
+
+:root {
+    color-scheme: light;
+
+    --fonte: "Manrope", sans-serif;
+    --mono: "IBM Plex Mono", monospace;
+    --altura-menu: 88px;
+
+    --tech-js: #F1E05A;
+    --tech-ts: #3178C6;
+    --tech-node: #5FA04E;
+    --tech-php: #4F5D95;
+    --tech-java: #B07219;
+    --tech-python: #3572A5;
+    --tech-sql: #E38C00;
+    --tech-html: #E34C26;
+    --tech-css: #563D7C;
+
+    --fundo-principal: #F8FAFC;
+    --fundo-card: #FFFFFF;
+    --fundo-elevado: #F1F5F9;
+    --fundo-campo: #FFFFFF;
+    --fundo-hover: #EEF2FF;
+    --fundo-menu: #FFFFFF;
+    --fundo-selecionado: #E0E7FF;
+
+    --borda: #E2E8F0;
+    --borda-forte: #64748B;
+    --borda-hover: #818CF8;
+    --borda-ativa: #4338CA;
+
+    --texto: #0F172A;
+    --texto-inverso: #FFFFFF;
+    --texto-secundario: #526277;
+    --texto-placeholder: #526277;
+
+    --destaque: #312E81;
+    --destaque-inverso: #FFFFFF;
+    --destaque-hover: #3730A3;
+    --destaque-titulo: #1E1B4B;
+    --link: #4338CA;
+    --link-hover: #312E81;
+    --foco: #4338CA;
+
+    --menu-icone: #526277;
+    --menu-icone-hover: #312E81;
+    --menu-icone-ativo: #FFFFFF;
+    --menu-fundo-ativo: #312E81;
+    --menu-indicador: #6366F1;
+
+    --botao-secundario-fundo: #EEF2FF;
+    --botao-secundario-texto: #312E81;
+    --botao-secundario-borda: #A5B4FC;
+
+    --trilho-barra: #E2E8F0;
+    --gradiente-inicio: #4338CA;
+    --gradiente-meio: #3178C6;
+    --gradiente-fim: #0E7490;
+    --reflexo-barra: #FFFFFF55;
+
+    --perfil-gradiente-inicio: #1E1B4B;
+    --perfil-gradiente-meio: #312E81;
+    --perfil-gradiente-fim: #4338CA;
+
+    --sucesso: #166534;
+    --sucesso-fundo: #F0FDF4;
+    --erro: #B91C1C;
+    --erro-fundo: #FEF2F2;
+    --aviso: #854D0E;
+    --aviso-fundo: #FEFCE8;
+
+    --sombra: #0F172A12;
+    --brilho-destaque: #4338CA1A;
+    --fundo-sobreposicao: #0F172ABF;
+
+    --titulo: var(--destaque-titulo);
+    --complementar: var(--link);
+    --trilho: var(--trilho-barra);
+    --brilho: var(--brilho-destaque);
+}
+
+/* Mantém o tema automático mesmo quando o JavaScript está desativado. */
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme]) {
+        color-scheme: dark;
+
+        --fundo-principal: #0D1117;
+        --fundo-card: #161B22;
+        --fundo-elevado: #21262D;
+        --fundo-campo: #0D1117;
+        --fundo-hover: #1C2D41;
+        --fundo-menu: #161B22;
+        --fundo-selecionado: #19324F;
+
+        --borda: #30363D;
+        --borda-forte: #6E7681;
+        --borda-hover: #58A6FF;
+        --borda-ativa: #58A6FF;
+
+        --texto: #C9D1D9;
+        --texto-inverso: #0D1117;
+        --texto-secundario: #9AA5B1;
+        --texto-placeholder: #9AA5B1;
+
+        --destaque: #58A6FF;
+        --destaque-inverso: #0D1117;
+        --destaque-hover: #79C0FF;
+        --destaque-titulo: #F0F6FC;
+        --link: #58A6FF;
+        --link-hover: #A5D6FF;
+        --foco: #58A6FF;
+
+        --menu-icone: #9AA5B1;
+        --menu-icone-hover: #C9D1D9;
+        --menu-icone-ativo: #0D1117;
+        --menu-fundo-ativo: #58A6FF;
+        --menu-indicador: #79C0FF;
+
+        --botao-secundario-fundo: #21262D;
+        --botao-secundario-texto: #C9D1D9;
+        --botao-secundario-borda: #6E7681;
+
+        --trilho-barra: #30363D;
+        --gradiente-inicio: #257DF2;
+        --gradiente-meio: #58A6FF;
+        --gradiente-fim: #79C0FF;
+        --reflexo-barra: #FFFFFF40;
+
+        --perfil-gradiente-inicio: #10234A;
+        --perfil-gradiente-meio: #173D7A;
+        --perfil-gradiente-fim: #1F6FEB;
+
+        --sucesso: #7EE787;
+        --sucesso-fundo: #11271B;
+        --erro: #FF7B72;
+        --erro-fundo: #321C20;
+        --aviso: #E3B341;
+        --aviso-fundo: #2D2517;
+
+        --sombra: #00000040;
+        --brilho-destaque: #58A6FF1F;
+        --fundo-sobreposicao: #010409CC;
+    }
+}
+
+html[data-theme="dark"] {
+    color-scheme: dark;
+
+    --fundo-principal: #0D1117;
+    --fundo-card: #161B22;
+    --fundo-elevado: #21262D;
+    --fundo-campo: #0D1117;
+    --fundo-hover: #1C2D41;
+    --fundo-menu: #161B22;
+    --fundo-selecionado: #19324F;
+
+    --borda: #30363D;
+    --borda-forte: #6E7681;
+    --borda-hover: #58A6FF;
+    --borda-ativa: #58A6FF;
+
+    --texto: #C9D1D9;
+    --texto-inverso: #0D1117;
+    --texto-secundario: #9AA5B1;
+    --texto-placeholder: #9AA5B1;
+
+    --destaque: #58A6FF;
+    --destaque-inverso: #0D1117;
+    --destaque-hover: #79C0FF;
+    --destaque-titulo: #F0F6FC;
+    --link: #58A6FF;
+    --link-hover: #A5D6FF;
+    --foco: #58A6FF;
+
+    --menu-icone: #9AA5B1;
+    --menu-icone-hover: #C9D1D9;
+    --menu-icone-ativo: #0D1117;
+    --menu-fundo-ativo: #58A6FF;
+    --menu-indicador: #79C0FF;
+
+    --botao-secundario-fundo: #21262D;
+    --botao-secundario-texto: #C9D1D9;
+    --botao-secundario-borda: #6E7681;
+
+    --trilho-barra: #30363D;
+    --gradiente-inicio: #257DF2;
+    --gradiente-meio: #58A6FF;
+    --gradiente-fim: #79C0FF;
+    --reflexo-barra: #FFFFFF40;
+
+    --perfil-gradiente-inicio: #10234A;
+    --perfil-gradiente-meio: #173D7A;
+    --perfil-gradiente-fim: #1F6FEB;
+
+    --sucesso: #7EE787;
+    --sucesso-fundo: #11271B;
+    --erro: #FF7B72;
+    --erro-fundo: #321C20;
+    --aviso: #E3B341;
+    --aviso-fundo: #2D2517;
+
+    --sombra: #00000040;
+    --brilho-destaque: #58A6FF1F;
+    --fundo-sobreposicao: #010409CC;
+}

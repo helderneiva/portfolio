@@ -1,298 +1,508 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfólio Helder Neiva</title>
+    <meta name="description" content="Portfólio de Helder Neiva, estudante de Sistemas de Informação. Desenvolvimento web, laboratórios de programação e competências aplicadas.">
+    <meta name="color-scheme" content="light dark">
+
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="pt_BR">
+    <meta property="og:title" content="Helder Neiva | Desenvolvimento web">
+    <meta property="og:description" content="Conheça meu percurso, minhas competências e meus laboratórios de programação.">
+
+    <title>Helder Neiva | Desenvolvimento web</title>
+
+    <script src="scripts/tema.js"></script>
+
+    <link rel="stylesheet" href="estilos/paleta.css">
     <link rel="stylesheet" href="estilos/style.css">
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-    <script src="https://kit.fontawesome.com/2fb14b2086.js" crossorigin="anonymous"></script>
+
+    <script src="scripts/lucide.js" defer></script>
+    <script src="scripts/configuracao.js" defer></script>
+    <script src="scripts/script.js" defer></script>
+    <script src="scripts/contato.js" defer></script>
 </head>
 <body>
-    <header>
-        <nav id="menu">
-            <ul>
-               <li><a href="#video" class="link"><i class="fa-solid fa-house"></i></a></li>
-                <li><a href="#skills" class="link"><i class="fa-solid fa-brain"></i></a></li>
-                <li><a href="#formacao" class="link"><i class="fa-solid fa-graduation-cap"></i></a></li>
-                <li><a href="#projetos" class="link"><i class="fa-solid fa-code-branch"></i></a></li>
-                <li><a href="#" class="link" id="botao-tema"><i class="fa-solid fa-moon"></i></a></li>
-            </ul>
-        </nav>
+    <a class="pular" href="#conteudo">Pular para o conteúdo</a>
+
+    <header class="cabecalho">
+        <div class="cabecalho-interno">
+            <a class="assinatura" href="#perfil">
+                Helder Neiva
+                <span>DESENVOLVIMENTO WEB</span>
+            </a>
+
+            <nav class="navegacao" aria-label="Navegação principal">
+                <div class="menu-base">
+                    <span class="indicador-menu" id="indicador-menu" aria-hidden="true"></span>
+
+                    <ul class="menu">
+                        <li>
+                            <a class="item-menu" href="#apresentacao" aria-label="Apresentação">
+                                <span class="icone" data-lucide="house" aria-hidden="true"></span>
+                                <span class="menu-texto">Apresentação</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="item-menu" href="#laboratorios" aria-label="Laboratórios">
+                                <span class="icone" data-lucide="flask-conical" aria-hidden="true"></span>
+                                <span class="menu-texto">Laboratórios</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="item-menu" href="#competencias" aria-label="Competências">
+                                <span class="icone" data-lucide="brain" aria-hidden="true"></span>
+                                <span class="menu-texto">Competências</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="item-menu" href="#sobre" aria-label="Sobre">
+                                <span class="icone" data-lucide="user-round" aria-hidden="true"></span>
+                                <span class="menu-texto">Sobre</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="item-menu" href="#formacao" aria-label="Formação">
+                                <span class="icone" data-lucide="graduation-cap" aria-hidden="true"></span>
+                                <span class="menu-texto">Formação</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="item-menu" href="#contato" aria-label="Contato">
+                                <span class="icone" data-lucide="send" aria-hidden="true"></span>
+                                <span class="menu-texto">Contato</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <button class="controle-tema" id="botao-tema" type="button" aria-label="Ativar tema escuro" aria-pressed="false">
+                <span id="icone-tema" aria-hidden="true">
+                    <span class="icone" data-lucide="moon"></span>
+                </span>
+            </button>
+        </div>
     </header>
 
-    <main>
-        <section id="ficha">
-            <img src="imagens/foto-perfil.jpeg" alt="eu" class="foto">
-            <h1>Helder Neiva</h1>
-            <p>Graduando em <strong>Sistemas de Informação</strong> (UniDoctum), combino código e design para transformar ideias em interfaces digitais atraentes, eficientes e totalmente responsivas. <br>Atuo como <strong>desenvolvedor e web designer freelancer</strong>.<br>Mesmo no início da jornada acadêmica, encaro a tecnologia com mentalidade de negócios, aplicando conceitos sólidos de arquitetura web para criar soluções limpas, rápidas e totalmente focadas na experiência do usuário.</p>
-            <div id="social">
-                <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
-                <a href="https://github.com/helderneiva" target="_blank"><i class="fa-brands fa-github"></i></a>
-                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+    <div class="estrutura">
+        <aside class="perfil" id="perfil" aria-labelledby="nome-perfil">
+            <div class="perfil-capa" aria-hidden="true"></div>
+
+            <button class="retrato" type="button" data-previa="foto" aria-label="Ampliar foto de Helder Neiva" aria-haspopup="dialog" aria-controls="visualizador">
+                <img id="foto-perfil" src="imagens/foto-perfil.jpeg" alt="Helder Neiva" width="720" height="1280" fetchpriority="high">
+                <span class="ampliar" aria-hidden="true">
+                    <span class="icone" data-lucide="expand"></span>
+                </span>
+            </button>
+
+            <div class="perfil-conteudo">
+                <p class="marcador">CÓDIGO E CURIOSIDADE</p>
+                <h1 id="nome-perfil">Helder Neiva</h1>
+                <p class="cargo">Desenvolvimento web</p>
+
+                <p class="perfil-resumo">Estudante de Sistemas de Informação na UniDoctum. Desenvolvo interfaces e aplicações enquanto aprofundo meus conhecimentos em programação.</p>
+
+                <a class="link-texto" href="#sobre">
+                    Conheça minha trajetória
+                    <span class="icone" data-lucide="arrow-down-right" aria-hidden="true"></span>
+                </a>
+
+                <p class="disponibilidade">
+                    <span aria-hidden="true"></span>
+                    Em busca de estágio em desenvolvimento
+                </p>
+
+                <div class="redes" aria-label="Redes profissionais">
+                    <a class="rede" href="https://github.com/helderneiva" target="_blank" rel="noopener noreferrer" aria-label="Meu GitHub, abre em nova aba">
+                        <svg class="icone" viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M9 19c-4 1-4-2-6-2m12 5v-4a3.5 3.5 0 0 0-1-2.7c3.3-.4 6.8-1.6 6.8-7.3a5.7 5.7 0 0 0-1.5-4 5.3 5.3 0 0 0-.1-4s-1.2-.4-4.2 1.5a14.3 14.3 0 0 0-8 0C4-1.4 2.8-1 2.8-1a5.3 5.3 0 0 0-.1 4A5.7 5.7 0 0 0 1.2 7c0 5.7 3.5 6.9 6.8 7.3A3.5 3.5 0 0 0 7 17v5" transform="translate(2 2) scale(.83)"></path>
+                        </svg>
+                        <span>GitHub</span>
+                        <span class="icone" data-lucide="arrow-up-right" aria-hidden="true"></span>
+                    </a>
+
+                    <a class="rede" data-link="linkedin" hidden>
+                        <svg class="icone" viewBox="0 0 24 24" aria-hidden="true">
+                            <rect x="3" y="3" width="18" height="18" rx="3"></rect>
+                            <path d="M7 10v7m0-10v.1M11 17v-7m0 3a3 3 0 0 1 6 0v4"></path>
+                        </svg>
+                        <span>LinkedIn</span>
+                        <span class="icone" data-lucide="arrow-up-right" aria-hidden="true"></span>
+                    </a>
+                </div>
+
+                <a class="botao botao-perfil" href="#contato">
+                    Vamos conversar
+                    <span class="icone" data-lucide="arrow-up-right" aria-hidden="true"></span>
+                </a>
+
+                <a class="link-texto curriculo" data-link="curriculo" hidden>
+                    <span class="icone" data-lucide="file-user" aria-hidden="true"></span>
+                    Abrir currículo
+                </a>
             </div>
-        </section>
+        </aside>
 
-        <section id="detalhes">
+        <main id="conteudo" tabindex="-1">
+            <section class="apresentacao" id="apresentacao" aria-labelledby="titulo-apresentacao">
+                <p class="marcador">PORTFÓLIO · DESENVOLVIMENTO WEB</p>
+                <h2 id="titulo-apresentacao">Atenção à interface.<br><span>Dedicação à lógica.</span></h2>
 
-            <article id="video">
-                <h2><i class="fa-solid fa-handshake"></i>Deixe-me apresentar</h2>
-                <div class="video-container">
+                <p class="introducao">Desenvolvo aplicações com HTML, CSS, JavaScript e PHP, explorando interfaces, integração com APIs e persistência de dados.</p>
+                <p class="apoio">Meu aprendizado ganha forma em projetos que você pode conhecer nos laboratórios.</p>
 
+                <div class="acoes">
+                    <a class="botao" href="#laboratorios">
+                        Explorar laboratórios
+                        <span class="icone" data-lucide="arrow-down-right" aria-hidden="true"></span>
+                    </a>
+                    <a class="link-texto" href="#competencias">
+                        Conhecer competências
+                        <span class="icone" data-lucide="arrow-right" aria-hidden="true"></span>
+                    </a>
                 </div>
-            </article>
 
-            <article id="skills">
-                <h2><i class="fa-solid fa-brain"></i>Minhas Skills</h2>
+                <div class="pilares" aria-label="Áreas de estudo">
+                    <span>
+                        <span class="icone" data-lucide="panels-top-left" aria-hidden="true"></span>
+                        Interfaces
+                    </span>
+                    <span>
+                        <span class="icone" data-lucide="mouse-pointer-2" aria-hidden="true"></span>
+                        Interatividade
+                    </span>
+                    <span>
+                        <span class="icone" data-lucide="database" aria-hidden="true"></span>
+                        Dados e servidor
+                    </span>
+                </div>
+            </section>
 
-                <div id="skill-container">
-                    <div class="item">
-                        <div class="info">
-                            <span class="nome">
-                                <i class="fa-solid fa-code"></i> HTML5
-                            </span>
-
-                            <span class="porcent">
-                                90%
-                            </span>
-                        </div>
-
-                        <div class="barra">
-                            <div class="progresso" style="width: 90%;">
-
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="item">
-                        <div class="info">
-                            <span class="nome">
-                                <i class="fa-solid fa-code"></i> CSS3
-                            </span>
-
-                            <span class="porcent">
-                                95%
-                            </span>
-                        </div>
-
-                        <div class="barra">
-                            <div class="progresso" style="width: 95%;">
-
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="item">
-                        <div class="info">
-                            <span class="nome">
-                                <i class="fa-solid fa-code"></i> PHP
-                            </span>
-
-                            <span class="porcent">
-                                10%
-                            </span>
-                        </div>
-
-                        <div class="barra">
-                            <div class="progresso" style="width: 10%;">
-
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="item">
-                        <div class="info">
-                            <span class="nome">
-                                <i class="fa-solid fa-code"></i> JavaScript
-                            </span>
-
-                            <span class="porcent">
-                                10%
-                            </span>
-                        </div>
-
-                        <div class="barra">
-                            <div class="progresso" style="width: 10%;">
-
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="item">
-                        <div class="info">
-                            <span class="nome">
-                                <i class="fa-solid fa-person-rays"></i> Comunicação
-                            </span>
-
-                            <span class="porcent">
-                                100%
-                            </span>
-                        </div>
-
-                        <div class="barra">
-                            <div class="progresso" style="width: 100%;">
-
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="item">
-                        <div class="info">
-                            <span class="nome">
-                                <i class="fa-solid fa-person-rays"></i> Trabalho em Equipe
-                            </span>
-
-                            <span class="porcent">
-                                100%
-                            </span>
-                        </div>
-
-                        <div class="barra">
-                            <div class="progresso" style="width: 100%;">
-
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="item">
-                        <div class="info">
-                            <span class="nome">
-                                <i class="fa-solid fa-person-rays"></i> Liderença
-                            </span>
-
-                            <span class="porcent">
-                                65%
-                            </span>
-                        </div>
-
-                        <div class="barra">
-                            <div class="progresso" style="width: 65%;">
-
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="item">
-                        <div class="info">
-                            <span class="nome">
-                                <i class="fa-solid fa-person-rays"></i> Adaptabilidade
-                            </span>
-
-                            <span class="porcent">
-                                80%
-                            </span>
-                        </div>
-
-                        <div class="barra">
-                            <div class="progresso" style="width: 80%;">
-
-                            </div>
-                        </div>
+            <section class="secao" id="laboratorios" aria-labelledby="titulo-laboratorios">
+                <div class="titulo-secao">
+                    <span class="numero">01</span>
+                    <div>
+                        <p class="marcador">EXPLORAR E CONSTRUIR</p>
+                        <h2 id="titulo-laboratorios">Meus laboratórios</h2>
                     </div>
                 </div>
 
-            </article>
+                <p class="texto-secao">Espaços de prática organizados por linguagem. Cada laboratório reúne seus próprios projetos e experimentos.</p>
 
-            <article id="formacao">
-                <h2><i class="fa-solid fa-graduation-cap"></i>Formação</h2>
+                <div class="grade-laboratorios">
+                    <article class="laboratorio lab-js">
+                        <button class="capa-laboratorio" type="button" data-previa="laboratorio" aria-label="Abrir prévia do Laboratório JavaScript" aria-haspopup="dialog" aria-controls="visualizador">
+                            <span class="mini-janela" aria-hidden="true"><span></span><span></span><span></span></span>
+                            <span class="mini-legenda">IDEIA → CÓDIGO → EXPERIÊNCIA</span>
+                            <strong aria-hidden="true">JS<span>.</span></strong>
+                            <span class="mini-rotulo">Laboratório JavaScript</span>
+                            <span class="mini-seta" aria-hidden="true">
+                                <span class="icone" data-lucide="arrow-up-right"></span>
+                            </span>
+                        </button>
 
-                <div id="formacao-container">
-                    <div class="curso">
-                        <p class="periodo">2026 - Atualmente</p>
-                        <h3 class="instituicao">Centro Universitário Doctum (UniDoctum) – Campus Teófilo Otoni</h3>
-                        <p class="titulacao">Graduação em Sistema de Informação</p>
-                    </div>
+                        <div class="laboratorio-conteudo">
+                            <span class="status-lab publicado">DISPONÍVEL PARA EXPLORAR</span>
+                            <h3>JavaScript</h3>
+                            <p>Interfaces interativas, consumo de APIs e aplicações com dados.</p>
 
-                    <div class="curso">
-                        <p class="periodo">2025 - 2026</p>
-                        <h3 class="instituicao">Curso em Video</h3>
-                        <p class="titulacao"> HTML5 & CSS3</p>
-                    </div>
+                            <div class="lab-acoes">
+                                <button class="link-texto" type="button" data-previa="laboratorio" aria-haspopup="dialog" aria-controls="visualizador">
+                                    Visualizar aqui
+                                    <span class="icone" data-lucide="scan-eye" aria-hidden="true"></span>
+                                </button>
 
-                    <div class="curso">
-                        <p class="periodo">2026</p>
-                        <h3 class="instituicao">Curso em Video</h3>
-                        <p class="titulacao">JavaScript</p>
-                    </div>
+                                <a class="lab-externo" data-link="laboratorioJavaScript" href="https://helderneiva.github.io/laboratorio-javascript/" target="_blank" rel="noopener noreferrer">
+                                    Abrir em nova aba <span class="sr-only">Laboratório JavaScript</span> ↗
+                                </a>
+                            </div>
+                        </div>
+                    </article>
 
-                    <div class="curso">
-                        <p class="periodo">2026</p>
-                        <h3 class="instituicao">Curso em Video</h3>
-                        <p class="titulacao">PHP</p>
+                    <article class="laboratorio laboratorio-menor lab-php">
+                        <div class="lab-sigla" aria-hidden="true">php</div>
+                        <div class="laboratorio-conteudo">
+                            <h3>PHP</h3>
+                            <p>Formulários, validação e programação no servidor.</p>
+                            <span class="status-lab" data-pendente="laboratorioPHP">Em preparação</span>
+                            <a class="link-texto" data-link="laboratorioPHP" hidden>Explorar laboratório ↗</a>
+                        </div>
+                    </article>
+
+                    <article class="laboratorio laboratorio-menor lab-python">
+                        <div class="lab-sigla" aria-hidden="true">Py</div>
+                        <div class="laboratorio-conteudo">
+                            <h3>Python</h3>
+                            <p>Lógica, automação e experiências com dados.</p>
+                            <span class="status-lab" data-pendente="laboratorioPython">Planejado</span>
+                            <a class="link-texto" data-link="laboratorioPython" hidden>Explorar laboratório ↗</a>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <section class="secao" id="competencias" aria-labelledby="titulo-competencias">
+                <div class="titulo-secao">
+                    <span class="numero">02</span>
+                    <div>
+                        <p class="marcador">TECNOLOGIA APLICADA</p>
+                        <h2 id="titulo-competencias">Conhecimento em prática</h2>
                     </div>
                 </div>
-            </article>
 
-            <article id="projetos">
-                <h2><i class="fa-solid fa-code-branch"></i> Projetos</h2>
+                <p class="texto-secao" id="escala">Escala pessoal de prática: 1 · Fundamentos; 2 · Aplicação guiada; 3 · Projetos próprios; 4 · Aprofundamento. Esta autoavaliação não representa domínio total.</p>
 
-                <div id="projeto-container">
-                    <div class="projeto">
-                        <a href="https://helderneiva.github.io/projeto-android/" target="_blank" class="link-projeto"><img src="imagens/projeto-01-android.jpg" alt="projeto 01" class="foto"></a>
-                        <div class="projeto-info">
-                            <p class="periodo">2026</p>
-                            <h3 class="titulo"><a href="https://helderneiva.github.io/projeto-android/" target="_blank" class="link-projeto-titulo">Projeto Android</a></h3>
-                            <p>Projeto criado para treinar conteudo e imagens dinâmicas.</p>
+                <div class="grade-competencias">
+                    <article class="competencia" style="--atraso: 0ms">
+                        <a class="competencia-link" href="competencias.html?tecnologia=html">
+                            <div class="competencia-titulo">
+                                <span class="icone" data-lucide="code" aria-hidden="true"></span>
+                                <h3>HTML5</h3>
+                                <span>03 / 04</span>
+                            </div>
+                            <p>Semântica, formulários e organização de conteúdo.</p>
+                            <div class="barra" role="meter" aria-label="Prática em HTML5" aria-valuemin="0" aria-valuemax="4" aria-valuenow="3" aria-valuetext="Projetos próprios" aria-describedby="escala">
+                                <span class="nivel-3"></span>
+                            </div>
+                            <small>Projetos próprios</small>
+                            <p class="evidencia">Estrutura das páginas dos meus projetos.</p>
+                            <span class="ver-projetos">Ver projetos <span aria-hidden="true">↗</span></span>
+                        </a>
+                    </article>
 
-                            <details class="descricao">
-                                <summary>Saiba mais...</summary>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo nulla quam quasi placeat obcaecati tempora, porro commodi recusandae ut consequatur. Quidem, totam? Nobis nemo aliquid, minus laboriosam odit maiores quod.</p>
-                            </details>
-                        </div>
-                    </div>
+                    <article class="competencia" style="--atraso: 90ms">
+                        <a class="competencia-link" href="competencias.html?tecnologia=css">
+                            <div class="competencia-titulo">
+                                <span class="icone" data-lucide="palette" aria-hidden="true"></span>
+                                <h3>CSS3</h3>
+                                <span>03 / 04</span>
+                            </div>
+                            <p>Grid, Flexbox, temas e layouts responsivos.</p>
+                            <div class="barra" role="meter" aria-label="Prática em CSS3" aria-valuemin="0" aria-valuemax="4" aria-valuenow="3" aria-valuetext="Projetos próprios" aria-describedby="escala">
+                                <span class="nivel-3"></span>
+                            </div>
+                            <small>Projetos próprios</small>
+                            <p class="evidencia">Interfaces adaptadas a diferentes telas.</p>
+                            <span class="ver-projetos">Ver projetos <span aria-hidden="true">↗</span></span>
+                        </a>
+                    </article>
 
+                    <article class="competencia" style="--atraso: 180ms">
+                        <a class="competencia-link" href="competencias.html?tecnologia=javascript">
+                            <div class="competencia-titulo">
+                                <span class="icone" data-lucide="braces" aria-hidden="true"></span>
+                                <h3>JavaScript</h3>
+                                <span>03 / 04</span>
+                            </div>
+                            <p>DOM, eventos, Fetch API e armazenamento local.</p>
+                            <div class="barra" role="meter" aria-label="Prática em JavaScript" aria-valuemin="0" aria-valuemax="4" aria-valuenow="3" aria-valuetext="Projetos próprios" aria-describedby="escala">
+                                <span class="nivel-3"></span>
+                            </div>
+                            <small>Projetos próprios</small>
+                            <p class="evidencia">Interações e consumo de APIs no laboratório.</p>
+                            <span class="ver-projetos">Ver projetos <span aria-hidden="true">↗</span></span>
+                        </a>
+                    </article>
 
-                    <div class="projeto">
-                        <a href="https://helderneiva.github.io/projeto-cordel/"target="_blank" class="link-projeto"><img src="imagens/projeto-02-cordel.jpg" alt="projeto 02" class="foto"></a>
-                        <div class="projeto-info">
-                            <p class="periodo">2026</p>
-                            <h3 class="titulo"><a href="https://helderneiva.github.io/projeto-cordel/" target="_blank" class="link-projeto-titulo">Projeto Cordel</a></h3>
-                            <p>Projeto criado para treinar efeito parallax em imagens.</p>
+                    <article class="competencia" style="--atraso: 270ms">
+                        <a class="competencia-link" href="competencias.html?tecnologia=php">
+                            <div class="competencia-titulo">
+                                <span class="icone" data-lucide="server" aria-hidden="true"></span>
+                                <h3>PHP</h3>
+                                <span>02 / 04</span>
+                            </div>
+                            <p>Funções, validação e processamento no servidor.</p>
+                            <div class="barra" role="meter" aria-label="Prática em PHP" aria-valuemin="0" aria-valuemax="4" aria-valuenow="2" aria-valuetext="Aplicação guiada" aria-describedby="escala">
+                                <span class="nivel-2"></span>
+                            </div>
+                            <small>Aplicação guiada</small>
+                            <p class="evidencia">Estudos de formulários e respostas JSON.</p>
+                            <span class="ver-projetos">Ver projetos <span aria-hidden="true">↗</span></span>
+                        </a>
+                    </article>
 
-                            <details class="descricao">
-                                <summary>Saiba mais...</summary>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo nulla quam quasi placeat obcaecati tempora, porro commodi recusandae ut consequatur. Quidem, totam? Nobis nemo aliquid, minus laboriosam odit maiores quod.</p>
-                            </details>
-                        </div>
-                    </div>
+                    <article class="competencia" style="--atraso: 360ms">
+                        <a class="competencia-link" href="competencias.html?tecnologia=node-sql">
+                            <div class="competencia-titulo">
+                                <span class="icone" data-lucide="database" aria-hidden="true"></span>
+                                <h3>Node.js e SQL</h3>
+                                <span>02 / 04</span>
+                            </div>
+                            <p>Rotas, sessões e persistência de dados.</p>
+                            <div class="barra" role="meter" aria-label="Prática em Node.js e SQL" aria-valuemin="0" aria-valuemax="4" aria-valuenow="2" aria-valuetext="Aplicação guiada" aria-describedby="escala">
+                                <span class="nivel-2"></span>
+                            </div>
+                            <small>Aplicação guiada</small>
+                            <p class="evidencia">Integração no Simulador de Conta Bancária.</p>
+                            <span class="ver-projetos">Ver projetos <span aria-hidden="true">↗</span></span>
+                        </a>
+                    </article>
 
-                    <div class="projeto">
-                        <a href="https://helderneiva.github.io/projeto-rede-social/"target="_blank" class="link-projeto"><img src="imagens/projeto-03-redes-sociais.jpg" alt="projeto 03" class="foto"></a>
-                        <div class="projeto-info">
-                            <p class="periodo">2026</p>
-                            <h3 class="titulo"><a href="https://helderneiva.github.io/projeto-rede-social/" target="_blank" class="link-projeto-titulo">Projeto Redes-Sociais</a></h3>
-                            <p>Projeto criado para treinar uso de iframes e divulgar minhas redes sociais.</p>
+                    <article class="competencia" style="--atraso: 450ms">
+                        <a class="competencia-link" href="competencias.html?tecnologia=git">
+                            <div class="competencia-titulo">
+                                <span class="icone" data-lucide="git-branch" aria-hidden="true"></span>
+                                <h3>Git e GitHub</h3>
+                                <span>02 / 04</span>
+                            </div>
+                            <p>Organização de repositórios e publicação.</p>
+                            <div class="barra" role="meter" aria-label="Prática em Git e GitHub" aria-valuemin="0" aria-valuemax="4" aria-valuenow="2" aria-valuetext="Aplicação guiada" aria-describedby="escala">
+                                <span class="nivel-2"></span>
+                            </div>
+                            <small>Aplicação guiada</small>
+                            <p class="evidencia">Versionamento dos projetos de estudo.</p>
+                            <span class="ver-projetos">Ver projetos <span aria-hidden="true">↗</span></span>
+                        </a>
+                    </article>
+                </div>
 
-                            <details class="descricao">
-                                <summary>Saiba mais...</summary>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo nulla quam quasi placeat obcaecati tempora, porro commodi recusandae ut consequatur. Quidem, totam? Nobis nemo aliquid, minus laboriosam odit maiores quod.</p>
-                            </details>
-                        </div>
-                    </div>
+                <button class="pausar" id="pausar-barras" type="button" aria-pressed="false" hidden>Pausar efeitos das barras</button>
+            </section>
 
-                    <div class="projeto">
-                        <a href="https://helderneiva.github.io/projeto-tela-login/"target="_blank" class="link-projeto"><img src="imagens/projeto-tela-login.jpg" alt="projeto 04" class="foto"></a>
-                        <div class="projeto-info">
-                            <p class="periodo">2026</p>
-                            <h3 class="titulo"><a href="https://helderneiva.github.io/projeto-tela-login/" target="_blank" class="link-projeto-titulo">Projeto Tela de Login</a></h3>
-                            <p>Projeto criado para treinar uso de Media Query ao criar uma tela de login moderna, funcional e totalmente responsiva.</p>
-
-                            <details class="descricao">
-                                <summary>Saiba mais...</summary>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo nulla quam quasi placeat obcaecati tempora, porro commodi recusandae ut consequatur. Quidem, totam? Nobis nemo aliquid, minus laboriosam odit maiores quod.</p>
-                            </details>
-                        </div>
+            <section class="secao sobre" id="sobre" aria-labelledby="titulo-sobre">
+                <div class="titulo-secao">
+                    <span class="numero">03</span>
+                    <div>
+                        <p class="marcador">MINHA TRAJETÓRIA</p>
+                        <h2 id="titulo-sobre">Entre aprender e construir</h2>
                     </div>
                 </div>
-            </article>
 
-        </section>
-    </main>
+                <div class="sobre-conteudo">
+                    <p>Sou estudante do primeiro semestre de <strong>Sistemas de Informação na UniDoctum</strong> e já estudava desenvolvimento web antes de iniciar a graduação.</p>
+                    <p>Atuo como desenvolvedor e web designer freelancer. Gosto de conectar código e design para criar interfaces claras, responsivas e agradáveis de utilizar.</p>
+                    <p>Nos meus estudos, venho explorando JavaScript, PHP e a integração entre interface, servidor e banco de dados. Os laboratórios registram esse percurso por meio de projetos que posso testar, revisar e ampliar.</p>
+                    <p>Busco uma oportunidade de estágio para colaborar com uma equipe, aprofundar meus conhecimentos e participar do desenvolvimento de aplicações reais.</p>
+                </div>
+            </section>
 
-    <footer>
-        Portfólio desenvolvido por <a href="https://github.com/helderneiva" target="_blank" rel="nofollow">Helder Neiva</a> em 2026.
+            <section class="secao" id="formacao" aria-labelledby="titulo-formacao">
+                <div class="titulo-secao">
+                    <span class="numero">04</span>
+                    <div>
+                        <p class="marcador">FORMAÇÃO E CONTINUIDADE</p>
+                        <h2 id="titulo-formacao">Minha formação</h2>
+                    </div>
+                </div>
+
+                <div class="cursos">
+                    <article class="curso">
+                        <span class="periodo">2026 — ATUALMENTE</span>
+                        <div>
+                            <h3>Sistemas de Informação</h3>
+                            <p>Centro Universitário Doctum · Campus Teófilo Otoni</p>
+                            <span class="etiqueta">Graduação em andamento · 1º semestre</span>
+                        </div>
+                    </article>
+                    <article class="curso">
+                        <span class="periodo">ESTUDOS COMPLEMENTARES</span>
+                        <div>
+                            <h3>HTML5 e CSS3</h3>
+                            <p>Curso em Vídeo · Desenvolvimento de interfaces.</p>
+                        </div>
+                    </article>
+                    <article class="curso">
+                        <span class="periodo">ESTUDOS COMPLEMENTARES</span>
+                        <div>
+                            <h3>JavaScript e PHP</h3>
+                            <p>Curso em Vídeo · Programação web.</p>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <section class="secao contato" id="contato" aria-labelledby="titulo-contato">
+                <div class="contato-apresentacao">
+                    <p class="marcador">VAMOS CONVERSAR</p>
+                    <h2 id="titulo-contato">Uma conversa pode ser<br><span>o próximo passo.</span></h2>
+                    <p>Tenho interesse em oportunidades de estágio em desenvolvimento. Envie uma mensagem ou fale comigo pelo LinkedIn.</p>
+
+                    <div class="acoes">
+                        <a class="link-texto" href="https://www.linkedin.com/in/helder-neiva-3184852a5/" target="_blank" rel="noopener noreferrer">LinkedIn <span aria-hidden="true">↗</span></a>
+                        <a class="link-texto" href="https://github.com/helderneiva" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a>
+                        <a class="link-texto" data-link="email" hidden>Enviar e-mail</a>
+                        <a class="link-texto" data-link="curriculo" hidden>Abrir currículo</a>
+                    </div>
+                </div>
+
+                <form class="formulario" id="form-contato" aria-labelledby="titulo-formulario" aria-describedby="aviso-envio" novalidate>
+                    <h3 id="titulo-formulario">Envie sua mensagem</h3>
+
+                    <div class="campos-duplos">
+                        <div class="campo">
+                            <label for="nome">Nome <span aria-hidden="true">*</span></label>
+                            <input id="nome" name="name" type="text" autocomplete="name" minlength="2" maxlength="100" required aria-describedby="erro-nome">
+                            <span class="erro-campo" id="erro-nome"></span>
+                        </div>
+                        <div class="campo">
+                            <label for="email">E-mail <span aria-hidden="true">*</span></label>
+                            <input id="email" name="email" type="email" autocomplete="email" maxlength="254" required aria-describedby="erro-email">
+                            <span class="erro-campo" id="erro-email"></span>
+                        </div>
+                    </div>
+
+                    <div class="campo">
+                        <label for="assunto">Assunto <span class="opcional">(opcional)</span></label>
+                        <input id="assunto" name="subject" type="text" maxlength="150">
+                    </div>
+
+                    <div class="campo">
+                        <label for="mensagem">Mensagem <span aria-hidden="true">*</span></label>
+                        <textarea id="mensagem" name="message" rows="5" minlength="10" maxlength="5000" required aria-describedby="erro-mensagem"></textarea>
+                        <span class="erro-campo" id="erro-mensagem"></span>
+                    </div>
+
+                    <div hidden>
+                        <label>Não preencha este campo
+                            <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off">
+                        </label>
+                    </div>
+
+                    <p class="aviso-envio" id="aviso-envio">Os campos com * são obrigatórios. Nome, e-mail e mensagem serão encaminhados ao responsável pelo portfólio pelo Web3Forms.</p>
+
+                    <button class="botao" id="enviar-mensagem" type="submit" disabled>
+                        Enviar mensagem
+                        <span class="icone" data-lucide="send" aria-hidden="true"></span>
+                    </button>
+
+                    <p class="resultado-envio" id="resultado-envio" role="status" aria-live="polite" aria-atomic="true"></p>
+
+                    <noscript>
+                        <p>Ative o JavaScript para usar o formulário ou entre em contato pelo LinkedIn.</p>
+                    </noscript>
+                </form>
+            </section>
+        </main>
+    </div>
+
+    <footer class="rodape">
+        <p>Helder Neiva · Desenvolvimento web · <span id="ano">2026</span></p>
+        <a href="#perfil">Voltar ao início ↑</a>
     </footer>
 
-    <script src="scripts/script.js"></script>
+    <dialog class="visualizador" id="visualizador" aria-labelledby="titulo-visualizador" aria-describedby="ajuda-visualizador">
+        <div class="visualizador-topo">
+            <div>
+                <span class="marcador">VISUALIZAÇÃO</span>
+                <h2 id="titulo-visualizador">Prévia</h2>
+            </div>
+            <button id="fechar-visualizador" class="fechar" type="button" aria-label="Fechar visualização" autofocus>
+                <span class="icone" data-lucide="x" aria-hidden="true"></span>
+            </button>
+        </div>
+
+        <div class="visualizador-corpo">
+            <p id="estado-visualizador" class="estado-visualizador" role="status">Carregando…</p>
+            <iframe id="iframe-previa" title="Prévia do laboratório" referrerpolicy="strict-origin-when-cross-origin" hidden></iframe>
+            <img id="imagem-ampliada" alt="Retrato ampliado de Helder Neiva" hidden>
+        </div>
+
+        <div class="visualizador-base">
+            <p id="ajuda-visualizador">Use Fechar ou Escape para voltar. Se a prévia não aparecer, abra em nova aba.</p>
+            <a id="abrir-externo" class="link-texto" target="_blank" rel="noopener noreferrer">Abrir em nova aba ↗</a>
+        </div>
+    </dialog>
 </body>
 </html>

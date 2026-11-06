@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Projetos de Helder Neiva organizados por competência: interfaces, JavaScript, PHP, Node.js, SQL e Git.">
+    <meta name="color-scheme" content="light dark">
+
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="pt_BR">
+    <meta property="og:title" content="Helder Neiva | Desenvolvimento web">
+    <meta property="og:description" content="Conheça meu percurso, minhas competências e meus laboratórios de programação.">
+
+    <title>Competências na prática | Helder Neiva</title>
+
+    <script src="scripts/tema.js"></script>
+
+    <link rel="stylesheet" href="estilos/paleta.css">
+    <link rel="stylesheet" href="estilos/style.css">
+
+    <script src="scripts/lucide.js" defer></script>
+    <script src="scripts/configuracao.js" defer></script>
+    <script src="scripts/script.js" defer></script>
+    <script src="scripts/competencias.js" defer></script>
+</head>
+<body>
+    <a class="pular" href="#conteudo">Pular para o conteúdo</a>
+
+    <header class="cabecalho">
+        <div class="cabecalho-interno">
+            <a class="assinatura" href="index.html#perfil">
+                Helder Neiva
+                <span>DESENVOLVIMENTO WEB</span>
+            </a>
+
+            <nav class="navegacao" aria-label="Navegação principal">
+                <div class="menu-base">
+                    <span class="indicador-menu" id="indicador-menu" aria-hidden="true"></span>
+
+                    <ul class="menu">
+                        <li>
+                            <a class="item-menu" href="index.html#apresentacao" aria-label="Apresentação">
+                                <span class="icone" data-lucide="house" aria-hidden="true"></span>
+                                <span class="menu-texto">Apresentação</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="item-menu" href="index.html#laboratorios" aria-label="Laboratórios">
+                                <span class="icone" data-lucide="flask-conical" aria-hidden="true"></span>
+                                <span class="menu-texto">Laboratórios</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="item-menu" href="index.html#competencias" aria-label="Competências" aria-current="page">
+                                <span class="icone" data-lucide="brain" aria-hidden="true"></span>
+                                <span class="menu-texto">Competências</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="item-menu" href="index.html#sobre" aria-label="Sobre">
+                                <span class="icone" data-lucide="user-round" aria-hidden="true"></span>
+                                <span class="menu-texto">Sobre</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="item-menu" href="index.html#formacao" aria-label="Formação">
+                                <span class="icone" data-lucide="graduation-cap" aria-hidden="true"></span>
+                                <span class="menu-texto">Formação</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="item-menu" href="index.html#contato" aria-label="Contato">
+                                <span class="icone" data-lucide="send" aria-hidden="true"></span>
+                                <span class="menu-texto">Contato</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <button class="controle-tema" id="botao-tema" type="button" aria-label="Ativar tema escuro" aria-pressed="false">
+                <span id="icone-tema" aria-hidden="true">
+                    <span class="icone" data-lucide="moon"></span>
+                </span>
+            </button>
+        </div>
+    </header>
+
+    <main class="pagina-competencias" id="conteudo" tabindex="-1">
+        <a class="link-texto" href="index.html#competencias">← Voltar ao portfólio</a>
+
+        <p class="marcador">TECNOLOGIAS E PROJETOS</p>
+        <h1>Competências na prática</h1>
+        <p class="introducao">Veja onde cada tecnologia aparece nos meus projetos. Esta página reúne evidências do meu aprendizado; os experimentos continuam organizados nos laboratórios.</p>
+
+        <div class="filtros">
+            <label for="filtro-tecnologia">Filtrar por competência</label>
+            <select class="filtro-select" id="filtro-tecnologia">
+                <option value="todos">Todas as competências</option>
+                <option value="html">HTML5</option>
+                <option value="css">CSS3</option>
+                <option value="javascript">JavaScript</option>
+                <option value="php">PHP</option>
+                <option value="node-sql">Node.js e SQL</option>
+                <option value="git">Git e GitHub</option>
+            </select>
+
+            <p class="contagem" id="contagem-projetos" role="status" aria-live="polite" aria-atomic="true">4 projetos nesta seleção.</p>
+
+            <noscript>
+                <p>Com o JavaScript desativado, todos os projetos e suas competências permanecem visíveis.</p>
+            </noscript>
+        </div>
+
+        <div class="grade-evidencias">
+            <article class="projeto-evidencia" data-tecnologias="html css javascript git">
+                <span class="icone" data-lucide="clapperboard" aria-hidden="true"></span>
+                <h2>Métrica Cine</h2>
+                <span class="etiqueta">Disponível</span>
+                <p>Catálogo de filmes com busca, informações e favoritos.</p>
+
+                <dl class="evidencias">
+                    <div data-evidencia="html">
+                        <dt>HTML5</dt>
+                        <dd>Estrutura da busca e organização das informações dos filmes.</dd>
+                    </div>
+                    <div data-evidencia="css">
+                        <dt>CSS3</dt>
+                        <dd>Composição de cards e adaptação da interface a diferentes telas.</dd>
+                    </div>
+                    <div data-evidencia="javascript">
+                        <dt>JavaScript</dt>
+                        <dd>Consumo da API de filmes, busca com debounce, requisições assíncronas e favoritos.</dd>
+                    </div>
+                    <div data-evidencia="git">
+                        <dt>Git e GitHub</dt>
+                        <dd>Organização e publicação do projeto no repositório do laboratório.</dd>
+                    </div>
+                </dl>
+
+                <div class="acoes">
+                    <a class="botao" href="https://helderneiva.github.io/laboratorio-javascript/projetos/metrica-cine/index.html" target="_blank" rel="noopener noreferrer">
+                        Abrir projeto <span class="sr-only">Métrica Cine</span> ↗
+                    </a>
+                </div>
+            </article>
+
+            <article class="projeto-evidencia" data-tecnologias="html css javascript git">
+                <span class="icone" data-lucide="book-open" aria-hidden="true"></span>
+                <h2>Museu da Poesia Digital</h2>
+                <span class="etiqueta">Disponível</span>
+                <p>Navegação por gêneros de poesia, obras e registros de leitura.</p>
+
+                <dl class="evidencias">
+                    <div data-evidencia="html">
+                        <dt>HTML5</dt>
+                        <dd>Organização dos gêneros e das páginas de leitura.</dd>
+                    </div>
+                    <div data-evidencia="css">
+                        <dt>CSS3</dt>
+                        <dd>Hierarquia tipográfica e apresentação responsiva das obras.</dd>
+                    </div>
+                    <div data-evidencia="javascript">
+                        <dt>JavaScript</dt>
+                        <dd>Manipulação do DOM, eventos e armazenamento de preferências de leitura.</dd>
+                    </div>
+                    <div data-evidencia="git">
+                        <dt>Git e GitHub</dt>
+                        <dd>Organização e publicação do projeto no repositório do laboratório.</dd>
+                    </div>
+                </dl>
+
+                <div class="acoes">
+                    <a class="botao" href="https://helderneiva.github.io/laboratorio-javascript/projetos/museu-digital/index.html" target="_blank" rel="noopener noreferrer">
+                        Abrir projeto <span class="sr-only">Museu da Poesia Digital</span> ↗
+                    </a>
+                </div>
+            </article>
+
+            <article class="projeto-evidencia" data-tecnologias="html css javascript node-sql git">
+                <span class="icone" data-lucide="landmark" aria-hidden="true"></span>
+                <h2>Simulador de Conta Bancária</h2>
+                <span class="etiqueta">Disponível</span>
+                <p>Simulação de cadastro, acesso, saques e extrato para estudo. Não realiza operações bancárias reais.</p>
+
+                <dl class="evidencias">
+                    <div data-evidencia="html">
+                        <dt>HTML5</dt>
+                        <dd>Formulários e estrutura das telas de cadastro, acesso, caixa e extrato.</dd>
+                    </div>
+                    <div data-evidencia="css">
+                        <dt>CSS3</dt>
+                        <dd>Interfaces específicas para cada etapa, com adaptação a diferentes telas.</dd>
+                    </div>
+                    <div data-evidencia="javascript">
+                        <dt>JavaScript</dt>
+                        <dd>Validação de entradas, requisições e atualização dos dados na interface.</dd>
+                    </div>
+                    <div data-evidencia="node-sql">
+                        <dt>Node.js e SQL</dt>
+                        <dd>Rotas de servidor, autenticação, sessões e persistência de dados no PostgreSQL.</dd>
+                    </div>
+                    <div data-evidencia="git">
+                        <dt>Git e GitHub</dt>
+                        <dd>Repositório do projeto e publicação da aplicação no Render.</dd>
+                    </div>
+                </dl>
+
+                <div class="acoes">
+                    <a class="botao" href="https://projeto-simulador-caixa.onrender.com/" target="_blank" rel="noopener noreferrer">
+                        Abrir projeto <span class="sr-only">Simulador de Conta Bancária</span> ↗
+                    </a>
+                </div>
+            </article>
+
+            <article class="projeto-evidencia" data-tecnologias="php html css javascript">
+                <span class="icone" data-lucide="shuffle" aria-hidden="true"></span>
+                <h2>Gerador Lotérico</h2>
+                <span class="etiqueta">Em desenvolvimento</span>
+                <p>Projeto em construção para explorar PHP e JavaScript em conjunto. A demonstração será adicionada quando estiver disponível.</p>
+
+                <dl class="evidencias">
+                    <div data-evidencia="php">
+                        <dt>PHP</dt>
+                        <dd>Objetivo do projeto: gerar combinações no servidor com funções tipadas e respostas em JSON.</dd>
+                    </div>
+                    <div data-evidencia="javascript">
+                        <dt>JavaScript</dt>
+                        <dd>Objetivo do projeto: comunicação assíncrona com o PHP e apresentação das combinações.</dd>
+                    </div>
+                    <div data-evidencia="html">
+                        <dt>HTML5</dt>
+                        <dd>Objetivo do projeto: estruturar os controles de geração e a apresentação dos resultados.</dd>
+                    </div>
+                    <div data-evidencia="css">
+                        <dt>CSS3</dt>
+                        <dd>Objetivo do projeto: construir uma interface responsiva com identidade própria.</dd>
+                    </div>
+                </dl>
+
+                <div class="acoes">
+                    <span class="status-lab">Demonstração ainda não publicada</span>
+                </div>
+            </article>
+        </div>
+
+        <p class="texto-secao">Os textos indicam o que cada projeto demonstra. Funcionalidades em desenvolvimento estão identificadas como objetivos, sem demonstração publicada.</p>
+        <a class="link-texto" href="index.html#laboratorios">Explorar meus laboratórios ↗</a>
+    </main>
+
+    <footer class="rodape">
+        <p>Helder Neiva · Desenvolvimento web · <span id="ano">2026</span></p>
+        <a href="index.html">Voltar ao portfólio</a>
+    </footer>
+</body>
+</html>
