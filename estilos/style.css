@@ -94,7 +94,7 @@ img {
 }
 
 #conteudo, #perfil, section[id] {
-    scroll-margin-top: calc(var(--altura-menu) + 20px);
+    scroll-margin-top: calc(var(--altura-menu) + 8px);
 }
 
 section[id]:focus {
@@ -339,7 +339,12 @@ main, .inicio > *, .competencia, .laboratorio {
 
 .perfil-capa {
     height: 118px;
-    background: linear-gradient(125deg, var(--perfil-gradiente-inicio), var(--perfil-gradiente-meio), var(--perfil-gradiente-fim));
+    background: linear-gradient(
+        125deg,
+        var(--perfil-gradiente-inicio),
+        var(--perfil-gradiente-meio),
+        var(--perfil-gradiente-fim)
+    );
 }
 
 .retrato {
@@ -462,7 +467,10 @@ main, .inicio > *, .competencia, .laboratorio {
     font-size: 0.875em;
     font-weight: 750;
     text-decoration: none;
-    transition: transform 180ms ease, background-color 180ms ease, box-shadow 180ms ease;
+    transition:
+        transform 180ms ease,
+        background-color 180ms ease,
+        box-shadow 180ms ease;
 }
 
 .botao:hover {
@@ -571,7 +579,11 @@ main, .inicio > *, .competencia, .laboratorio {
     padding: 22px;
     border: 1px solid var(--borda);
     border-radius: var(--raio-card);
-    background: linear-gradient(145deg, var(--fundo-card), var(--fundo-elevado));
+    background: linear-gradient(
+        145deg,
+        var(--fundo-card),
+        var(--fundo-elevado)
+    );
 }
 
 .foco-profissional-topo, .foco-profissional-item {
@@ -662,7 +674,10 @@ main, .inicio > *, .competencia, .laboratorio {
 }
 
 .laboratorio-disponivel {
-    transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+    transition:
+        transform 180ms ease,
+        border-color 180ms ease,
+        box-shadow 180ms ease;
 }
 
 .laboratorio-disponivel:hover,
@@ -711,7 +726,9 @@ main, .inicio > *, .competencia, .laboratorio {
     padding: 22px;
     overflow: hidden;
     border: 0;
-    background-image: linear-gradient(90deg, #03071280, #03071218), var(--lab-capa);
+    background-image:
+        linear-gradient(90deg, #03071280, #03071218),
+        var(--lab-capa);
     background-size: 100% 100%, 240% 240%;
     color: #FFFFFF;
     text-align: left;
@@ -739,7 +756,11 @@ main, .inicio > *, .competencia, .laboratorio {
     bottom: 0;
     left: 0;
     height: 2px;
-    background: linear-gradient(90deg, transparent, var(--lab-linha));
+    background: linear-gradient(
+        90deg,
+        transparent,
+        var(--lab-linha)
+    );
     box-shadow: 0 -3px 20px 3px var(--lab-brilho);
     pointer-events: none;
 }
@@ -884,22 +905,79 @@ button.capa-laboratorio:focus-visible {
     height: 18px;
 }
 
-/* Cards de competências compactos. */
+/* Competências: mesma moldura e proporção para todos os ícones. */
+
+.grade-competencias {
+    --card-fundo-inicio: #FFFFFF;
+    --card-fundo-fim: #F0F5FC;
+    --card-borda: #B8CBE2;
+
+    --barra-cor-1: #4338CA;
+    --barra-cor-2: #7952D8;
+    --barra-cor-3: #2563EB;
+    --barra-cor-4: #087FAD;
+    --barra-cor-5: #0F8B79;
+
+    --barra-trilho: #DBE5F1;
+}
+
+html[data-theme="dark"] .grade-competencias {
+    --card-fundo-inicio: #111D2D;
+    --card-fundo-fim: #18273A;
+    --card-borda: #385171;
+
+    --barra-cor-1: #7C6CFF;
+    --barra-cor-2: #B396FF;
+    --barra-cor-3: #67B5FF;
+    --barra-cor-4: #39D4EB;
+    --barra-cor-5: #51D6B1;
+
+    --barra-trilho: #28374B;
+}
+
+@media (prefers-color-scheme: dark) {
+    html:not([data-theme]) .grade-competencias {
+        --card-fundo-inicio: #111D2D;
+        --card-fundo-fim: #18273A;
+        --card-borda: #385171;
+
+        --barra-cor-1: #7C6CFF;
+        --barra-cor-2: #B396FF;
+        --barra-cor-3: #67B5FF;
+        --barra-cor-4: #39D4EB;
+        --barra-cor-5: #51D6B1;
+
+        --barra-trilho: #28374B;
+    }
+}
 
 .competencia {
     overflow: hidden;
-    border: 1px solid var(--borda-forte);
+    border: 1px solid var(--card-borda);
     border-radius: var(--raio-card);
-    background: linear-gradient(145deg, var(--fundo-card), var(--fundo-elevado));
-    box-shadow: 0 12px 28px var(--sombra), inset 0 1px 0 #FFFFFF0A;
+    background: linear-gradient(
+        145deg,
+        var(--card-fundo-inicio),
+        var(--card-fundo-fim)
+    );
+    box-shadow:
+        0 12px 28px var(--sombra),
+        inset 0 1px 0 #FFFFFF0A;
     opacity: 1;
     translate: 0 0;
-    transition: opacity 500ms ease var(--atraso, 0ms), translate 500ms ease var(--atraso, 0ms), border-color 180ms ease, transform 180ms ease, box-shadow 180ms ease;
+    transition:
+        opacity 500ms ease var(--atraso, 0ms),
+        translate 500ms ease var(--atraso, 0ms),
+        border-color 180ms ease,
+        transform 180ms ease,
+        box-shadow 180ms ease;
 }
 
 .competencia:hover, .competencia:focus-within {
     border-color: var(--borda-hover);
-    box-shadow: 0 16px 34px var(--sombra), 0 0 0 1px var(--brilho-destaque);
+    box-shadow:
+        0 16px 34px var(--sombra),
+        0 0 0 1px var(--brilho-destaque);
     transform: translateY(-3px);
 }
 
@@ -934,40 +1012,49 @@ button.capa-laboratorio:focus-visible {
 .competencia-titulo {
     order: 1;
     display: grid;
-    grid-template-columns: 36px minmax(0, 1fr) auto;
+    grid-template-columns: 42px minmax(0, 1fr) auto;
     align-items: center;
     gap: 10px;
     min-height: 76px;
     padding: 14px 16px;
     border-bottom: 1px solid #FFFFFF18;
-    background: linear-gradient(120deg, #14294D 0%, #34348F 55%, #4B5ED0 100%);
+    background: linear-gradient(
+        115deg,
+        #162947 0%,
+        #253B75 55%,
+        #40489B 100%
+    );
     color: #FFFFFF;
 }
 
+.competencia-icone {
+    display: grid;
+    place-items: center;
+    width: 42px;
+    height: 42px;
+    border: 1px solid #8BBEFF66;
+    border-radius: 12px;
+    background: linear-gradient(
+        145deg,
+        #84B9FF22,
+        #091A3655
+    );
+    box-shadow:
+        inset 0 1px 0 #FFFFFF1F,
+        0 4px 10px #03071226;
+    color: #A5D5FF;
+}
+
+.competencia-icone > .icone,
 .competencia-titulo > .icone {
-    width: 36px;
-    height: 36px;
-    color: #65B6FF;
-    stroke-width: 1.5;
-}
-
-.competencia-titulo .marca-texto {
-    fill: currentColor;
-    stroke: none;
-    font-family: var(--mono);
-    font-size: 0.8125em;
-    font-weight: 500;
-    letter-spacing: -1px;
-}
-
-.competencia-titulo .marca-php {
-    font-size: 0.75em;
-    font-style: italic;
+    width: 24px;
+    height: 24px;
+    stroke-width: 1.8;
 }
 
 .competencia-titulo h3 {
     color: #FFFFFF;
-    font-size: 0.96em;
+    font-size: 1em;
     line-height: 1.35;
     overflow-wrap: anywhere;
 }
@@ -1030,13 +1117,13 @@ button.capa-laboratorio:focus-visible {
 .barra {
     order: 2;
     flex-shrink: 0;
-    height: 12px;
-    margin: 14px 16px 0;
+    height: 13px;
+    margin: 15px 16px 0;
     overflow: hidden;
-    border: 1px solid var(--borda-forte);
+    border: 1px solid var(--card-borda);
     border-radius: 20px;
-    background: var(--trilho-barra);
-    box-shadow: inset 0 2px 5px #03071226;
+    background: var(--barra-trilho);
+    box-shadow: inset 0 2px 4px #03071226;
 }
 
 .barra > span {
@@ -1045,13 +1132,21 @@ button.capa-laboratorio:focus-visible {
     height: 100%;
     overflow: hidden;
     border-radius: inherit;
-    background: linear-gradient(105deg, var(--barra-inicio), var(--barra-meio), var(--barra-fim), var(--barra-inicio));
-    background-size: 240% 100%;
-    box-shadow: inset 0 1px 0 #FFFFFF40;
+    background: linear-gradient(
+        100deg,
+        var(--barra-cor-1),
+        var(--barra-cor-2),
+        var(--barra-cor-3),
+        var(--barra-cor-4),
+        var(--barra-cor-5),
+        var(--barra-cor-1)
+    );
+    background-size: 300% 100%;
+    box-shadow: inset 0 1px 0 #FFFFFF66;
     transform: scaleX(1);
     transform-origin: left;
-    animation: barra-fluida 8s ease-in-out infinite alternate;
-    transition: transform 1200ms cubic-bezier(0.2, 0.7, 0.2, 1);
+    animation: barra-fluida 10s ease-in-out infinite alternate;
+    transition: transform 1300ms cubic-bezier(0.22, 0.75, 0.25, 1);
     transition-delay: var(--atraso, 0ms);
 }
 
@@ -1059,8 +1154,19 @@ button.capa-laboratorio:focus-visible {
     content: "";
     position: absolute;
     inset: 0;
-    background: linear-gradient(110deg, transparent 30%, var(--reflexo-barra) 50%, transparent 70%);
-    animation: reflexo-suave 7s ease-in-out infinite;
+    background: linear-gradient(
+        110deg,
+        transparent 25%,
+        #FFFFFF55 50%,
+        transparent 75%
+    );
+    animation: reflexo-suave 6s ease-in-out infinite;
+}
+
+.competencia.barra-reiniciada .barra > span {
+    transform: scaleX(0);
+    transition-duration: 280ms;
+    transition-delay: 0ms;
 }
 
 .nivel-3 {
@@ -1143,10 +1249,15 @@ button.capa-laboratorio:focus-visible {
     background: transparent;
     color: var(--texto-secundario);
     font-size: 0.75em;
-    transition: color 180ms ease, background-color 180ms ease, border-color 180ms ease;
+    transition:
+        color 180ms ease,
+        background-color 180ms ease,
+        border-color 180ms ease;
 }
 
-.pausar:hover, .pausar:focus-visible {
+.pausar[aria-pressed="true"],
+.pausar:hover,
+.pausar:focus-visible {
     border-color: var(--borda-hover);
     background: var(--fundo-hover);
     color: var(--link);
@@ -1197,66 +1308,6 @@ html.animacoes-pausadas .barra > span::after {
     80%, 100% {
         transform: translateX(130%);
     }
-}
-
-.sobre-conteudo {
-    max-width: 900px;
-    margin-top: 24px;
-    color: var(--texto-secundario);
-}
-
-.sobre-conteudo p + p {
-    margin-top: 16px;
-}
-
-.sobre-conteudo strong {
-    color: var(--texto);
-}
-
-.cursos {
-    margin-top: 28px;
-}
-
-.curso {
-    position: relative;
-    display: grid;
-    grid-template-columns: 175px minmax(0, 1fr);
-    gap: 24px;
-    margin-left: 6px;
-    padding: 0 0 30px 26px;
-    border-left: 1px solid var(--borda-forte);
-}
-
-.curso:last-child {
-    padding-bottom: 0;
-}
-
-.curso::before {
-    content: "";
-    position: absolute;
-    top: 6px;
-    left: -5px;
-    width: 9px;
-    height: 9px;
-    border: 2px solid var(--fundo-principal);
-    border-radius: 50%;
-    background: var(--destaque);
-}
-
-.curso h3 {
-    font-size: 1.05em;
-}
-
-.periodo {
-    padding-top: 4px;
-    color: var(--texto-secundario);
-    font: 400 0.75em/1.6 var(--mono);
-}
-
-.curso p {
-    margin-top: 7px;
-    color: var(--texto-secundario);
-    font-size: 0.9em;
 }
 
 .etiqueta, .status-lab:not(.lab-status) {
@@ -1567,11 +1618,6 @@ html.janela-aberta {
         min-height: 0;
     }
 
-    .curso {
-        grid-template-columns: minmax(0, 1fr);
-        gap: 8px;
-    }
-
     .capa-laboratorio {
         min-height: 192px;
     }
@@ -1592,14 +1638,14 @@ html.janela-aberta {
     }
 
     .competencia-titulo {
-        grid-template-columns: 34px minmax(0, 1fr) auto;
+        grid-template-columns: 38px minmax(0, 1fr) auto;
         gap: 8px;
         padding: 12px;
     }
 
-    .competencia-titulo > .icone {
-        width: 34px;
-        height: 34px;
+    .competencia-icone {
+        width: 38px;
+        height: 38px;
     }
 }
 
@@ -1613,6 +1659,7 @@ html.janela-aberta {
         transition: none !important;
     }
 
+    .competencia.barra-reiniciada .barra > span,
     .competencia.entrada-pendente .barra > span,
     .competencia:hover,
     .competencia:focus-within,
@@ -1633,53 +1680,38 @@ html.janela-aberta {
     }
 }
 
+/* A pausa conclui as entradas sem esconder conteúdo. */
+
+html.animacoes-pausadas .competencia,
+html.animacoes-pausadas .barra > span {
+    transition: none;
+}
+
+html.animacoes-pausadas .competencia.entrada-pendente {
+    opacity: 1;
+    translate: 0 0;
+}
+
+html.animacoes-pausadas .competencia .barra > span {
+    transform: scaleX(1);
+}
+
+.capa-laboratorio.efeitos-fora,
+.capa-laboratorio.efeitos-fora::before {
+    animation-play-state: paused;
+}
+
 @media print {
-    :root, html[data-theme] {
-        --fundo-principal: #FFFFFF;
-        --fundo-card: #FFFFFF;
-        --fundo-elevado: #F4F4F4;
-        --texto: #222222;
-        --texto-secundario: #444444;
-        --destaque-titulo: #111111;
-        --borda: #BBBBBB;
-        --link: #312E81;
-        --destaque: #312E81;
-        --destaque-inverso: #FFFFFF;
+    html:root .grade-competencias {
+        --card-fundo-inicio: #FFFFFF;
+        --card-fundo-fim: #FFFFFF;
+        --card-borda: #BBBBBB;
+        --barra-trilho: #EEEEEE;
     }
 
-    .cabecalho, .visualizador, .ampliar, .pausar, .pular {
-        display: none !important;
-    }
-
-    .estrutura, .rodape, .pagina-competencias {
-        width: 100%;
-        max-width: none;
-        margin: 0;
-    }
-
-    .inicio {
-        display: block;
-    }
-
-    .perfil {
-        max-width: none;
-        margin-bottom: 26px;
-        box-shadow: none;
-    }
-
-    .competencia.entrada-pendente {
-        opacity: 1;
-        translate: 0 0;
-    }
-
-    .barra > span,
-    .competencia.entrada-pendente .barra > span {
-        animation: none;
-        transform: none;
-        print-color-adjust: exact;
-    }
-
-    article {
-        break-inside: avoid;
+    .competencia-icone {
+        border-color: #777777;
+        background: #FFFFFF;
+        color: #333333;
     }
 }

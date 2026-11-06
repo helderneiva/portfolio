@@ -33,6 +33,9 @@ Não coloque senhas ou credenciais de banco de dados nesse arquivo.
 - estilos/style.css: fontes, base, navegação, componentes e página inicial.
 - estilos/contato.css: redes profissionais e formulário.
 - estilos/competencias.css: página de projetos por competência.
+- estilos/sobre.css: identidade da seção Sobre.
+- estilos/formacao.css: formação e estudos complementares.
+- estilos/impressao.css: apresentação para impressão, carregada com media="print".
 
 melhorias.css foi incorporado aos estilos definitivos e não é mais carregado.
 
@@ -40,11 +43,11 @@ melhorias.css foi incorporado aos estilos definitivos e não é mais carregado.
 
 Mantenha os nomes e caminhos dos arquivos.
 
-Configure o endereço público real em urlPublica.
+O endereço público atual é https://helderneiva.github.io/portfolio/. Se ele mudar, atualize urlPublica e os endereços absolutos de canonical e Open Graph nos dois HTMLs.
 
 Para compartilhamento em redes sociais, acrescente canonical, og:url e og:image diretamente nos HTMLs com os endereços absolutos reais da publicação.
 
-O script oferece metadados dinâmicos como complemento, mas eles não substituem a configuração estática para todos os robôs.
+Os metadados já estão no HTML. A imagem de compartilhamento é imagens/compartilhamento.png (1200 × 630). O JavaScript não injeta metadados duplicados.
 
 ## Recursos locais
 
@@ -57,3 +60,13 @@ Mantenha também os avisos de licença que acompanham as fontes e o Lucide.
 Teste os dois temas, navegação por teclado, pausa das animações, filtro de competências e uma mensagem real do formulário após configurar a chave.
 
 As prévias externas dependem da disponibilidade e das permissões de incorporação do site de destino.
+
+## Movimento
+
+A pausa dos efeitos é salva em portfolio-animacoes-pausadas e compartilhada entre os controles.
+
+Quando pausados, os níveis permanecem preenchidos e legíveis.
+
+A entrada de competências e formação ocorre na primeira aparição; efeitos contínuos são pausados fora da tela.
+
+A preferência por movimento reduzido tem prioridade.

@@ -105,7 +105,7 @@
     color: var(--texto);
 }
 
-.projeto-evidencia[data-tecnologias^="php"] .etiqueta {
+.projeto-evidencia[data-situacao="desenvolvimento"] .etiqueta {
     border-color: var(--aviso);
     background: var(--aviso-fundo);
     color: var(--aviso);
@@ -162,15 +162,5 @@
 
     .projeto-evidencia {
         padding: 22px;
-    }
-}
-
-@media print {
-    .filtros {
-        display: none;
-    }
-
-    .grade-evidencias {
-        grid-template-columns: minmax(0, 1fr);
     }
 }

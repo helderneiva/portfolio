@@ -1,0 +1,554 @@
+@charset "UTF-8";
+
+/* Formação compacta com identidade própria.
+   Carregar após style.css e sobre.css. */
+
+.secao.formacao {
+    --formacao-fundo-1: #F3F7FC;
+    --formacao-fundo-2: #E8F0F9;
+    --formacao-fundo-3: #EFF5FB;
+    --formacao-cabecalho-1: #EAF3FC;
+    --formacao-cabecalho-2: #DDEBFA;
+    --formacao-borda: #6489AE;
+    --formacao-borda-interior: #A7C3DD;
+    --formacao-linha: #3978E8;
+    --formacao-ponto: #B16D1F;
+    --formacao-ambar: #85530D;
+    --formacao-titulo: #14253C;
+    --formacao-texto: #263D58;
+    --formacao-secundario: #435B75;
+    --formacao-trilha: #477DB8;
+    --formacao-halo: #3786E92A;
+    --formacao-sombra: #10233F25;
+
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    margin: 0 0 32px;
+    padding: 0;
+    border: 1px solid var(--formacao-borda);
+    border-radius: 20px;
+    background: linear-gradient(132deg, var(--formacao-fundo-1), var(--formacao-fundo-2) 58%, var(--formacao-fundo-3));
+    color: var(--formacao-texto);
+    box-shadow: 0 26px 46px -22px var(--formacao-sombra), 0 0 26px -12px var(--formacao-halo), inset 0 1px 0 #FFFFFF33;
+    opacity: 1;
+    transition: opacity 520ms ease-out;
+}
+
+html[data-theme="dark"] .secao.formacao {
+    --formacao-fundo-1: #091827;
+    --formacao-fundo-2: #102A46;
+    --formacao-fundo-3: #0C1D32;
+    --formacao-cabecalho-1: #0B2035;
+    --formacao-cabecalho-2: #103556;
+    --formacao-borda: #166AAA;
+    --formacao-borda-interior: #326C9E;
+    --formacao-linha: #3978E8;
+    --formacao-ponto: #DCA15D;
+    --formacao-ambar: #E6B458;
+    --formacao-titulo: #F1F5FA;
+    --formacao-texto: #D6E1EC;
+    --formacao-secundario: #B7C9DD;
+    --formacao-trilha: #2D83D2;
+    --formacao-halo: #167BFF47;
+    --formacao-sombra: #010916D9;
+}
+
+@media (prefers-color-scheme: dark) {
+    html:not([data-theme]) .secao.formacao {
+        --formacao-fundo-1: #091827;
+        --formacao-fundo-2: #102A46;
+        --formacao-fundo-3: #0C1D32;
+        --formacao-cabecalho-1: #0B2035;
+        --formacao-cabecalho-2: #103556;
+        --formacao-borda: #166AAA;
+        --formacao-borda-interior: #326C9E;
+        --formacao-linha: #3978E8;
+        --formacao-ponto: #DCA15D;
+        --formacao-ambar: #E6B458;
+        --formacao-titulo: #F1F5FA;
+        --formacao-texto: #D6E1EC;
+        --formacao-secundario: #B7C9DD;
+        --formacao-trilha: #2D83D2;
+        --formacao-halo: #167BFF47;
+        --formacao-sombra: #010916D9;
+    }
+}
+
+.secao.formacao::before {
+    content: "";
+    position: absolute;
+    inset: -45% -25%;
+    z-index: -1;
+    background: radial-gradient(ellipse at 78% 22%, var(--formacao-halo), transparent 44%);
+    pointer-events: none;
+    animation: formacao-ambiente 25s ease-in-out infinite alternate;
+}
+
+.secao.formacao::after {
+    content: "";
+    position: absolute;
+    top: -1px;
+    left: 18%;
+    width: 44%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #54ABF4, transparent);
+    box-shadow: 0 0 12px 2px var(--formacao-halo);
+    pointer-events: none;
+}
+
+.formacao .formacao-cabecalho {
+    position: relative;
+    display: grid;
+    grid-template-columns: 66px minmax(0, 1fr) minmax(142px, 196px);
+    align-items: center;
+    gap: 18px;
+    min-height: 158px;
+    padding: 20px 28px;
+    overflow: hidden;
+    border-bottom: 1px solid var(--formacao-borda-interior);
+    background: linear-gradient(110deg, var(--formacao-cabecalho-1), var(--formacao-cabecalho-2));
+}
+
+.formacao .formacao-cabecalho::before {
+    content: "";
+    position: absolute;
+    inset: -40% -15%;
+    background: radial-gradient(ellipse at 85% 50%, var(--formacao-halo), transparent 55%);
+    pointer-events: none;
+    animation: formacao-ambiente 25s ease-in-out infinite alternate;
+}
+
+.formacao .formacao-cabecalho::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--formacao-linha), #46B4F2, transparent);
+    opacity: 0.75;
+    pointer-events: none;
+}
+
+.formacao .formacao-selo {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    place-items: center;
+    width: 66px;
+    height: 66px;
+    border: 1px solid #C89243;
+    border-radius: 15px;
+    background: linear-gradient(145deg, #42331E24, #DCA15D18);
+    box-shadow: inset 0 1px 0 #FFFFFF20, 0 8px 22px #06152224;
+    color: var(--formacao-ambar);
+}
+
+.formacao .formacao-selo .icone {
+    width: 36px;
+    height: 36px;
+    stroke-width: 1.7;
+}
+
+.formacao .formacao-apresentacao {
+    position: relative;
+    z-index: 1;
+    min-width: 0;
+}
+
+.formacao .formacao-apresentacao .marcador {
+    color: var(--formacao-ambar);
+}
+
+.formacao .formacao-apresentacao h2 {
+    margin-top: 7px;
+    color: var(--formacao-titulo);
+    font-size: 1.85em;
+    line-height: 1.17;
+    letter-spacing: -1.1px;
+    text-wrap: balance;
+}
+
+.formacao .formacao-apresentacao > p:last-child {
+    max-width: 660px;
+    margin-top: 7px;
+    color: var(--formacao-texto);
+    font-size: 0.91em;
+    line-height: 1.6;
+}
+
+.formacao .formacao-emblema {
+    position: relative;
+    display: grid;
+    place-items: center;
+    justify-self: end;
+    width: 196px;
+    height: 132px;
+}
+
+.formacao .formacao-circuito {
+    position: absolute;
+    top: -9px;
+    right: -7px;
+    width: 240px;
+    height: 145px;
+    color: var(--formacao-trilha);
+    opacity: 0.22;
+    pointer-events: none;
+}
+
+.formacao .formacao-insignia {
+    position: relative;
+    z-index: 1;
+    width: 170px;
+    aspect-ratio: 233 / 171;
+    filter: drop-shadow(0 0 8px #DCA15D30);
+}
+
+.formacao .formacao-insignia img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.formacao .formacao-insignia::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(110deg, transparent 38%, #FFF4CD00 44%, #FFF4CDEB 50%, #FFF4CD00 56%, transparent 62%);
+    background-size: 300% 100%;
+    background-position: 100% 0;
+    -webkit-mask: url("../imagens/insignia-formacao.png") center / contain no-repeat;
+    mask: url("../imagens/insignia-formacao.png") center / contain no-repeat;
+    pointer-events: none;
+    animation: formacao-metal 7s linear infinite;
+}
+
+.formacao .cursos {
+    display: grid;
+    gap: 0;
+    margin: 0;
+    padding: 14px 32px 19px 56px;
+}
+
+.formacao .curso {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(170px, 245px) minmax(0, 1fr);
+    gap: 20px;
+    min-width: 0;
+    margin: 0;
+    padding: 9px 0 13px 24px;
+    border-left: 2px solid var(--formacao-linha);
+}
+
+.formacao .curso:last-child {
+    padding-bottom: 8px;
+}
+
+.formacao .curso::before {
+    content: "";
+    position: absolute;
+    top: 16px;
+    left: -8px;
+    z-index: 1;
+    width: 14px;
+    height: 14px;
+    border: 2px solid var(--formacao-fundo-1);
+    border-radius: 50%;
+    background: var(--formacao-ponto);
+    box-shadow: 0 0 0 4px #DCA15D17, 0 0 15px #DCA15D60;
+    animation: formacao-ponto 7s ease-in-out infinite;
+}
+
+.formacao .curso::after {
+    content: "";
+    position: absolute;
+    top: 24px;
+    left: 7px;
+    width: 15px;
+    height: 1px;
+    background: var(--formacao-linha);
+    opacity: 0.45;
+}
+
+.formacao .curso:nth-child(2)::before {
+    animation-delay: 1.4s;
+}
+
+.formacao .curso:nth-child(3)::before {
+    animation-delay: 2.8s;
+}
+
+.formacao .periodo {
+    align-self: start;
+    padding-top: 2px;
+    color: var(--formacao-ambar);
+    font: 500 0.8125em/1.6 var(--mono);
+    letter-spacing: 0.15px;
+}
+
+.formacao .curso-conteudo {
+    min-width: 0;
+}
+
+.formacao .curso h3 {
+    color: var(--formacao-titulo);
+    font-size: 1.07em;
+    line-height: 1.3;
+    letter-spacing: -0.25px;
+}
+
+.formacao .curso p {
+    margin-top: 3px;
+    color: var(--formacao-secundario);
+    font-size: 0.87em;
+    line-height: 1.6;
+}
+
+.formacao .curso-graduacao h3 {
+    font-size: 1.21em;
+}
+
+.formacao .curso .etiqueta {
+    display: inline-flex;
+    align-items: center;
+    width: fit-content;
+    max-width: 100%;
+    margin-top: 6px;
+    padding: 3px 9px;
+    border: 1px solid #DCA15D70;
+    border-radius: 20px;
+    background: #DCA15D12;
+    color: var(--formacao-ambar);
+    font-size: 0.77em;
+    font-weight: 650;
+    line-height: 1.5;
+}
+
+.formacao .curso .formacao-previsao {
+    margin-top: 4px;
+    color: var(--formacao-secundario);
+    font-size: 0.84em;
+}
+
+.formacao .formacao-previsao time {
+    color: var(--formacao-texto);
+    font-weight: 700;
+}
+
+@keyframes formacao-ambiente {
+    from {
+        transform: translate3d(-2%, 0, 0);
+    }
+
+    to {
+        transform: translate3d(2%, -1%, 0);
+    }
+}
+
+@keyframes formacao-metal {
+    0%, 8% {
+        background-position: 100% 0;
+    }
+
+    23%, 100% {
+        background-position: 0% 0;
+    }
+}
+
+@keyframes formacao-ponto {
+    0%, 15%, 35%, 100% {
+        box-shadow: 0 0 0 4px #DCA15D17, 0 0 11px #DCA15D48;
+    }
+
+    23% {
+        box-shadow: 0 0 0 5px #DCA15D26, 0 0 18px #DCA15D80;
+    }
+}
+
+html.animacoes-pausadas .formacao,
+html.animacoes-pausadas .formacao::before,
+html.animacoes-pausadas .formacao-cabecalho::before,
+html.animacoes-pausadas .formacao-insignia::after,
+html.animacoes-pausadas .formacao .curso::before {
+    animation-play-state: paused;
+}
+
+@media (max-width: 1050px) {
+    .formacao .formacao-cabecalho {
+        grid-template-columns: 60px minmax(0, 1fr) 150px;
+        gap: 15px;
+        padding: 18px 22px;
+    }
+
+    .formacao .formacao-selo {
+        width: 60px;
+        height: 60px;
+    }
+
+    .formacao .formacao-emblema {
+        width: 150px;
+        height: 108px;
+    }
+
+    .formacao .formacao-insignia {
+        width: 144px;
+    }
+
+    .formacao .curso {
+        grid-template-columns: minmax(140px, 200px) minmax(0, 1fr);
+    }
+}
+
+@media (max-width: 720px) {
+    .secao.formacao {
+        margin: 0 0 24px;
+        border-radius: 16px;
+    }
+
+    .formacao .formacao-cabecalho {
+        grid-template-columns: 54px minmax(0, 1fr);
+        gap: 12px;
+        min-height: 0;
+        padding: 18px;
+    }
+
+    .formacao .formacao-selo {
+        width: 54px;
+        height: 54px;
+        border-radius: 13px;
+    }
+
+    .formacao .formacao-selo .icone {
+        width: 30px;
+        height: 30px;
+    }
+
+    .formacao .formacao-apresentacao h2 {
+        font-size: 1.55em;
+    }
+
+    .formacao .formacao-apresentacao > p:last-child {
+        font-size: 0.88em;
+    }
+
+    .formacao .formacao-emblema {
+        grid-column: 1 / -1;
+        justify-self: center;
+        width: 150px;
+        height: 95px;
+    }
+
+    .formacao .formacao-insignia {
+        width: 136px;
+    }
+
+    .formacao .formacao-circuito {
+        right: -60px;
+        top: -22px;
+        opacity: 0.13;
+    }
+
+    .formacao .cursos {
+        padding: 13px 18px 18px 30px;
+    }
+
+    .formacao .curso {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 4px;
+        padding: 9px 0 13px 20px;
+    }
+
+    .formacao .curso:last-child {
+        padding-bottom: 5px;
+    }
+
+    .formacao .curso::before {
+        top: 16px;
+    }
+
+    .formacao .curso::after {
+        top: 24px;
+    }
+
+    .formacao .periodo {
+        font-size: 0.8125em;
+    }
+
+    .formacao .curso-graduacao h3 {
+        font-size: 1.16em;
+    }
+}
+
+@media (max-width: 390px) {
+    .formacao .formacao-cabecalho {
+        grid-template-columns: 48px minmax(0, 1fr);
+        padding: 16px 13px;
+    }
+
+    .formacao .formacao-selo {
+        width: 48px;
+        height: 48px;
+    }
+
+    .formacao .formacao-apresentacao h2 {
+        font-size: 1.45em;
+    }
+
+    .formacao .formacao-emblema {
+        grid-column: 1 / -1;
+    }
+
+    .formacao .cursos {
+        padding-right: 12px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .secao.formacao,
+    .secao.formacao::before,
+    .formacao .formacao-cabecalho::before,
+    .formacao .formacao-insignia::after,
+    .formacao .curso::before {
+        animation: none !important;
+    }
+
+    .secao.formacao {
+        opacity: 1;
+        transform: none;
+    }
+
+    .formacao .formacao-insignia::after {
+        opacity: 0;
+    }
+}
+
+.formacao.entrada-pendente {
+    opacity: 0;
+}
+
+.formacao.entrada-pendente:focus,
+.formacao.entrada-pendente:focus-within,
+html.animacoes-pausadas .formacao.entrada-pendente {
+    opacity: 1;
+}
+
+html.animacoes-pausadas .formacao {
+    transition: none;
+}
+
+.formacao.efeitos-fora::before,
+.formacao.efeitos-fora .formacao-cabecalho::before,
+.formacao.efeitos-fora .formacao-insignia::after,
+.formacao.efeitos-fora .curso::before {
+    animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .formacao.entrada-pendente {
+        opacity: 1;
+    }
+}

@@ -15,16 +15,21 @@
     }
 
     try {
-        temaManual = ['light', 'dark'].includes(localStorage.getItem('portfolio-tema'));
+        temaManual = ['light', 'dark'].includes(
+            localStorage.getItem('portfolio-tema')
+        );
     } catch {
-        // O tema também funciona sem armazenamento disponível.
+        // O tema funciona sem armazenamento.
     }
 
     function atualizarTema() {
         const escuro = raiz.dataset.theme === 'dark';
 
         botaoTema.setAttribute('aria-pressed', String(escuro));
-        botaoTema.setAttribute('aria-label', escuro ? 'Ativar tema claro' : 'Ativar tema escuro');
+        botaoTema.setAttribute(
+            'aria-label',
+            escuro ? 'Ativar tema claro' : 'Ativar tema escuro'
+        );
 
         const desenho = window.lucide?.icons[escuro ? 'Sun' : 'Moon'];
 
@@ -50,21 +55,20 @@
         try {
             localStorage.setItem('portfolio-tema', raiz.dataset.theme);
         } catch {
-            // Preferência aplicada apenas nesta página.
+            // Preferência aplicada nesta página.
         }
     });
 
-    sistema.addEventListener('change', (evento) => {
+    sistema.addEventListener('change', evento => {
         if (temaManual) {
             return;
         }
 
         raiz.dataset.theme = evento.matches ? 'dark' : 'light';
-
         atualizarTema();
     });
 
-    window.addEventListener('storage', (evento) => {
+    window.addEventListener('storage', evento => {
         if (evento.key !== 'portfolio-tema' && evento.key !== null) {
             return;
         }
@@ -75,7 +79,9 @@
         })[evento.newValue] || evento.newValue;
 
         temaManual = ['light', 'dark'].includes(valor);
-        raiz.dataset.theme = temaManual ? valor : (sistema.matches ? 'dark' : 'light');
+        raiz.dataset.theme = temaManual
+            ? valor
+            : (sistema.matches ? 'dark' : 'light');
 
         atualizarTema();
     });
@@ -92,7 +98,10 @@
                 return null;
             }
 
-            if (/^https:\/\//i.test(valor.trim()) && url.protocol === 'https:') {
+            if (
+                /^https:\/\//i.test(valor.trim()) &&
+                url.protocol === 'https:'
+            ) {
                 return url.href;
             }
 
@@ -111,7 +120,7 @@
         return null;
     }
 
-    document.querySelectorAll('[data-link]').forEach((link) => {
+    document.querySelectorAll('[data-link]').forEach(link => {
         const chave = link.dataset.link;
         let url;
 
@@ -122,12 +131,18 @@
                 ? `mailto:${email}`
                 : null;
         } else {
-            url = enderecoSeguro(configuracao[chave], chave === 'curriculo');
+            url = enderecoSeguro(
+                configuracao[chave],
+                chave === 'curriculo'
+            );
 
             if (url && chave === 'linkedin') {
                 const host = new URL(url).hostname;
 
-                if (host !== 'linkedin.com' && !host.endsWith('.linkedin.com')) {
+                if (
+                    host !== 'linkedin.com' &&
+                    !host.endsWith('.linkedin.com')
+                ) {
                     url = null;
                 }
             }
@@ -143,48 +158,25 @@
         if (chave !== 'email') {
             link.target = '_blank';
             link.rel = 'noopener noreferrer';
-            link.setAttribute('aria-label', `${link.textContent.trim()}: abre em nova aba`);
+            link.setAttribute(
+                'aria-label',
+                `${link.textContent.trim()}: abre em nova aba`
+            );
         }
 
-        document.querySelectorAll(`[data-pendente="${chave}"]`).forEach((elemento) => {
+        document.querySelectorAll(
+            `[data-pendente="${chave}"]`
+        ).forEach(elemento => {
             elemento.hidden = true;
         });
     });
 
-    const publico = enderecoSeguro(configuracao.urlPublica);
-
-    if (publico) {
-        const basePublica = `${publico.replace(/\/$/, '')}/`;
-        const base = location.pathname.endsWith('/competencias.html')
-            ? new URL('competencias.html', basePublica).href
-            : basePublica;
-
-        const canonical = document.createElement('link');
-
-        canonical.rel = 'canonical';
-        canonical.href = base;
-
-        document.head.append(canonical);
-
-        const metadados = [
-            ['og:url', base],
-            ['og:image', new URL('imagens/foto-perfil.jpeg', base).href]
-        ];
-
-        for (const [propriedade, conteudo] of metadados) {
-            const meta = document.createElement('meta');
-
-            meta.setAttribute('property', propriedade);
-            meta.content = conteudo;
-
-            document.head.append(meta);
-        }
-    }
-
     const cabecalho = document.querySelector('.cabecalho');
 
     function medirCabecalho() {
-        const altura = Math.ceil(cabecalho.getBoundingClientRect().height);
+        const altura = Math.ceil(
+            cabecalho.getBoundingClientRect().height
+        );
 
         raiz.style.setProperty('--altura-menu', `${altura}px`);
     }
@@ -202,10 +194,18 @@
     const indicador = document.getElementById('indicador-menu');
 
     function moverIndicador() {
-        const ativo = links.find((link) => link.hasAttribute('aria-current'));
+        const ativo = links.find(link => {
+            return link.hasAttribute('aria-current');
+        });
 
         if (!ativo || !baseMenu || !indicador) {
             return;
+        }
+
+        const rotulo = document.getElementById('secao-menu');
+
+        if (rotulo) {
+            rotulo.textContent = ativo.getAttribute('aria-label') || '';
         }
 
         const base = baseMenu.getBoundingClientRect();
@@ -213,13 +213,16 @@
         const recuo = parseFloat(getComputedStyle(indicador).left) || 0;
 
         indicador.style.width = `${item.width}px`;
-        indicador.style.transform = `translateX(${item.left - base.left - recuo}px)`;
+        indicador.style.transform =
+            `translateX(${item.left - base.left - recuo}px)`;
 
         baseMenu.classList.add('menu-pronto');
     }
 
-    document.querySelectorAll('.item-menu, .rede-icone').forEach((elemento) => {
-        elemento.addEventListener('keydown', (evento) => {
+    document.querySelectorAll(
+        '.item-menu, .rede-icone'
+    ).forEach(elemento => {
+        elemento.addEventListener('keydown', evento => {
             if (evento.key === 'Escape') {
                 elemento.classList.add('dica-fechada');
             }
@@ -235,15 +238,15 @@
     });
 
     const secoes = links
-        .map((link) => document.getElementById(link.hash.slice(1)))
+        .map(link => document.getElementById(link.hash.slice(1)))
         .filter(Boolean);
 
     let quadro = null;
     let secaoEmTransicao = null;
-    let fimRolagem = null;
+    let animacaoRolagem = null;
 
     function marcarSecao(atual) {
-        links.forEach((link) => {
+        links.forEach(link => {
             if (link.hash === `#${atual.id}`) {
                 link.setAttribute('aria-current', 'location');
             } else {
@@ -264,16 +267,29 @@
 
         if (secoes.length) {
             const alturaMenu = cabecalho.getBoundingClientRect().height;
-            const limite = alturaMenu + (window.innerHeight - alturaMenu) / 2;
-            let atual = secoes[0];
 
-            secoes.forEach((secao) => {
-                if (secao.getBoundingClientRect().top <= limite) {
+            let atual = secoes[0];
+            let maiorAreaVisivel = 0;
+
+            secoes.forEach(secao => {
+                const retangulo = secao.getBoundingClientRect();
+
+                const areaVisivel = Math.max(
+                    0,
+                    Math.min(retangulo.bottom, window.innerHeight) -
+                    Math.max(retangulo.top, alturaMenu)
+                );
+
+                if (areaVisivel > maiorAreaVisivel) {
+                    maiorAreaVisivel = areaVisivel;
                     atual = secao;
                 }
             });
 
-            if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4) {
+            if (
+                window.innerHeight + window.scrollY >=
+                document.documentElement.scrollHeight - 4
+            ) {
                 atual = secoes[secoes.length - 1];
             }
 
@@ -289,54 +305,111 @@
         }
     }
 
-    function concluirRolagem() {
-        clearTimeout(fimRolagem);
+    function deslocamentoParaSecao(alvo) {
+        const alturaCabecalho = cabecalho.getBoundingClientRect().height;
+        const estilo = getComputedStyle(alvo);
+
+        const painel = alvo.matches(
+            '.sobre, .formacao, .contato, .projeto-destaque'
+        );
+
+        const recuo = painel
+            ? 0
+            : (parseFloat(estilo.paddingTop) || 0) +
+              (parseFloat(estilo.borderTopWidth) || 0);
+
+        return (
+            alvo.getBoundingClientRect().top +
+            recuo -
+            alturaCabecalho -
+            16
+        );
+    }
+
+    function cancelarRolagem() {
+        cancelAnimationFrame(animacaoRolagem);
+        animacaoRolagem = null;
         secaoEmTransicao = null;
         agendarNavegacao();
     }
 
     function posicionarSecao(alvo, suave = true) {
-        const caixa = alvo.getBoundingClientRect();
-        const estilo = getComputedStyle(alvo);
-        const inicio = (parseFloat(estilo.paddingTop) || 0) + (parseFloat(estilo.borderTopWidth) || 0);
-        const final = (parseFloat(estilo.paddingBottom) || 0) + (parseFloat(estilo.borderBottomWidth) || 0);
-        const alturaConteudo = Math.max(0, caixa.height - inicio - final);
-        const alturaMenu = cabecalho.getBoundingClientRect().height;
-        const alturaLivre = Math.max(0, window.innerHeight - alturaMenu);
+        cancelarRolagem();
 
-        const respiro = alturaConteudo <= alturaLivre - 40
-            ? (alturaLivre - alturaConteudo) / 2
-            : 20;
+        const inicio = window.scrollY;
+        const limite = Math.max(
+            0,
+            raiz.scrollHeight - window.innerHeight
+        );
 
-        const destino = window.scrollY + caixa.top + inicio - alturaMenu - respiro;
-        const maximo = Math.max(0, raiz.scrollHeight - window.innerHeight);
+        const destino = Math.max(
+            0,
+            Math.min(inicio + deslocamentoParaSecao(alvo), limite)
+        );
 
-        clearTimeout(fimRolagem);
+        const distancia = destino - inicio;
+        const duracao = suave && !reduzirMovimento.matches ? 480 : 0;
+        const instanteInicial = performance.now();
+
         secaoEmTransicao = secoes.includes(alvo) ? alvo : null;
 
         if (secaoEmTransicao) {
             marcarSecao(secaoEmTransicao);
         }
 
-        window.scrollTo({
-            top: Math.max(0, Math.min(destino, maximo)),
-            behavior: suave && !reduzirMovimento.matches ? 'smooth' : 'instant'
-        });
+        function rolar(instante) {
+            const progresso = duracao
+                ? Math.min(1, (instante - instanteInicial) / duracao)
+                : 1;
 
-        fimRolagem = setTimeout(concluirRolagem, 1200);
+            const suavidade = 1 - Math.pow(1 - progresso, 3);
+
+            window.scrollTo({
+                top: inicio + distancia * suavidade,
+                behavior: 'instant'
+            });
+
+            if (progresso < 1) {
+                animacaoRolagem = requestAnimationFrame(rolar);
+                return;
+            }
+
+            const ajuste = deslocamentoParaSecao(alvo);
+
+            const fim = Math.max(
+                0,
+                Math.min(
+                    window.scrollY + ajuste,
+                    Math.max(0, raiz.scrollHeight - window.innerHeight)
+                )
+            );
+
+            window.scrollTo({
+                top: fim,
+                behavior: 'instant'
+            });
+
+            animacaoRolagem = null;
+            secaoEmTransicao = null;
+            agendarNavegacao();
+        }
+
+        animacaoRolagem = requestAnimationFrame(rolar);
     }
 
     function alvoDoHash(hash) {
         try {
             return hash.length > 1
-                ? document.getElementById(decodeURIComponent(hash.slice(1)))
+                ? document.getElementById(
+                    decodeURIComponent(hash.slice(1))
+                )
                 : null;
         } catch {
             return null;
         }
     }
 
-    document.addEventListener('click', (evento) => {
+    document.addEventListener('click', evento => {
         if (
             evento.defaultPrevented ||
             evento.button !== 0 ||
@@ -350,7 +423,11 @@
 
         const link = evento.target.closest('a[href]');
 
-        if (!link || link.hasAttribute('download') || (link.target && link.target !== '_self')) {
+        if (
+            !link ||
+            link.hasAttribute('download') ||
+            (link.target && link.target !== '_self')
+        ) {
             return;
         }
 
@@ -384,23 +461,37 @@
         posicionarSecao(alvo);
     });
 
-    window.addEventListener('scroll', () => {
-        agendarNavegacao();
+    window.addEventListener(
+        'scroll',
+        agendarNavegacao,
+        { passive: true }
+    );
 
-        if (secaoEmTransicao) {
-            clearTimeout(fimRolagem);
-            fimRolagem = setTimeout(concluirRolagem, 180);
-        }
-    }, { passive: true });
+    window.addEventListener(
+        'wheel',
+        cancelarRolagem,
+        { passive: true }
+    );
 
-    window.addEventListener('wheel', concluirRolagem, { passive: true });
-    window.addEventListener('touchstart', concluirRolagem, { passive: true });
+    window.addEventListener(
+        'touchstart',
+        cancelarRolagem,
+        { passive: true }
+    );
 
-    window.addEventListener('keydown', (evento) => {
-        const teclas = ['ArrowDown', 'ArrowUp', 'PageDown', 'PageUp', 'Home', 'End', ' '];
+    window.addEventListener('keydown', evento => {
+        const teclas = [
+            'ArrowDown',
+            'ArrowUp',
+            'PageDown',
+            'PageUp',
+            'Home',
+            'End',
+            ' '
+        ];
 
         if (teclas.includes(evento.key)) {
-            concluirRolagem();
+            cancelarRolagem();
         }
     });
 
@@ -423,7 +514,7 @@
 
         observadorMenu.observe(baseMenu);
 
-        links.forEach((link) => {
+        links.forEach(link => {
             observadorMenu.observe(link);
         });
     }
@@ -437,138 +528,245 @@
 
     const competencias = document.getElementById('competencias');
     const pausar = document.getElementById('pausar-animacoes');
-    const gradeLaboratorios = document.querySelector('#laboratorios .grade-laboratorios');
     const gradeCompetencias = competencias?.querySelector('.grade-competencias');
-    const cartoes = [...(gradeCompetencias?.querySelectorAll('.competencia') || [])];
 
-    const desenhosTecnologias = {
-        html: '<path d="M9 3h15l9 9v23a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Z"/><path d="M24 3v9h9M16 22l-4 4 4 4m10-8 4 4-4 4m-4-10-3 12"/>',
-        css: '<path d="M5 3h30l-3 31-12 4-12-4Z"/><path d="M12 11h17l-1 6-10 5h9l-1 7-6 2-6-2-.5-4"/>',
-        javascript: '<rect x="4" y="4" width="32" height="32" rx="4"/><text class="marca-texto" x="20" y="26" text-anchor="middle">JS</text>',
-        php: '<ellipse cx="20" cy="20" rx="18" ry="11"/><text class="marca-texto marca-php" x="20" y="24" text-anchor="middle">php</text>',
-        'node-sql': '<path d="m20 2 16 9v18L20 38 4 29V11Z"/><text class="marca-texto" x="20" y="26" text-anchor="middle">JS</text>',
-        git: '<path d="m20 2 18 18-18 18L2 20Z"/><path d="M14 11v14m0-9 12 8"/><circle cx="14" cy="10" r="2.5"/><circle cx="14" cy="27" r="2.5"/><circle cx="27" cy="25" r="2.5"/>'
+    const cartoes = [
+        ...(gradeCompetencias?.querySelectorAll('.competencia') || [])
+    ];
+
+    const iconesTecnologias = {
+        html: 'CodeXml',
+        css: 'Palette',
+        javascript: 'Braces',
+        php: 'Server',
+        'node-sql': 'Database',
+        git: 'GitBranch'
     };
 
-    function criarIcone(conteudo, tamanho = '0 0 40 40') {
-        const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    cartoes.forEach(cartao => {
+        const desenho = window.lucide?.icons[
+            iconesTecnologias[cartao.dataset.tecnologia]
+        ];
 
-        svg.setAttribute('viewBox', tamanho);
-        svg.setAttribute('class', 'icone');
-        svg.setAttribute('aria-hidden', 'true');
-        svg.setAttribute('focusable', 'false');
-
-        // Conteúdo fixo e local, definido neste arquivo.
-        svg.innerHTML = conteudo;
-
-        return svg;
-    }
-
-    cartoes.forEach((cartao) => {
-        const desenho = desenhosTecnologias[cartao.dataset.tecnologia];
-        const icone = cartao.querySelector('.competencia-titulo > .icone');
+        const icone = cartao.querySelector(
+            '.competencia-titulo > .icone'
+        );
 
         if (desenho && icone) {
-            icone.replaceWith(criarIcone(desenho));
+            const moldura = document.createElement('span');
+
+            moldura.className = 'competencia-icone';
+            moldura.setAttribute('aria-hidden', 'true');
+
+            moldura.append(
+                window.lucide.createElement(desenho, {
+                    class: 'icone',
+                    'aria-hidden': 'true',
+                    focusable: 'false'
+                })
+            );
+
+            icone.replaceWith(moldura);
         }
 
         const seta = cartao.querySelector('.ver-projetos > span');
 
-        if (seta) {
+        if (seta && window.lucide?.icons.ExternalLink) {
             seta.replaceWith(
-                criarIcone(
-                    '<path d="M15 3h6v6m0-6-10 10"/><path d="M10 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-5"/>',
-                    '0 0 24 24'
+                window.lucide.createElement(
+                    window.lucide.icons.ExternalLink,
+                    {
+                        class: 'icone',
+                        'aria-hidden': 'true',
+                        focusable: 'false'
+                    }
                 )
             );
         }
     });
 
-    if (pausar && gradeLaboratorios) {
-        gradeLaboratorios.insertAdjacentElement('afterend', pausar);
-        pausar.setAttribute('aria-label', 'Pausar animações das capas e das barras de competências');
+    const botoesMovimento = [pausar].filter(Boolean);
+    const formacao = document.getElementById('formacao');
+    const entradasVisuais = [...cartoes, formacao].filter(Boolean);
+
+    const efeitosVisuais = [
+        ...entradasVisuais,
+        ...document.querySelectorAll('.capa-laboratorio')
+    ];
+
+    const chaveMovimento = 'portfolio-animacoes-pausadas';
+    const visibilidadeCartoes = new Map();
+
+    let efeitosPausados = false;
+
+    try {
+        efeitosPausados = localStorage.getItem(chaveMovimento) === 'true';
+    } catch {
+        // A pausa funciona sem armazenamento.
     }
 
-    let controleCompetencias = document.getElementById('pausar-competencias');
+    function atualizarBarra(cartao, visivel) {
+        const ativo = visivel && !document.hidden;
+        const semEfeitos = efeitosPausados || reduzirMovimento.matches;
 
-    if (gradeCompetencias && !controleCompetencias) {
-        controleCompetencias = document.createElement('button');
-        controleCompetencias.id = 'pausar-competencias';
-        controleCompetencias.className = 'pausar';
-        controleCompetencias.type = 'button';
+        cartao.classList.toggle(
+            'barra-reiniciada',
+            !ativo && !semEfeitos
+        );
 
-        gradeCompetencias.insertAdjacentElement('afterend', controleCompetencias);
+        cartao.classList.toggle('efeitos-fora', !ativo);
     }
 
-    const botoesMovimento = [pausar, controleCompetencias].filter(Boolean);
+    function restaurarBarras() {
+        cartoes.forEach(cartao => {
+            const retangulo = cartao.getBoundingClientRect();
 
-    if (competencias && botoesMovimento.length) {
-        let efeitosPausados = false;
+            const visivel =
+                retangulo.bottom > cabecalho.getBoundingClientRect().bottom &&
+                retangulo.top < window.innerHeight;
 
-        function atualizarMovimento() {
-            const pausado = efeitosPausados || reduzirMovimento.matches;
+            visibilidadeCartoes.set(cartao, visivel);
+            atualizarBarra(cartao, visivel);
+        });
+    }
 
-            competencias.classList.remove('aguardando');
+    function atualizarMovimento() {
+        const pausado = efeitosPausados || reduzirMovimento.matches;
 
-            if (reduzirMovimento.matches) {
-                cartoes.forEach((cartao) => {
-                    cartao.classList.remove('entrada-pendente');
-                });
-            }
+        raiz.classList.toggle('animacoes-pausadas', pausado);
 
-            raiz.classList.toggle('animacoes-pausadas', pausado);
-
-            botoesMovimento.forEach((botao) => {
-                botao.hidden = reduzirMovimento.matches;
-                botao.setAttribute('aria-pressed', String(efeitosPausados));
-                botao.textContent = efeitosPausados ? 'Retomar animações' : 'Pausar animações';
-                botao.setAttribute('aria-label', `${efeitosPausados ? 'Retomar' : 'Pausar'} animações das capas e das barras de competências`);
-            });
-        }
-
-        botoesMovimento.forEach((botao) => {
-            botao.addEventListener('click', () => {
-                efeitosPausados = !efeitosPausados;
-
-                atualizarMovimento();
-            });
+        cartoes.forEach(cartao => {
+            atualizarBarra(
+                cartao,
+                visibilidadeCartoes.get(cartao) || false
+            );
         });
 
-        reduzirMovimento.addEventListener('change', atualizarMovimento);
-
-        atualizarMovimento();
-
-        if ('IntersectionObserver' in window) {
-            cartoes.forEach((cartao, indice) => {
-                cartao.style.setProperty('--atraso', `${(indice % 3) * 90}ms`);
-                cartao.classList.add('efeitos-fora');
-
-                if (!reduzirMovimento.matches) {
-                    cartao.classList.add('entrada-pendente');
-                }
-            });
-
-            const observador = new IntersectionObserver((entradas) => {
-                entradas.forEach((entrada) => {
-                    entrada.target.classList.toggle('efeitos-fora', !entrada.isIntersecting);
-
-                    if (entrada.isIntersecting) {
-                        entrada.target.classList.remove('entrada-pendente');
-                    }
-                });
-            }, {
-                threshold: 0.08
-            });
-
-            requestAnimationFrame(() => {
-                requestAnimationFrame(() => {
-                    cartoes.forEach((cartao) => {
-                        observador.observe(cartao);
-                    });
-                });
+        if (pausado) {
+            entradasVisuais.forEach(elemento => {
+                elemento.classList.remove('entrada-pendente');
             });
         }
+
+        botoesMovimento.forEach(botao => {
+            botao.hidden = reduzirMovimento.matches;
+            botao.setAttribute('aria-pressed', String(efeitosPausados));
+
+            botao.textContent = efeitosPausados
+                ? 'Retomar animações'
+                : 'Pausar animações';
+
+            botao.setAttribute(
+                'aria-label',
+                efeitosPausados
+                    ? 'Retomar animações do portfólio'
+                    : 'Pausar animações do portfólio'
+            );
+        });
     }
+
+    botoesMovimento.forEach(botao => {
+        botao.addEventListener('click', () => {
+            efeitosPausados = !efeitosPausados;
+            atualizarMovimento();
+
+            try {
+                localStorage.setItem(
+                    chaveMovimento,
+                    String(efeitosPausados)
+                );
+            } catch {
+                // Preferência aplicada nesta página.
+            }
+        });
+    });
+
+    reduzirMovimento.addEventListener('change', atualizarMovimento);
+
+    window.addEventListener('storage', evento => {
+        if (evento.key === chaveMovimento || evento.key === null) {
+            efeitosPausados = evento.newValue === 'true';
+            atualizarMovimento();
+        }
+    });
+
+    atualizarMovimento();
+
+    if ('IntersectionObserver' in window) {
+        entradasVisuais.forEach((elemento, indice) => {
+            elemento.style.setProperty(
+                '--atraso',
+                `${elemento === formacao ? 0 : (indice % 3) * 90}ms`
+            );
+
+            if (!efeitosPausados && !reduzirMovimento.matches) {
+                elemento.classList.add('entrada-pendente');
+
+                if (cartoes.includes(elemento)) {
+                    elemento.classList.add('barra-reiniciada');
+                }
+            }
+        });
+
+        const observador = new IntersectionObserver(entradas => {
+            entradas.forEach(entrada => {
+                entrada.target.classList.toggle(
+                    'efeitos-fora',
+                    !entrada.isIntersecting
+                );
+
+                if (cartoes.includes(entrada.target)) {
+                    visibilidadeCartoes.set(
+                        entrada.target,
+                        entrada.isIntersecting
+                    );
+
+                    atualizarBarra(
+                        entrada.target,
+                        entrada.isIntersecting
+                    );
+                }
+
+                if (entrada.isIntersecting) {
+                    entrada.target.classList.remove('entrada-pendente');
+                }
+            });
+        }, {
+            threshold: 0.08
+        });
+
+        requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+                efeitosVisuais.forEach(elemento => {
+                    observador.observe(elemento);
+                });
+            });
+        });
+    }
+
+    document.addEventListener('visibilitychange', () => {
+        if (document.hidden) {
+            cartoes.forEach(cartao => {
+                atualizarBarra(cartao, false);
+            });
+        } else {
+            requestAnimationFrame(() => {
+                requestAnimationFrame(restaurarBarras);
+            });
+        }
+    });
+
+    window.addEventListener('pagehide', () => {
+        cartoes.forEach(cartao => {
+            atualizarBarra(cartao, false);
+        });
+    });
+
+    window.addEventListener('pageshow', () => {
+        requestAnimationFrame(() => {
+            requestAnimationFrame(restaurarBarras);
+        });
+    });
 
     const janela = document.getElementById('visualizador');
     const iframe = document.getElementById('iframe-previa');
@@ -594,7 +792,6 @@
             }
 
             limparTemporizador();
-
             estado.hidden = true;
         }
 
@@ -612,21 +809,25 @@
             }
 
             limparTemporizador();
-
             estado.hidden = false;
-            estado.textContent = 'Não foi possível carregar a visualização. Utilize a opção de abrir em nova aba.';
+            estado.textContent =
+                'Não foi possível carregar a visualização. Utilize a opção de abrir em nova aba.';
         }
 
         imagem.addEventListener('error', falhaCarregamento);
 
-        document.querySelectorAll('[data-previa]').forEach((botao) => {
+        document.querySelectorAll('[data-previa]').forEach(botao => {
             botao.addEventListener('click', () => {
                 const foto = botao.dataset.previa === 'foto';
                 const laboratorio = botao.dataset.previa === 'laboratorio';
 
                 const url = foto
                     ? document.getElementById('foto-perfil').src
-                    : enderecoSeguro(laboratorio ? configuracao.laboratorioJavaScript : botao.dataset.url);
+                    : enderecoSeguro(
+                        laboratorio
+                            ? configuracao.laboratorioJavaScript
+                            : botao.dataset.url
+                    );
 
                 if (!url) {
                     return;
@@ -645,15 +846,19 @@
 
                 titulo.textContent = foto
                     ? 'Helder Neiva'
-                    : (laboratorio ? 'Laboratório JavaScript' : botao.dataset.titulo);
+                    : (laboratorio
+                        ? 'Laboratório JavaScript'
+                        : botao.dataset.titulo);
 
                 externo.href = url;
 
-                document.getElementById('rotulo-externo').textContent =
-                    foto ? 'Abrir imagem em nova aba' : 'Abrir em nova aba';
+                document.getElementById('rotulo-externo').textContent = foto
+                    ? 'Abrir imagem em nova aba'
+                    : 'Abrir em nova aba';
 
-                estado.textContent =
-                    foto ? 'Carregando imagem…' : 'Abrindo prévia. Se ela não aparecer, use Abrir em nova aba.';
+                estado.textContent = foto
+                    ? 'Carregando imagem…'
+                    : 'Abrindo prévia. Se ela não aparecer, use Abrir em nova aba.';
 
                 estado.hidden = false;
                 iframe.hidden = foto;
@@ -670,12 +875,12 @@
                 }
 
                 fechar.focus({ preventScroll: true });
-
                 limparTemporizador();
 
                 temporizador = setTimeout(() => {
                     if (janela.open) {
-                        estado.textContent = 'A visualização pode demorar. Você também pode abrir em nova aba.';
+                        estado.textContent =
+                            'A visualização pode demorar. Você também pode abrir em nova aba.';
                     }
                 }, 12000);
             });
@@ -687,7 +892,6 @@
 
         janela.addEventListener('close', () => {
             limparTemporizador();
-
             raiz.classList.remove('janela-aberta');
 
             iframe.removeAttribute('src');
@@ -716,12 +920,18 @@
             );
         }
 
-        janela.addEventListener('pointerdown', (evento) => {
-            cliqueNoFundo = evento.target === janela && foraDaJanela(evento);
+        janela.addEventListener('pointerdown', evento => {
+            cliqueNoFundo =
+                evento.target === janela &&
+                foraDaJanela(evento);
         });
 
-        janela.addEventListener('click', (evento) => {
-            if (cliqueNoFundo && evento.target === janela && foraDaJanela(evento)) {
+        janela.addEventListener('click', evento => {
+            if (
+                cliqueNoFundo &&
+                evento.target === janela &&
+                foraDaJanela(evento)
+            ) {
                 janela.close();
             }
 
@@ -729,5 +939,6 @@
         });
     }
 
-    document.getElementById('ano').textContent = String(new Date().getFullYear());
+    document.getElementById('ano').textContent =
+        String(new Date().getFullYear());
 })();

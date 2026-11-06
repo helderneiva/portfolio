@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+    <title>Helder Neiva — HN</title>
+
+    <style>
+        .fundo {
+            fill: #F7FAFC;
+        }
+
+        .letra-h {
+            fill: #16324F;
+        }
+
+        .letra-n {
+            fill: #0052CC;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .fundo {
+                fill: #121214;
+            }
+
+            .letra-h {
+                fill: #F0F6FC;
+            }
+
+            .letra-n {
+                fill: #00D4F0;
+            }
+        }
+    </style>
+
+    <rect class="fundo" width="64" height="64" rx="10"/>
+
+    <path class="letra-h" d="M8 14H16V28H28V14H36V50H28V36H16V50H8Z"/>
+
+    <path class="letra-n" d="M28 14H36L48 36V14H56V50H48L28 22Z"/>
+</svg>

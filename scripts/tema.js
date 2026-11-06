@@ -1,9 +1,11 @@
 // Resolve a preferência antes do CSS.
 // A media query cobre acessos sem JavaScript.
+
 (() => {
     'use strict';
 
     const chave = 'portfolio-tema';
+
     const migracao = {
         claro: 'light',
         escuro: 'dark'
@@ -20,6 +22,15 @@
         }
     } catch {
         // A preferência do sistema funciona sem armazenamento.
+    }
+
+    try {
+        document.documentElement.classList.toggle(
+            'animacoes-pausadas',
+            localStorage.getItem('portfolio-animacoes-pausadas') === 'true'
+        );
+    } catch {
+        // A preferência do sistema permanece disponível.
     }
 
     const sistemaEscuro = matchMedia('(prefers-color-scheme: dark)').matches;

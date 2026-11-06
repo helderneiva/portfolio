@@ -16,6 +16,37 @@
     const campos = ['nome', 'email', 'mensagem']
         .map(id => document.getElementById(id));
 
+    if (!resultado || !botao || campos.some(campo => !campo)) {
+        if (botao) {
+            botao.disabled = true;
+        }
+
+        return;
+    }
+
+    const mensagensErro = new Map(campos.map(campo => {
+        const id = `erro-${campo.id}`;
+        let mensagem = document.getElementById(id);
+
+        if (!mensagem) {
+            mensagem = document.createElement('span');
+            mensagem.id = id;
+            mensagem.className = 'erro-campo';
+            campo.insertAdjacentElement('afterend', mensagem);
+        }
+
+        const referencias = new Set(
+            (campo.getAttribute('aria-describedby') || '')
+                .split(/\s+/)
+                .filter(Boolean)
+        );
+
+        referencias.add(id);
+        campo.setAttribute('aria-describedby', [...referencias].join(' '));
+
+        return [campo, mensagem];
+    }));
+
     let enviando = false;
 
     function informar(texto, estado = '') {
@@ -39,7 +70,7 @@
             erro = 'O texto ultrapassou o limite do campo.';
         }
 
-        document.getElementById(`erro-${campo.id}`).textContent = erro;
+        mensagensErro.get(campo).textContent = erro;
 
         if (erro) {
             campo.setAttribute('aria-invalid', 'true');

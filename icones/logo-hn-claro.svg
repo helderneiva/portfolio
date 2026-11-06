@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 124 92" role="img" aria-labelledby="titulo">
+    <title id="titulo">Monograma HN - Helder Neiva</title>
+
+    <defs>
+        <linearGradient id="azul" x1="50" y1="18" x2="116" y2="82" gradientUnits="userSpaceOnUse">
+            <stop offset="0" stop-color="#39D4EB"/>
+            <stop offset="0.48" stop-color="#48B4FA"/>
+            <stop offset="1" stop-color="#3178F0"/>
+        </linearGradient>
+    </defs>
+
+    <g fill="#16324F">
+        <path d="M4 17H21V42H48V26H65V88H48V58H21V81H4Z"/>
+        <path d="M48 4H65V12L48 22Z"/>
+    </g>
+
+    <g fill="url(#azul)">
+        <path d="M48 26L65 16L104 60V16H121V69L102 81L65 42Z"/>
+        <path d="M104 85L121 75V88H104Z"/>
+    </g>
+</svg>

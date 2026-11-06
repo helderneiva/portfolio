@@ -1,0 +1,163 @@
+@charset "UTF-8";
+
+/* Este arquivo é carregado apenas na impressão. */
+
+:root, html[data-theme] {
+    color-scheme: light;
+
+    --fundo-principal: #FFFFFF;
+    --fundo-card: #FFFFFF;
+    --fundo-elevado: #F4F4F4;
+    --fundo-selecionado: #FFFFFF;
+    --texto: #222222;
+    --texto-secundario: #444444;
+    --destaque-titulo: #111111;
+    --borda: #BBBBBB;
+    --borda-forte: #777777;
+    --link: #312E81;
+    --destaque: #312E81;
+    --destaque-inverso: #FFFFFF;
+}
+
+*, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+}
+
+.cabecalho,
+.visualizador,
+.ampliar,
+.pausar,
+.pular,
+.filtros,
+.formulario,
+.formacao-selo,
+.formacao-emblema {
+    display: none !important;
+}
+
+.estrutura,
+.rodape,
+.pagina-competencias {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+}
+
+.inicio {
+    display: block;
+}
+
+.perfil {
+    max-width: none;
+    margin-bottom: 26px;
+}
+
+.perfil-capa {
+    background: #EEEEEE;
+}
+
+.competencia,
+.competencia.entrada-pendente,
+.formacao,
+.formacao.entrada-pendente,
+html.animacoes-pausadas .formacao {
+    opacity: 1 !important;
+    translate: 0 0 !important;
+    transform: none !important;
+}
+
+.competencia-titulo,
+.capa-laboratorio {
+    background: #EEEEEE;
+    color: #111111;
+}
+
+.competencia-titulo h3,
+.competencia-titulo > .icone,
+.lab-capa-categoria,
+.lab-capa-acao,
+.lab-capa-indice {
+    color: #111111;
+}
+
+.competencia-titulo > span:last-child {
+    border-color: #777777;
+    background: #FFFFFF;
+    color: #111111;
+}
+
+.barra > span,
+.competencia.entrada-pendente .barra > span {
+    background: #666666;
+    transform: none !important;
+    print-color-adjust: exact;
+}
+
+.barra > span::after,
+.capa-laboratorio::before,
+.capa-laboratorio::after,
+.formacao::before,
+.formacao::after,
+.formacao-cabecalho::before,
+.formacao-cabecalho::after {
+    display: none !important;
+}
+
+html:root .secao.sobre {
+    --sobre-titulo: #111111;
+    --sobre-texto: #222222;
+    --sobre-secundario: #444444;
+    --sobre-detalhe: #333333;
+    --sobre-borda: #BBBBBB;
+    --sobre-painel: #FFFFFF;
+
+    background: #FFFFFF;
+}
+
+html:root .secao.formacao {
+    --formacao-titulo: #111111;
+    --formacao-texto: #222222;
+    --formacao-secundario: #444444;
+    --formacao-ambar: #333333;
+    --formacao-borda: #BBBBBB;
+    --formacao-borda-interior: #BBBBBB;
+    --formacao-linha: #777777;
+    --formacao-ponto: #555555;
+    --formacao-fundo-1: #FFFFFF;
+
+    background: #FFFFFF;
+}
+
+.formacao .formacao-cabecalho {
+    grid-template-columns: minmax(0, 1fr);
+    min-height: 0;
+    background: #FFFFFF;
+}
+
+.formacao .curso::before {
+    print-color-adjust: exact;
+}
+
+.grade-evidencias {
+    grid-template-columns: minmax(0, 1fr);
+}
+
+.projeto-evidencia[hidden] {
+    display: flex !important;
+}
+
+.evidencias [data-evidencia][hidden] {
+    display: block !important;
+}
+
+article,
+.sobre-momento {
+    break-inside: avoid;
+}
+
+h1, h2, h3 {
+    break-after: avoid;
+}

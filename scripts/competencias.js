@@ -1,3 +1,4 @@
+
 (() => {
     'use strict';
 
@@ -10,25 +11,42 @@
         const tecnologia = permitidos.includes(valor) ? valor : 'todos';
         filtro.value = tecnologia;
 
-        let total = 0;
+        let disponiveis = 0;
+        let emDesenvolvimento = 0;
 
         projetos.forEach(projeto => {
-            const visivel = tecnologia === 'todos' ||
-                projeto.dataset.tecnologias.split(' ').includes(tecnologia);
+            const visivel = tecnologia === 'todos' || projeto.dataset.tecnologias.split(' ').includes(tecnologia);
 
             projeto.hidden = !visivel;
 
-            if (visivel) {
-                total += 1;
+            if (visivel && projeto.dataset.situacao === 'disponivel') {
+                disponiveis += 1;
+            } else if (visivel && projeto.dataset.situacao === 'desenvolvimento') {
+                emDesenvolvimento += 1;
             }
 
             projeto.querySelectorAll('[data-evidencia]').forEach(evidencia => {
-                evidencia.hidden = tecnologia !== 'todos' &&
-                    evidencia.dataset.evidencia !== tecnologia;
+                evidencia.hidden = tecnologia !== 'todos' && evidencia.dataset.evidencia !== tecnologia;
             });
         });
 
-        contagem.textContent = `${total} ${total === 1 ? 'projeto nesta seleção' : 'projetos nesta seleção'}.`;
+        const total = disponiveis + emDesenvolvimento;
+
+        if (total === 0) {
+            contagem.textContent = 'Nenhum projeto nesta seleção.';
+        } else {
+            const partes = [];
+
+            if (disponiveis > 0) {
+                partes.push(`${disponiveis} ${disponiveis === 1 ? 'projeto disponível' : 'projetos disponíveis'}`);
+            }
+
+            if (emDesenvolvimento > 0) {
+                partes.push(`${emDesenvolvimento} em desenvolvimento`);
+            }
+
+            contagem.textContent = `${partes.join(' e ')} nesta seleção.`;
+        }
 
         if (atualizarEndereco) {
             const url = new URL(location.href);

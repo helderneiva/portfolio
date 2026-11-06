@@ -10,7 +10,16 @@
     <meta property="og:title" content="Competências na prática | Helder Neiva">
     <meta property="og:description" content="Veja como aplico HTML, CSS, JavaScript, PHP, Node.js, SQL e Git nos meus projetos.">
 
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="canonical" href="https://helderneiva.github.io/portfolio/competencias.html">
+    <meta property="og:url" content="https://helderneiva.github.io/portfolio/competencias.html">
+    <meta property="og:image" content="https://helderneiva.github.io/portfolio/imagens/compartilhamento.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Helder Neiva — Desenvolvimento web. Interfaces, lógica e projetos em prática.">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <link rel="icon" href="favicon.ico?v=hn-1" type="image/x-icon" sizes="16x16 32x32 48x48">
+    <link rel="icon" href="favicon.svg?v=hn-1" type="image/svg+xml" sizes="any">
 
     <title>Competências na prática | Helder Neiva</title>
 
@@ -19,10 +28,13 @@
     <link rel="stylesheet" href="estilos/paleta.css">
     <link rel="stylesheet" href="estilos/style.css">
     <link rel="stylesheet" href="estilos/competencias.css">
+    <link rel="stylesheet" href="estilos/finalizacao.css">
+    <link rel="stylesheet" href="estilos/impressao.css" media="print">
 
     <script src="scripts/lucide.js" defer></script>
     <script src="scripts/configuracao.js" defer></script>
     <script src="scripts/script.js" defer></script>
+    <script src="scripts/destaques.js" defer></script>
     <script src="scripts/competencias.js" defer></script>
 </head>
 <body>
@@ -30,9 +42,8 @@
 
     <header class="cabecalho">
         <div class="cabecalho-interno">
-            <a class="assinatura" href="index.html#perfil">
-                Helder Neiva
-                <span>DESENVOLVIMENTO WEB</span>
+            <a class="assinatura" aria-label="Helder Neiva, início" href="index.html#perfil">
+                <span class="assinatura-monograma" aria-hidden="true">HN</span>
             </a>
 
             <nav class="navegacao" aria-label="Navegação principal">
@@ -55,7 +66,7 @@
                             </a>
                         </li>
                         <li>
-                            <a class="item-menu" href="index.html#competencias" aria-label="Competências" aria-current="page">
+                            <a class="item-menu" href="competencias.html" aria-label="Competências" aria-current="page">
                                 <span class="icone" data-lucide="brain" aria-hidden="true"></span>
                                 <span class="menu-texto">Competências</span>
                                 <span class="menu-dica" aria-hidden="true">Competências</span>
@@ -83,6 +94,8 @@
                             </a>
                         </li>
                     </ul>
+
+                    <span class="secao-menu" id="secao-menu" aria-hidden="true">Competências</span>
                 </div>
             </nav>
 
@@ -99,10 +112,12 @@
 
         <p class="marcador">TECNOLOGIAS E PROJETOS</p>
         <h1>Competências na prática</h1>
+
         <p class="introducao">Veja onde cada tecnologia aparece nos meus projetos. Esta página reúne evidências do meu aprendizado; os experimentos continuam organizados nos laboratórios.</p>
 
         <div class="filtros">
             <label for="filtro-tecnologia">Filtrar por competência</label>
+
             <select class="filtro-select" id="filtro-tecnologia">
                 <option value="todos">Todas as competências</option>
                 <option value="html">HTML5</option>
@@ -113,7 +128,7 @@
                 <option value="git">Git e GitHub</option>
             </select>
 
-            <p class="contagem" id="contagem-projetos" role="status" aria-live="polite" aria-atomic="true">4 projetos nesta seleção.</p>
+            <p class="contagem" id="contagem-projetos" role="status" aria-live="polite" aria-atomic="true">3 projetos disponíveis e 1 em desenvolvimento nesta seleção.</p>
 
             <noscript>
                 <p>Com o JavaScript desativado, todos os projetos e suas competências permanecem visíveis.</p>
@@ -121,10 +136,12 @@
         </div>
 
         <div class="grade-evidencias">
-            <article class="projeto-evidencia" data-tecnologias="html css javascript git">
+            <article class="projeto-evidencia" data-tecnologias="html css javascript git" data-situacao="disponivel">
                 <span class="icone" data-lucide="clapperboard" aria-hidden="true"></span>
+
                 <h2>Métrica Cine</h2>
                 <span class="etiqueta">Disponível</span>
+
                 <p>Catálogo de filmes com busca, informações e favoritos.</p>
 
                 <dl class="evidencias">
@@ -132,14 +149,17 @@
                         <dt>HTML5</dt>
                         <dd>Estrutura da busca e organização das informações dos filmes.</dd>
                     </div>
+
                     <div data-evidencia="css">
                         <dt>CSS3</dt>
                         <dd>Composição de cards e adaptação da interface a diferentes telas.</dd>
                     </div>
+
                     <div data-evidencia="javascript">
                         <dt>JavaScript</dt>
                         <dd>Consumo da API de filmes, busca com debounce, requisições assíncronas e favoritos.</dd>
                     </div>
+
                     <div data-evidencia="git">
                         <dt>Git e GitHub</dt>
                         <dd>Organização e publicação do projeto no repositório do laboratório.</dd>
@@ -155,10 +175,12 @@
                 </div>
             </article>
 
-            <article class="projeto-evidencia" data-tecnologias="html css javascript git">
+            <article class="projeto-evidencia" data-tecnologias="html css javascript git" data-situacao="disponivel">
                 <span class="icone" data-lucide="book-open" aria-hidden="true"></span>
+
                 <h2>Museu da Poesia Digital</h2>
                 <span class="etiqueta">Disponível</span>
+
                 <p>Navegação por gêneros de poesia, obras e registros de leitura.</p>
 
                 <dl class="evidencias">
@@ -166,14 +188,17 @@
                         <dt>HTML5</dt>
                         <dd>Organização dos gêneros e das páginas de leitura.</dd>
                     </div>
+
                     <div data-evidencia="css">
                         <dt>CSS3</dt>
                         <dd>Hierarquia tipográfica e apresentação responsiva das obras.</dd>
                     </div>
+
                     <div data-evidencia="javascript">
                         <dt>JavaScript</dt>
                         <dd>Manipulação do DOM, eventos e armazenamento de preferências de leitura.</dd>
                     </div>
+
                     <div data-evidencia="git">
                         <dt>Git e GitHub</dt>
                         <dd>Organização e publicação do projeto no repositório do laboratório.</dd>
@@ -189,10 +214,12 @@
                 </div>
             </article>
 
-            <article class="projeto-evidencia" data-tecnologias="html css javascript node-sql git">
+            <article class="projeto-evidencia" data-tecnologias="html css javascript node-sql git" data-situacao="disponivel">
                 <span class="icone" data-lucide="landmark" aria-hidden="true"></span>
+
                 <h2>Simulador de Conta Bancária</h2>
                 <span class="etiqueta">Disponível</span>
+
                 <p>Simulação de cadastro, acesso, saques e extrato para estudo. Não realiza operações bancárias reais.</p>
 
                 <dl class="evidencias">
@@ -200,18 +227,22 @@
                         <dt>HTML5</dt>
                         <dd>Formulários e estrutura das telas de cadastro, acesso, caixa e extrato.</dd>
                     </div>
+
                     <div data-evidencia="css">
                         <dt>CSS3</dt>
                         <dd>Interfaces específicas para cada etapa, com adaptação a diferentes telas.</dd>
                     </div>
+
                     <div data-evidencia="javascript">
                         <dt>JavaScript</dt>
                         <dd>Validação de entradas, requisições e atualização dos dados na interface.</dd>
                     </div>
+
                     <div data-evidencia="node-sql">
                         <dt>Node.js e SQL</dt>
                         <dd>Rotas de servidor, autenticação, sessões e persistência de dados no PostgreSQL.</dd>
                     </div>
+
                     <div data-evidencia="git">
                         <dt>Git e GitHub</dt>
                         <dd>Repositório do projeto e publicação da aplicação no Render.</dd>
@@ -227,10 +258,12 @@
                 </div>
             </article>
 
-            <article class="projeto-evidencia" data-tecnologias="php html css javascript">
+            <article class="projeto-evidencia" data-tecnologias="php html css javascript" data-situacao="desenvolvimento">
                 <span class="icone" data-lucide="shuffle" aria-hidden="true"></span>
+
                 <h2>Gerador Lotérico</h2>
                 <span class="etiqueta">Em desenvolvimento</span>
+
                 <p>Projeto em construção para explorar PHP e JavaScript em conjunto. A demonstração será adicionada quando estiver disponível.</p>
 
                 <dl class="evidencias">
@@ -238,14 +271,17 @@
                         <dt>PHP</dt>
                         <dd>Objetivo do projeto: gerar combinações no servidor com funções tipadas e respostas em JSON.</dd>
                     </div>
+
                     <div data-evidencia="javascript">
                         <dt>JavaScript</dt>
                         <dd>Objetivo do projeto: comunicação assíncrona com o PHP e apresentação das combinações.</dd>
                     </div>
+
                     <div data-evidencia="html">
                         <dt>HTML5</dt>
                         <dd>Objetivo do projeto: estruturar os controles de geração e a apresentação dos resultados.</dd>
                     </div>
+
                     <div data-evidencia="css">
                         <dt>CSS3</dt>
                         <dd>Objetivo do projeto: construir uma interface responsiva com identidade própria.</dd>
@@ -259,12 +295,23 @@
         </div>
 
         <p class="texto-secao">Os textos indicam o que cada projeto demonstra. Funcionalidades em desenvolvimento estão identificadas como objetivos, sem demonstração publicada.</p>
+
         <a class="link-texto" href="index.html#laboratorios">Explorar meus laboratórios ↗</a>
     </main>
 
     <footer class="rodape">
-        <p>Helder Neiva · Desenvolvimento web · <span id="ano">2026</span></p>
-        <a href="index.html">Voltar ao portfólio</a>
+        <p>© <span id="ano">2026</span> Helder Neiva</p>
+
+        <div class="rodape-acoes">
+            <a class="link-texto" data-link="repositorioPortfolio" hidden>Código do portfólio</a>
+
+            <button class="pausar" id="pausar-animacoes" type="button" aria-pressed="false" hidden>Pausar animações</button>
+
+            <a class="voltar-topo" href="index.html#perfil">
+                <span class="icone" data-lucide="arrow-up" aria-hidden="true"></span>
+                Voltar ao portfólio
+            </a>
+        </div>
     </footer>
 </body>
 </html>

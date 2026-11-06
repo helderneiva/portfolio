@@ -5,14 +5,30 @@ window.portfolioConfiguracao = Object.freeze({
     laboratorioPHP: '',
     laboratorioPython: '',
     linkedin: 'https://www.linkedin.com/in/helder-neiva-3184852a5/',
-    email: '',
+    email: 'helderneiva2002@gmail.com',
 
-    // Cole aqui a chave pública do Web3Forms vinculada ao seu e-mail.
+    // Chave pública do Web3Forms vinculada ao seu e-mail.
     web3formsChave: '22610a15-ff81-416c-9350-c2f58ecd2a6c',
 
-    curriculo: '',
+    curriculo: 'documentos/curriculo-helder-neiva.pdf',
+    repositorioPortfolio: '',
+
+    // Somente projetos fora dos laboratórios.
+    // Inclua apenas demonstrações prontas.
+    //
+    // Modelo de item:
+    // {
+    //     id: 'identificador',
+    //     nome: 'Nome do projeto',
+    //     descricao: 'Descrição objetiva do projeto.',
+    //     tecnologias: ['Tecnologia 1', 'Tecnologia 2'],
+    //     imagem: 'imagens/capa-do-projeto.jpg',
+    //     url: 'https://endereco-real-do-projeto',
+    //     repositorio: 'https://endereco-real-do-repositorio',
+    //     publicado: true
+    // }
+    projetosDestaque: [],
 
     // Endereço completo da pasta do portfólio publicado.
-    // Exemplo de formato: https://seu-dominio.com/portfolio/
-    urlPublica: ''
+    urlPublica: 'https://helderneiva.github.io/portfolio/'
 });
